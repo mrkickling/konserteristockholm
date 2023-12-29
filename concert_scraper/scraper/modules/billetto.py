@@ -21,6 +21,8 @@ def get_concerts(venue, browser):
     except NoSuchElementException:
         print("No cookie banner")
 
+    time.sleep(1)
+
     while True:
         # Go through all pages
         html = browser.page_source

@@ -11,6 +11,9 @@ class Concert:
     def __hash__(self) -> int:
         return hash(self.url)
 
+    def __str__(self):
+        return f"{self.venue}: {self.title} - {self.date}"
+
 
 @dataclass
 class Venue:

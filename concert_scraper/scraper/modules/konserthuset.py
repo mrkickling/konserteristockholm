@@ -12,6 +12,7 @@ BASE_URL = "https://konserthuset.se"
 def get_concerts(venue, browser):
     browser.get(venue.url)
 
+    time.sleep(1)
     popup = browser.find_element(By.CLASS_NAME, 'cookie-popup')
     browser.execute_script("""
     var element = arguments[0];
