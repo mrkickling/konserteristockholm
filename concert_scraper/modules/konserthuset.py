@@ -4,7 +4,7 @@ from bs4 import BeautifulSoup
 from selenium.webdriver.common.by import By
 import time
 
-from common import Concert
+from concert_scraper.common import Concert
 
 BASE_URL = "https://konserthuset.se"
 

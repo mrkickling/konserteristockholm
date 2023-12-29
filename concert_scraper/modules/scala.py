@@ -2,8 +2,9 @@
 
 from selenium.webdriver.common.by import By
 from bs4 import BeautifulSoup
-from common import Concert
 import time
+
+from concert_scraper.common import Concert
 
 BASE_URL = "https://www.scalateatern.se/forestallningar/"
 

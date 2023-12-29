@@ -24,3 +24,6 @@ dependencies = {file = ["requirements.txt"]}
 [project.urls]
 Homepage = "https://github.com/mrkickling/konserteristockholm"
 Issues = "https://github.com/mrkickling/konserteristockholm"
+
+[project.scripts]
+scrape_concerts = "concert_scraper.scraper:main"

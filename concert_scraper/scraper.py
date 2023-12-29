@@ -1,7 +1,7 @@
 from selenium import webdriver
 
-from modules import nortic, tickster, glenmiller, stampen, billetto, scala, konserthuset
-from common import Venue
+from concert_scraper.modules import nortic, tickster, glenmiller, stampen, billetto, scala, konserthuset
+from concert_scraper.common import Venue
 
 venues = [
     Venue(
@@ -120,34 +120,35 @@ venues = [
     )
 ]
 
-options = webdriver.FirefoxOptions()
-browser = webdriver.Firefox(options=options)
-concerts = set()
+def main():
+    options = webdriver.FirefoxOptions()
+    browser = webdriver.Firefox(options=options)
+    concerts = set()
 
-for venue in venues:
-    if venue.type == "nortic":
-        concerts = concerts.union(
-            nortic.get_concerts(venue=venue, browser=browser))
-    elif venue.type == "tickster":
-        concerts = concerts.union(
-            tickster.get_concerts(venue=venue, browser=browser))
-    elif venue.type == "glenmiller":
-        concerts = concerts.union(
-            glenmiller.get_concerts(venue=venue, browser=browser))
-    elif venue.type == "stampen":
-        concerts = concerts.union(
-            stampen.get_concerts(venue=venue, browser=browser))
-    elif venue.type == "billetto":
-        concerts = concerts.union(
-            billetto.get_concerts(venue=venue, browser=browser))
-    elif venue.type == "scala":
-        concerts = concerts.union(
-            scala.get_concerts(venue=venue, browser=browser))
-    elif venue.type == "konserthuset":
-        concerts = concerts.union(
-            konserthuset.get_concerts(venue=venue, browser=browser))
+    for venue in venues:
+        if venue.type == "nortic":
+            concerts = concerts.union(
+                nortic.get_concerts(venue=venue, browser=browser))
+        elif venue.type == "tickster":
+            concerts = concerts.union(
+                tickster.get_concerts(venue=venue, browser=browser))
+        elif venue.type == "glenmiller":
+            concerts = concerts.union(
+                glenmiller.get_concerts(venue=venue, browser=browser))
+        elif venue.type == "stampen":
+            concerts = concerts.union(
+                stampen.get_concerts(venue=venue, browser=browser))
+        elif venue.type == "billetto":
+            concerts = concerts.union(
+                billetto.get_concerts(venue=venue, browser=browser))
+        elif venue.type == "scala":
+            concerts = concerts.union(
+                scala.get_concerts(venue=venue, browser=browser))
+        elif venue.type == "konserthuset":
+            concerts = concerts.union(
+                konserthuset.get_concerts(venue=venue, browser=browser))
 
-for concert in concerts:
-    print(concert)
+    for concert in concerts:
+        print(concert)
 
-browser.quit()
+    browser.quit()

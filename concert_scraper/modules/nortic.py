@@ -4,7 +4,7 @@ from bs4 import BeautifulSoup
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
-from common import Concert
+from concert_scraper.common import Concert
 
 BASE_URL = "https://nortic.se"
 

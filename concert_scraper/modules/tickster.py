@@ -1,7 +1,7 @@
 """Fetch data from tickster.com"""
 
 from bs4 import BeautifulSoup
-from common import Concert
+from concert_scraper.common import Concert
 
 BASE_URL = "https://tickster.com"
 
