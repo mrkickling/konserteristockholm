@@ -2,10 +2,9 @@ version: '3'
 
 services:
 
-  mariadb:
-    image: mariadb
-
-  web:
+  scraper:
     build:
       context: .
-      dockerfile: Dockerfile
+      dockerfile: scraper.Dockerfile
+    volumes:
+      - ./concert_scraper:/opt/concert_scraper
