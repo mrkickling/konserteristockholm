@@ -1,0 +1,11 @@
+version: '3'
+
+services:
+
+  mariadb:
+    image: mariadb
+
+  web:
+    build:
+      context: .
+      dockerfile: Dockerfile
