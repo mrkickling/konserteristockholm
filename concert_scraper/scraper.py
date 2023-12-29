@@ -122,6 +122,7 @@ venues = [
 
 def main():
     options = webdriver.FirefoxOptions()
+    options.add_argument("--headless")
     browser = webdriver.Firefox(options=options)
     concerts = set()
 

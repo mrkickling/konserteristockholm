@@ -1,9 +1,15 @@
 """Fetch data from tickster.com"""
 
 from bs4 import BeautifulSoup
+from datetime import datetime
 from concert_scraper.common import Concert
 
 BASE_URL = "https://tickster.com"
+
+
+def parse_date(date_string):
+    # 29 mar 2024
+    return datetime.strptime(date_string, '%d %b %Y')
 
 
 def get_concerts(venue, browser):

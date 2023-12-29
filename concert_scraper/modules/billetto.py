@@ -4,12 +4,35 @@ from bs4 import BeautifulSoup
 from selenium.webdriver.common.by import By
 from selenium.common.exceptions import NoSuchElementException
 import time
+from datetime import datetime
 
 from concert_scraper.common import Concert
 
 BASE_URL = "https://billetto.se"
-By.CSS_SELECTOR
 
+def parse_date(date_string):
+    """ Convert the format from billetto to a datetime object """
+    # date month. hour:minute or date month hour:minute
+    months_se = [
+        "jan", "feb", "mars", "apr", "maj", "jun", "juli", "aug", "sep", "okt", "nov", "dec"
+    ]
+    date, month, time = date_string.split()
+    date = int(date)
+    month = months_se.index(month.rstrip('.')) + 1
+
+    # Try with current year, but if date has passed, set it to next year
+    year = datetime.now().year
+
+    try:
+        date = datetime(year, month, date)
+    except ValueError:
+        # This is for handling feb 29th
+        print("Failed to parse date")
+        date = datetime(year + 1, month, date)
+
+    if date < datetime.now():
+        date = date.replace(year=date.year + 1)
+    return date
 
 def get_concerts(venue, browser):
     browser.get(venue.url)
@@ -46,11 +69,12 @@ def get_concerts(venue, browser):
             concert_title = concert_title.getText()
 
             date_attrs = {'class': 'border border-gray-200 p-1 text-xs text-brand-500 bg-white rounded-md'}
-            concert_dates = clean_date(concert.find(attrs=date_attrs).get_text())
+            concert_date = clean_date(concert.find(attrs=date_attrs).get_text())
+            concert_date = parse_date(concert_date)
 
             concert_url = concert.find('a').get('href') if concert.find('a') else venue.url
             concerts.add(
-                Concert(concert_title, concert_dates, venue.name, concert_url)
+                Concert(concert_title, concert_date, venue.name, concert_url)
             )
 
         # Next page

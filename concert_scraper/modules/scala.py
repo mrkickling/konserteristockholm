@@ -1,6 +1,7 @@
 """Fetch data from glenmillercafe.se"""
 
 from selenium.webdriver.common.by import By
+from datetime import datetime
 from bs4 import BeautifulSoup
 import time
 
@@ -8,6 +9,22 @@ from concert_scraper.common import Concert
 
 BASE_URL = "https://www.scalateatern.se/forestallningar/"
 
+def parse_date(date_string):
+    # 5 jan
+    months_se = ["jan", "feb", "mar", "apr", "maj", "jun", "jul", "aug", "sep", "okt", "nov", "dec"]
+    day, month = date_string.split()
+    month_int = months_se.index(month) + 1
+    day_int = int(day)
+    date = datetime(1904, month_int, day_int)
+    now = datetime.now()
+    try:
+        date = date.replace(year=now.year)
+    except ValueError:
+        # Handle feb 29th
+        date = date.replace(year=now.year + 1)
+    if date < now:
+        date = date.replace(year=now.year + 1)
+    return date
 
 def get_concerts(venue, browser):
     browser.get(venue.url)
@@ -33,7 +50,7 @@ def get_concerts(venue, browser):
         genre = card.find('div', attrs={'class':'meta'}).findAll('span')[-1].getText().strip()
         if genre == "Musik":
             concerts.add(
-                Concert(concert_title, day + " " + month, venue.name, concert_url)
+                Concert(concert_title, parse_date(day + " " + month), venue.name, concert_url)
             )
 
     return concerts

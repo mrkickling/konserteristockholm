@@ -3,11 +3,33 @@
 from bs4 import BeautifulSoup
 from selenium.webdriver.common.by import By
 import time
+from datetime import datetime
 
 from concert_scraper.common import Concert
 
 BASE_URL = "https://konserthuset.se"
 
+def parse_date(date_string):
+    # 'Fredag 5 januari 2024 kl 17.00'
+    months_se = [
+        "januari",
+        "februari",
+        "mars",
+        "april",
+        "maj",
+        "juni",
+        "juli",
+        "augusti",
+        "september",
+        "oktober",
+        "november",
+        "december"
+    ]
+    weekday, date, month, year, _, time = date_string.split()
+    date_int = int(date)
+    month_int = months_se.index(month.lower()) + 1
+    year_int = int(year)
+    return datetime(year_int, month_int, date_int)
 
 def get_concerts(venue, browser):
     browser.get(venue.url)
@@ -32,10 +54,10 @@ def get_concerts(venue, browser):
     concerts = set()
     for card in cards:
         concert_title = card.find('h4').getText().strip()
-        concert_dates = card.find('h3').getText().strip()
+        concert_date = parse_date(card.find('h3').getText().strip())
         concert_url = card.find('a', attrs={'class': 'hall-link'}).getText().strip()
         concerts.add(
-            Concert(concert_title, concert_dates, venue.name, concert_url)
+            Concert(concert_title, concert_date, venue.name, concert_url)
         )
 
     return concerts
