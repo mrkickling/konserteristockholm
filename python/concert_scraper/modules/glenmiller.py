@@ -1,4 +1,4 @@
-"""Fetch data from glenmillercafe.se"""
+"""Fetch data from https://www.glennmillercafe.se"""
 
 from bs4 import BeautifulSoup
 from concert_scraper.common import Concert
@@ -7,7 +7,7 @@ from concert_scraper.logger import get_logger
 
 logger = get_logger(__name__)
 
-BASE_URL = "https://glenmillercafe.se"
+BASE_URL = "https://www.glennmillercafe.se"
 
 def parse_date(date_string):
     return datetime.strptime(date_string, '%Y-%m-%d').strftime("%Y-%m-%d")
