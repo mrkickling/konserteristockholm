@@ -1,0 +1,54 @@
+* {
+    box-sizing: border-box;
+}
+
+.container, header {
+    width: 900px;
+    margin: auto;
+    padding: 10px;
+    overflow: auto;
+}
+
+header {
+    margin-top: 20px;
+}
+
+header a {
+    text-decoration: none;
+}
+
+header h3 {
+    margin: 0;
+    font-size: 150%;
+    color: #C00;
+    display: inline;
+}
+
+header .info-link {
+    text-align: right;
+    float: right;
+    width: 10px;
+    display: block;
+}
+
+.concert-list {
+    padding: 0;
+}
+
+.concert-date:nth-of-type(1) {
+    margin-top: 0px;
+}
+
+.concert-date {
+    border-bottom: 1px solid black;
+    margin-bottom: 10px;
+}
+
+.concert {
+    list-style:disc;
+    margin-left: 20px;
+}
+
+.concert a {
+    color: black;
+}
