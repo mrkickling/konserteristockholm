@@ -3,6 +3,7 @@ from selenium import webdriver
 from concert_scraper.modules import nortic, tickster, glenmiller, stampen, billetto, scala, konserthuset
 from concert_scraper.common import Venue
 from concert_scraper.logger import get_logger
+from concert_scraper.exporter import export_concerts
 
 logger = get_logger(__name__)
 
@@ -154,5 +155,6 @@ def main():
                 konserthuset.get_concerts(venue=venue, browser=browser))
 
     logger.info(f"Found {len(concerts)} concerts in total")
-
     browser.quit()
+
+    export_concerts(concerts)

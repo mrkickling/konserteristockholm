@@ -1,9 +1,9 @@
 FROM python:3.11
 
 # Copy files
-COPY concert_scraper/ /opt/concert_scraper
-COPY requirements.txt /opt/concert_scraper/requirements.txt
-COPY pyproject.toml /opt/concert_scraper/pyproject.toml
+COPY python/concert_scraper/ /opt/concert_scraper
+COPY python/requirements.txt /opt/concert_scraper/requirements.txt
+COPY python/pyproject.toml /opt/concert_scraper/pyproject.toml
 
 ENV DEBIAN_FRONTEND noninteractive
 ENV GECKODRIVER_VER v0.29.0
@@ -37,4 +37,4 @@ RUN ls
 RUN pip install --upgrade pip
 RUN pip install -e .
 
-ENTRYPOINT [ "python", "scraper/scraper.py" ]
+ENTRYPOINT [ "python", "scraper.py" ]
