@@ -2,6 +2,26 @@ version: '3'
 
 services:
 
+  mariadb:
+    image: mariadb
+    environment:
+      MARIADB_ALLOW_EMPTY_ROOT_PASSWORD: True
+      MARIADB_DATABASE: konserteristockholm
+    ports:
+      - 3306:3306
+    volumes:
+      - ./web/sql:/docker-entrypoint-initdb.d
+
+  web:
+    build:
+      context: .
+      dockerfile: web.Dockerfile
+    ports:
+      - 443:443
+      - 80:80
+    volumes:
+      - ./web:/var/www/html/
+
   scraper:
     build:
       context: .
