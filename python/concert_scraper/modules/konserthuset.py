@@ -32,7 +32,7 @@ def parse_date(date_string):
     date_int = int(date)
     month_int = months_se.index(month.lower()) + 1
     year_int = int(year)
-    return datetime(year_int, month_int, date_int)
+    return datetime(year_int, month_int, date_int).strftime("%Y-%m-%d")
 
 def get_concerts(venue, browser):
     logger.info(f"Getting concerts for venue {venue.name}")
@@ -55,12 +55,12 @@ def get_concerts(venue, browser):
 
     soup = BeautifulSoup(html, features="html.parser")
     cards = soup.find_all(name="li", attrs={'class': 'jsArrangementItem'})
-    concerts = set()
+    concerts = []
     for card in cards:
         concert_title = card.find('h4').getText().strip()
         concert_date = parse_date(card.find('h3').getText().strip())
         concert_url = card.find('a', attrs={'class': 'hall-link'}).getText().strip()
-        concerts.add(
+        concerts.append(
             Concert(concert_title, concert_date, venue.name, concert_url)
         )
 

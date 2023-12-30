@@ -24,7 +24,7 @@ def parse_date(date_string):
         print("Failed to parse date - trying with next year instead")
     if date < now:
         date = date.replace(year=now.year+1)
-    return date
+    return date.strftime("%Y-%m-%d")
 
 def get_concerts(venue, browser):
     logger.info(f"Getting concerts for venue {venue.name}")
@@ -40,13 +40,13 @@ def get_concerts(venue, browser):
 
     soup = BeautifulSoup(html, features="html.parser")
     cards = soup.find_all(name="div", attrs={'class': 'card'})
-    concerts = set()
+    concerts = []
     for card in cards:
         concert_title = card.find(name="h3").text
         date_attrs = {'class': 'time'}
         concert_date = parse_date(clean_date(card.find(attrs=date_attrs).get_text()))
         concert_url = BASE_URL + card.find('a').get('href')
-        concerts.add(
+        concerts.append(
             Concert(concert_title, concert_date, venue.name, concert_url)
         )
     logger.info(f"Found {len(concerts)} concerts for venue {venue.name}")

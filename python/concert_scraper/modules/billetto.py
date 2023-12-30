@@ -35,13 +35,13 @@ def parse_date(date_string):
 
     if date < datetime.now():
         date = date.replace(year=date.year + 1)
-    return date
+    return date.strftime("%Y-%m-%d")
 
 def get_concerts(venue, browser):
     logger.info(f"Getting concerts for venue {venue.name}")
     browser.get(venue.url)
     time.sleep(5)
-    concerts = set()
+    concerts = []
 
     try:
         cookie_button = browser.find_element(By.ID, "onetrust-accept-btn-handler")
@@ -77,7 +77,7 @@ def get_concerts(venue, browser):
             concert_date = parse_date(concert_date)
 
             concert_url = concert.find('a').get('href') if concert.find('a') else venue.url
-            concerts.add(
+            concerts.append(
                 Concert(concert_title, concert_date, venue.name, concert_url)
             )
 
