@@ -12,7 +12,13 @@ BASE_URL = "https://tickster.com"
 
 def parse_date(date_string):
     # 29 mar 2024
-    return datetime.strptime(date_string, '%d %b %Y').strftime("%Y-%m-%d")
+    months_se = ["jan", "feb", "mar", "apr", "maj", "jun", "jul", "aug", "sep", "okt", "nov", "dec"]
+    day, month, year = date_string.split()
+    month_int = months_se.index(month) + 1
+    day_int = int(day)
+    year_int = int(year)
+
+    return datetime(year_int, month_int, day_int).strftime("%Y-%m-%d")
 
 
 def get_concerts(venue, browser):
@@ -35,7 +41,7 @@ def get_concerts(venue, browser):
             card.find('span', attrs=date_attrs).getText())
         concert_url = BASE_URL + card.find('a').get('href')
         concerts.append(
-            Concert(concert_title, concert_date, venue.name, concert_url)
+            Concert(concert_title, parse_date(concert_date), venue.name, concert_url)
         )
     logger.info(f"Found {len(concerts)} concerts for venue {venue.name}")
     return concerts

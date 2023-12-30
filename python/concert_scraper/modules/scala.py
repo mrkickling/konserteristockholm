@@ -37,7 +37,7 @@ def get_concerts(venue, browser):
     time.sleep(2)
     button = browser.find_element(By.CLASS_NAME, "post-list-load-more")
     while button.is_displayed():
-        loger.info("Loading more...")
+        logger.info("Loading more...")
         button.click()
         time.sleep(2)
 

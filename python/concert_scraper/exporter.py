@@ -11,6 +11,6 @@ def export_concerts(concerts):
     concerts = json.dumps([concert.__dict__ for concert in concerts])
     data = {"concerts": concerts, "api_key": api_key}
 
-    logger.info(f"Sending {len(concerts)} concerts to {url}")
+    logger.info(f"Sending concerts to {url}")
     res = requests.post(url, data=data)
     logger.info(res.text)

@@ -1,4 +1,6 @@
 <?php
+require "db.php";
+require 'functions.php';
 
 $env = parse_ini_file('.env');
 $api_key = $_POST['api_key'];
@@ -17,6 +19,6 @@ if ($api_key != $env["API_KEY"]) {
 }
 
 $concerts = json_decode($concerts_json);
-var_dump($concerts);
+create_concerts($conn, $concerts);
 
 ?>
