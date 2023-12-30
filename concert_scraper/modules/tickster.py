@@ -3,6 +3,9 @@
 from bs4 import BeautifulSoup
 from datetime import datetime
 from concert_scraper.common import Concert
+from concert_scraper.logger import get_logger
+
+logger = get_logger(__name__)
 
 BASE_URL = "https://tickster.com"
 
@@ -13,6 +16,7 @@ def parse_date(date_string):
 
 
 def get_concerts(venue, browser):
+    logger.info(f"Getting concerts for venue {venue.name}")
     browser.get(venue.url)
     html = browser.page_source
 
@@ -33,5 +37,5 @@ def get_concerts(venue, browser):
         concerts.add(
             Concert(concert_title, concert_date, venue.name, concert_url)
         )
-
+    logger.info(f"Found {len(concerts)} concerts for venue {venue.name}")
     return concerts

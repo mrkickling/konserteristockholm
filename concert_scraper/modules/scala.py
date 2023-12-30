@@ -6,6 +6,9 @@ from bs4 import BeautifulSoup
 import time
 
 from concert_scraper.common import Concert
+from concert_scraper.logger import get_logger
+
+logger = get_logger(__name__)
 
 BASE_URL = "https://www.scalateatern.se/forestallningar/"
 
@@ -27,13 +30,14 @@ def parse_date(date_string):
     return date
 
 def get_concerts(venue, browser):
+    logger.info(f"Getting concerts for venue {venue.name}")
     browser.get(venue.url)
 
     # 'Load more' as many times as possible
     time.sleep(2)
     button = browser.find_element(By.CLASS_NAME, "post-list-load-more")
     while button.is_displayed():
-        print("Load more")
+        loger.info("Loading more...")
         button.click()
         time.sleep(2)
 
@@ -52,5 +56,5 @@ def get_concerts(venue, browser):
             concerts.add(
                 Concert(concert_title, parse_date(day + " " + month), venue.name, concert_url)
             )
-
+    logger.info(f"Found {len(concerts)} concerts for venue {venue.name}")
     return concerts

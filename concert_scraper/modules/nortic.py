@@ -6,6 +6,9 @@ from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from concert_scraper.common import Concert
+from concert_scraper.logger import get_logger
+
+logger = get_logger(__name__)
 
 BASE_URL = "https://nortic.se"
 
@@ -24,6 +27,7 @@ def parse_date(date_string):
     return date
 
 def get_concerts(venue, browser):
+    logger.info(f"Getting concerts for venue {venue.name}")
     browser.get(venue.url)
     check = EC.presence_of_element_located((By.ID, 'event-card-grid'))
     WebDriverWait(browser, 5).until(check)
@@ -45,5 +49,5 @@ def get_concerts(venue, browser):
         concerts.add(
             Concert(concert_title, concert_date, venue.name, concert_url)
         )
-
+    logger.info(f"Found {len(concerts)} concerts for venue {venue.name}")
     return concerts

@@ -2,6 +2,9 @@ from selenium import webdriver
 
 from concert_scraper.modules import nortic, tickster, glenmiller, stampen, billetto, scala, konserthuset
 from concert_scraper.common import Venue
+from concert_scraper.logger import get_logger
+
+logger = get_logger(__name__)
 
 venues = [
     Venue(
@@ -121,6 +124,7 @@ venues = [
 ]
 
 def main():
+    logger.info("Starting the scraper")
     options = webdriver.FirefoxOptions()
     options.add_argument("--headless")
     browser = webdriver.Firefox(options=options)
@@ -149,7 +153,6 @@ def main():
             concerts = concerts.union(
                 konserthuset.get_concerts(venue=venue, browser=browser))
 
-    for concert in concerts:
-        print(concert)
+    logger.info(f"Found {len(concerts)} concerts in total")
 
     browser.quit()

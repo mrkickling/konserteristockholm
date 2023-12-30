@@ -6,6 +6,9 @@ import time
 from datetime import datetime
 
 from concert_scraper.common import Concert
+from concert_scraper.logger import get_logger
+
+logger = get_logger(__name__)
 
 BASE_URL = "https://konserthuset.se"
 
@@ -32,6 +35,7 @@ def parse_date(date_string):
     return datetime(year_int, month_int, date_int)
 
 def get_concerts(venue, browser):
+    logger.info(f"Getting concerts for venue {venue.name}")
     browser.get(venue.url)
 
     time.sleep(1)
@@ -60,4 +64,5 @@ def get_concerts(venue, browser):
             Concert(concert_title, concert_date, venue.name, concert_url)
         )
 
+    logger.info(f"Found {len(concerts)} concerts for venue {venue.name}")
     return concerts
