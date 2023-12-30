@@ -1,3 +1,8 @@
+<?php 
+    require 'api/db.php'; 
+    require 'api/functions.php'; 
+    $concerts = get_all_concerts($conn);
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -15,18 +20,27 @@
     </header>
     <div class="container">
         <ul class='concert-list'>
-            <h4 class='concert-date'>5 December</h4>
-            <li class='concert'>
-                <a href="#">
-                    Esther på Södra Teatern
-                </a>
-            </li>
-            <h4 class='concert-date'>6 December</h4>
-            <li class='concert'>
-                <a href="#">
-                    Kebnekajse på Fasching
-                </a>
-            </li>
+            <?php
+                $prev_date = 0;
+                while ($concert = $concerts->fetch_assoc()):
+                    $sql_date = $concert['date'];
+                    $date = date('d M Y', strtotime($sql_date));
+
+                    if ($date != $prev_date): ?>
+                        <h4 class='concert-date'>
+                            <?php 
+                                echo $date; 
+                            ?>
+                        </h4>
+                    <?php $prev_date = $date; endif; ?>
+                <li class='concert'>
+                    <a href="<?php echo $concert['url']; ?>">
+                        <?php echo $concert['venue']; ?> - <?php echo $concert['title']; ?>
+                    </a>
+                </li>
+            <?php
+                endwhile;
+            ?>
         </ul>
     </div>
 </body>

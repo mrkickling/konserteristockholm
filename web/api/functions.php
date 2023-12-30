@@ -1,7 +1,7 @@
 <?php
 
 function get_all_concerts($conn) {
-    $sql = "SELECT * FROM konserter";
+    $sql = "SELECT * FROM konserter WHERE date > NOW() ORDER BY date ASC";
     $result = $conn->query($sql);
     return $result;
 }
