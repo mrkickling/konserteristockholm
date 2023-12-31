@@ -27,7 +27,7 @@ venues = [
         "https://www.tickster.com/sv/events/at/hd7g2z5jf75bvcj/kollektivet-livet-bar-and-scen?take=100"
     ),
     Venue(
-        "Townhouse Nouch & Chow",
+        "Townhouse Nosh & Chow",
         "Norrlandsgatan 24, Stockholm",
         "tickster",
         "https://www.tickster.com/sv/events/at/h8l6zral0kx2y5b/townhouse-nosh-and-chow?take=100"
@@ -87,13 +87,13 @@ venues = [
         "https://www.tickster.com/sv/events/at/2uzz6tlz8z8x2f4/tradgarden?take=100"
     ),
     Venue(
-        "Glen Miller Café Konserter",
+        "Glenn Miller Café Konserter",
         "Brunnsgatan 21A",
         "glenmiller",
         "https://www.glennmillercafe.se/konserter"
     ),
     Venue(
-        "Glen Miller Café Klassiska Konserter",
+        "Glenn Miller Café Klassiska Konserter",
         "Brunnsgatan 21A",
         "glenmiller",
         "https://www.glennmillercafe.se/klassiska-konserter"

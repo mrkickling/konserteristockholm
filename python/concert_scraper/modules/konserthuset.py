@@ -1,4 +1,4 @@
-"""Fetch data from glenmillercafe.se"""
+"""Fetch data from konserthuset.se"""
 
 from bs4 import BeautifulSoup
 from selenium.webdriver.common.by import By

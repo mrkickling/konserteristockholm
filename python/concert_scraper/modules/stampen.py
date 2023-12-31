@@ -1,4 +1,4 @@
-"""Fetch data from glenmillercafe.se"""
+"""Fetch data from stampen.se"""
 
 from bs4 import BeautifulSoup
 from datetime import datetime

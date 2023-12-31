@@ -23,7 +23,7 @@ def get_concerts(venue, browser):
     for card in cards:
         concert_title = card.find('p', attrs={'class': 'artist'}).getText()
         concert_date = parse_date(card.find('p', attrs={'class': 'date'}).getText())
-        concert_url = BASE_URL
+        concert_url = venue.url
         concerts.append(
             Concert(concert_title, concert_date, venue.name, concert_url)
         )

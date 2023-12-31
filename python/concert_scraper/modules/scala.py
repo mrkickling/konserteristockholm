@@ -1,4 +1,4 @@
-"""Fetch data from glenmillercafe.se"""
+"""Fetch data from scalateatern.se"""
 
 from selenium.webdriver.common.by import By
 from datetime import datetime
