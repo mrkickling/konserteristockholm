@@ -1,13 +1,17 @@
 <?php
 
+function secure_echo($string) {
+    echo htmlspecialchars($string, ENT_QUOTES, 'UTF-8');
+}
+
 function get_all_concerts($conn) {
-    $sql = "SELECT * FROM konserter WHERE date > NOW() ORDER BY date ASC";
+    $sql = "SELECT * FROM konserter WHERE date > DATE_SUB(NOW(), INTERVAL 1 DAY) ORDER BY date ASC";
     $result = $conn->query($sql);
     return $result;
 }
 
 function concert_exists($conn, $title, $date, $venue, $url) {
-    $stmt = $conn->prepare("SELECT id FROM konserter WHERE title=? AND date=? and venue=? and url=?");
+    $stmt = $conn->prepare("SELECT id FROM konserter WHERE title=? AND date=? and venue=?");
     $stmt->bind_param("ssss", $title, $date, $venue, $url);
     $stmt->execute();
     $stmt->store_result();

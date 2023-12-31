@@ -29,13 +29,13 @@
                     if ($date != $prev_date): ?>
                         <h4 class='concert-date'>
                             <?php 
-                                echo $date; 
+                                secure_echo($date); 
                             ?>
                         </h4>
                     <?php $prev_date = $date; endif; ?>
                 <li class='concert'>
-                    <a href="<?php echo $concert['url']; ?>">
-                        <?php echo $concert['venue']; ?> - <?php echo $concert['title']; ?>
+                    <a href="<?php secure_echo($concert['url']); ?>">
+                        <?php secure_echo($concert['venue']); ?> - <?php secure_echo($concert['title']); ?>
                     </a>
                 </li>
             <?php
