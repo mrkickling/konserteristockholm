@@ -3,7 +3,8 @@
 }
 
 .container, header {
-    width: 900px;
+    width:100%;
+    max-width: 900px;
     margin: auto;
     padding: 10px;
     overflow: auto;
@@ -47,6 +48,7 @@ header .info-link {
 .concert {
     list-style:disc;
     margin-left: 20px;
+    margin-bottom: 10px;
 }
 
 .concert a {
