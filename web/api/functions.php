@@ -12,7 +12,7 @@ function get_all_concerts($conn) {
 
 function concert_exists($conn, $title, $date, $venue, $url) {
     $stmt = $conn->prepare("SELECT id FROM konserter WHERE title=? AND date=? and venue=?");
-    $stmt->bind_param("ssss", $title, $date, $venue, $url);
+    $stmt->bind_param("sss", $title, $date, $venue);
     $stmt->execute();
     $stmt->store_result();
     $stmt->bind_result($result);
