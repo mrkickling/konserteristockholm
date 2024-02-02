@@ -26,5 +26,3 @@ services:
     build:
       context: .
       dockerfile: scraper.Dockerfile
-    volumes:
-      - ./concert_scraper:/opt/concert_scraper

@@ -1,13 +1,11 @@
 FROM python:3.11
 
 # Copy files
-COPY python/concert_scraper/ /opt/concert_scraper
-COPY python/requirements.txt /opt/concert_scraper/requirements.txt
-COPY python/pyproject.toml /opt/concert_scraper/pyproject.toml
+COPY python/ /opt/concert_scraper
 
 ENV DEBIAN_FRONTEND noninteractive
-ENV GECKODRIVER_VER v0.29.0
-ENV FIREFOX_VER 87.0
+ENV GECKODRIVER_VER v0.34.0
+ENV FIREFOX_VER 122.0
  
 RUN set -x \
    && apt update \
@@ -33,8 +31,7 @@ RUN set -x \
    && mv geckodriver /usr/bin/
 
 WORKDIR /opt/concert_scraper
-RUN ls
 RUN pip install --upgrade pip
 RUN pip install -e .
 
-ENTRYPOINT [ "python", "scraper.py" ]
+ENTRYPOINT scrape_concerts
