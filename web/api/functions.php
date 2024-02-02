@@ -5,7 +5,7 @@ function secure_echo($string) {
 }
 
 function get_all_concerts($conn) {
-    $sql = "SELECT * FROM konserter WHERE date > DATE_SUB(NOW(), INTERVAL 1 DAY) ORDER BY date ASC";
+    $sql = "SELECT DISTINCT title, date, venue, url FROM konserter WHERE date > DATE_SUB(NOW(), INTERVAL 1 DAY) ORDER BY date ASC";
     $result = $conn->query($sql);
     return $result;
 }
