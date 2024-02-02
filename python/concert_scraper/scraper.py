@@ -1,6 +1,21 @@
 from selenium import webdriver
 
-from concert_scraper.modules import nortic, tickster, glenmiller, stampen, billetto, scala, konserthuset
+from concert_scraper.modules import (
+    nortic,
+    tickster,
+    glenmiller,
+    stampen,
+    billetto,
+    scala,
+    konserthuset,
+    folkparken,
+    zippertic,
+    fryshuset,
+    geronimosfgt,
+    norrport,
+    folkparken,
+    gamlaenskedebryggeri
+)
 from concert_scraper.common import Venue
 from concert_scraper.logger import get_logger
 from concert_scraper.exporter import export_concerts
@@ -116,12 +131,141 @@ venues = [
         "scala",
         "https://www.scalateatern.se/forestallningar/"
     ),
+    Venue(
+        "Norrport",
+        "Roslagsgatan 38",
+        "norrport",
+        "https://norrport.se/evenemang/"
+    ),
+    Venue(
+        "Fryshuset",
+        "Hammarby Sjöstad",
+        "fryshuset",
+        "https://fryshuset.se/konserter/",
+    ),
+    # TBA
+    # Venue(
+    #     "Fylkingen",
+    #     "Mariatorget",
+    #     "fylkingen",
+    #     "http://fylkingen.se/program"
+    # ),
+    # TBA
+    # Venue(
+    #     "Scen 44",
+    #     "Tjärhovsgatan",
+    #     "facebook",
+    #     "https://www.facebook.com/profile.php?id=100057341804866&sk=events"
+    # ),
+    # TBA
+    # Venue(
+    #     "Landet",
+    #     "Hägersten",
+    #     "landet",
+    #     "http://www.landet.nu/overvaningen/"
+    # ),
+    Venue(
+        "Geronimo's FGT",
+        "Gamla Stan",
+        "geronimosfgt",
+        "https://www.geronimosfgt.se/shows-events-live-music/"
+    ),
+    #https://www.clubcover.se/tid-plats
+    # TBA
+    # Venue(
+    #     "Snövit",
+    #     "Ringvägen, Södermalm",
+    #     "facebook",
+    #     "https://www.facebook.com/profile.php?id=100064027210409&sk=events"
+    # ),
+    Venue(
+        "Gamla Enskede Bryggeri",
+        "Bolidenvägen 8",
+        "gamlaenskedebryggeri",
+        "https://gamlaenskedebryggeri.se/pa-gang/"
+    ),
+    # Venue(
+    #     "The Node",
+    #     "Sergels Torg",
+    #     "thenode",
+    #     "https://thenode.se/kalendarium"
+    # ),
+    # Venue(
+    #     "St:a Clara",
+    #     "Gamla Stan",
+    #     "staclara",
+    #     "https://staclara.se/bierhus%201/musik%20schema"
+    # ),
+    # Venue(
+    #     "Gröna Lund",
+    #     "Djurgården",
+    #     "gronalund",
+    #     "https://www.gronalund.com/konserter"
+    # ),
+    # Venue(
+    #     "Stockholm Under Stjärnorna",
+    #     "Brunkebergstorg",
+    #     "ticketmaster",
+    #     "https://www.ticketmaster.se/venue/stockholm-under-stjarnorna-stockholm-biljetter/t3k/632"
+    # ),
+    # Venue(
+    #     "Elverket",
+    #     "Linnégatan 69",
+    #     "ticketmaster",
+    #     "https://www.ticketmaster.se/venue/elverket-linnegatan-69-stockholm-biljetter/elv1/450"
+    # ),
+    # Venue(
+    #     "Rich / Lilla baren",
+    #     "Birger Jarlsgatan 4",
+    #     "riche",
+    #     "https://riche.se/kalendarium"
+    # ),
+    # Venue(
+    #     "Taverna Brillo",
+    #     "Olika platser",
+    #     "tavernabrillo",
+    #     "https://tavernabrillo.se/kalendarium/"
+    # ),
+    # TODO
+    # Venue(
+    #     "Engelen",
+    #     "Gamla Stan",
+    #     "engelen",
+    #     "https://www.engelen.se/#spelningar"
+    # ),
+    # OUTDATED STUFF - how to handle?
+    # Venue(
+    #     "Folkparken",
+    #     "Sveavägen 53",
+    #     "folkparken",
+    #     "https://restaurangfolkparken.se/pa-scen/"
+    # ),
+    # Inget intressant här
+    # Venue(
+    #     "Cyklopen",
+    #     "Högdalen",
+    #     "cyklopen",
+    #     "https://cyklopen.se/kalender/action~agenda/request_format~json/tag_ids~60/"
+    # ),
+    # TBA
+    # Venue(
+    #     "Fållan",
+    #     "Slakthusområdet",
+    #     "fallan",
+    #     "https://www.fallan.nu/"
+    # ),
     # Venue(
     #     "Konserthuset",
     #     "Hötorget",
     #     "konserthuset",
     #     "https://www.konserthuset.se/program-och-biljetter/kalender/"
     # )
+    # Venue(
+    #     "Broder Tuck",
+    #     "Götgatan",
+    #     "zippertic",
+    #     "https://api.zippertic.se/api/events?promoter=3133&passed=0"
+    # ),
 ]
 
 def main():
@@ -132,22 +276,36 @@ def main():
     concerts = []
 
     for venue in venues:
-        if venue.type == "nortic":
-            concerts += nortic.get_concerts(venue=venue, browser=browser)
-        elif venue.type == "tickster":
-            concerts += tickster.get_concerts(venue=venue, browser=browser)
-        elif venue.type == "glenmiller":
-            concerts += glenmiller.get_concerts(venue=venue, browser=browser)
-        elif venue.type == "stampen":
-            concerts += stampen.get_concerts(venue=venue, browser=browser)
-        elif venue.type == "billetto":
-            concerts += billetto.get_concerts(venue=venue, browser=browser)
-        elif venue.type == "scala":
-            concerts += scala.get_concerts(venue=venue, browser=browser)
-        elif venue.type == "konserthuset":
-            concerts += konserthuset.get_concerts(venue=venue, browser=browser)
+        try:
+            if venue.type == "nortic":
+                concerts += nortic.get_concerts(venue=venue, browser=browser)
+            elif venue.type == "tickster":
+                concerts += tickster.get_concerts(venue=venue, browser=browser)
+            elif venue.type == "glenmiller":
+                concerts += glenmiller.get_concerts(venue=venue, browser=browser)
+            elif venue.type == "stampen":
+                concerts += stampen.get_concerts(venue=venue, browser=browser)
+            elif venue.type == "billetto":
+                concerts += billetto.get_concerts(venue=venue, browser=browser)
+            elif venue.type == "scala":
+                concerts += scala.get_concerts(venue=venue, browser=browser)
+            elif venue.type == "konserthuset":
+                concerts += konserthuset.get_concerts(venue=venue, browser=browser)
+            elif venue.type == "folkparken":
+                concerts += folkparken.get_concerts(venue=venue, browser=browser)
+            elif venue.type == "fryshuset":
+                concerts += fryshuset.get_concerts(venue=venue, browser=browser)
+            elif venue.type == "geronimosfgt":
+                concerts += geronimosfgt.get_concerts(venue=venue, browser=browser)
+            elif venue.type == "norrport":
+                concerts += norrport.get_concerts(venue=venue, browser=browser)
+            elif venue.type == "gamlaenskedebryggeri":
+                concerts += gamlaenskedebryggeri.get_concerts(venue=venue, browser=browser)
+            elif venue.type == "folkparken":
+                concerts += folkparken.get_concerts(venue=venue, browser=browser)
+        except Exception as e:
+            logger.error(f"Failed to scrape {venue.name} - {e}")
 
     logger.info(f"Found {len(concerts)} concerts in total")
     browser.quit()
-
     export_concerts(concerts)
