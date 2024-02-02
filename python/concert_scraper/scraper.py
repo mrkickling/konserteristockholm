@@ -1,3 +1,4 @@
+import os
 from selenium import webdriver
 
 from concert_scraper.modules import (
@@ -269,6 +270,9 @@ venues = [
 ]
 
 def main():
+    if not os.getenv('api_url') or not os.getenv('api_key'):
+        raise Exception("Remember to set your envs!")
+
     logger.info("Starting the scraper")
     options = webdriver.FirefoxOptions()
     options.add_argument("--headless")
