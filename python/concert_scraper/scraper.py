@@ -15,7 +15,8 @@ from concert_scraper.modules import (
     geronimosfgt,
     norrport,
     folkparken,
-    gamlaenskedebryggeri
+    gamlaenskedebryggeri,
+    lykkelive
 )
 from concert_scraper.common import Venue
 from concert_scraper.logger import get_logger
@@ -144,6 +145,32 @@ venues = [
         "fryshuset",
         "https://fryshuset.se/konserter/",
     ),
+    Venue(
+        "Geronimo's FGT",
+        "Gamla Stan",
+        "geronimosfgt",
+        "https://www.geronimosfgt.se/shows-events-live-music/"
+    ),
+    Venue(
+        "Gamla Enskede Bryggeri",
+        "Bolidenvägen 8",
+        "gamlaenskedebryggeri",
+        "https://gamlaenskedebryggeri.se/pa-gang/"
+    ),
+    Venue(
+        "Lykke Live",
+        "Nytorgsgatan 38",
+        "lykkelive",
+        "https://www.lykkelive.com/concerts/"
+    ),
+    #https://www.clubcover.se/tid-plats
+    # TBA
+    # Venue(
+    #     "Snövit",
+    #     "Ringvägen, Södermalm",
+    #     "facebook",
+    #     "https://www.facebook.com/profile.php?id=100064027210409&sk=events"
+    # ),
     # TBA
     # Venue(
     #     "Fylkingen",
@@ -165,26 +192,7 @@ venues = [
     #     "landet",
     #     "http://www.landet.nu/overvaningen/"
     # ),
-    Venue(
-        "Geronimo's FGT",
-        "Gamla Stan",
-        "geronimosfgt",
-        "https://www.geronimosfgt.se/shows-events-live-music/"
-    ),
-    #https://www.clubcover.se/tid-plats
-    # TBA
-    # Venue(
-    #     "Snövit",
-    #     "Ringvägen, Södermalm",
-    #     "facebook",
-    #     "https://www.facebook.com/profile.php?id=100064027210409&sk=events"
-    # ),
-    Venue(
-        "Gamla Enskede Bryggeri",
-        "Bolidenvägen 8",
-        "gamlaenskedebryggeri",
-        "https://gamlaenskedebryggeri.se/pa-gang/"
-    ),
+
     # Venue(
     #     "The Node",
     #     "Sergels Torg",
@@ -307,6 +315,8 @@ def main():
                 concerts += gamlaenskedebryggeri.get_concerts(venue=venue, browser=browser)
             elif venue.type == "folkparken":
                 concerts += folkparken.get_concerts(venue=venue, browser=browser)
+            elif venue.type == "lykkelive":
+                concerts += lykkelive.get_concerts(venue=venue, browser=browser)
         except Exception as e:
             logger.error(f"Failed to scrape {venue.name} - {e}")
 
