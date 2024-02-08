@@ -55,8 +55,10 @@ def get_concerts(venue, browser):
         concert_title = card.find('h6', attrs={'class': 'event-title'}).getText().strip()
         concert_date = card.find(attrs={'class': 'event-date'}).getText().strip()
         concert_url = card.find('a').get('href')
-        concerts.append(
-            Concert(concert_title, parse_date(concert_date), venue.name, concert_url)
-        )
+        event_type = card.find('span', {'class': 'event-type'}).getText()[3:]
+        if event_type in ('DJ', 'Live'):
+            concerts.append(
+                Concert(concert_title, parse_date(concert_date), venue.name, concert_url)
+            )
     logger.info(f"Found {len(concerts)} concerts for venue {venue.name}")
     return concerts
