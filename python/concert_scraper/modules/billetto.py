@@ -17,7 +17,7 @@ def parse_date(date_string):
     """ Convert the format from billetto to a datetime object """
     # date month. hour:minute or date month hour:minute
     months_se = [
-        "jan", "feb", "mars", "apr", "maj", "jun", "juli", "aug", "sep", "okt", "nov", "dec"
+        "jan", "feb", "mars", "apr", "maj", "juni", "juli", "aug", "sep", "okt", "nov", "dec"
     ]
     date, month, time = date_string.split()
     date = int(date)
