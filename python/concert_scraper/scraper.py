@@ -17,7 +17,8 @@ from concert_scraper.modules import (
     folkparken,
     gamlaenskedebryggeri,
     lykkelive,
-    riche
+    riche,
+    facebook_events
 )
 from concert_scraper.common import Venue
 from concert_scraper.logger import get_logger
@@ -170,7 +171,26 @@ venues = [
         "riche",
         "https://riche.se/kalendarium"
     ),
+    Venue(
+        "Landet",
+        "Hägersten",
+        "billetto",
+        "https://billetto.se/users/landet-telefonplan"
+    ),
+    Venue(
+        "Gröna Lund",
+        "Djurgården",
+        "facebook_events",
+        "https://www.facebook.com/gronalundstivoli/events"
+    ),
+    Venue(
+        "Engelen",
+        "Gamla Stan",
+        "facebook_events",
+        "https://www.facebook.com/EngelenKolingen/events" # "https://www.engelen.se/#spelningar"
+    ),
 
+    # TODO: https://www.ticketmaster.se/venue/cirkus-stockholm-biljetter/cir/580
     #https://www.clubcover.se/tid-plats
     # TBA
     # Venue(
@@ -178,6 +198,7 @@ venues = [
     #     "Ringvägen, Södermalm",
     #     "facebook",
     #     "https://www.facebook.com/profile.php?id=100064027210409&sk=events"
+    #      "https://www.facebook.com/groups/120195232723/" - club probation
     # ),
     # TBA
     # Venue(
@@ -195,29 +216,26 @@ venues = [
     # ),
     # TBA
     # Venue(
-    #     "Landet",
-    #     "Hägersten",
-    #     "landet",
-    #     "http://www.landet.nu/overvaningen/"
+    #     "Folkparken",
+    #     "Sveavägen 53",
+    #     "folkparken",
+    #     "https://restaurangfolkparken.se/pa-scen/"
     # ),
-
+    # TBA
     # Venue(
     #     "The Node",
     #     "Sergels Torg",
     #     "thenode",
     #     "https://thenode.se/kalendarium"
     # ),
+    #
+    #
     # Venue(
     #     "St:a Clara",
     #     "Gamla Stan",
     #     "staclara",
     #     "https://staclara.se/bierhus%201/musik%20schema"
-    # ),
-    # Venue(
-    #     "Gröna Lund",
-    #     "Djurgården",
-    #     "gronalund",
-    #     "https://www.gronalund.com/konserter"
+    #     "https://www.facebook.com/pages/StA-Clara-Bierhaus/247605358698574" # finns även på facebook
     # ),
     # Venue(
     #     "Stockholm Under Stjärnorna",
@@ -226,30 +244,10 @@ venues = [
     #     "https://www.ticketmaster.se/venue/stockholm-under-stjarnorna-stockholm-biljetter/t3k/632"
     # ),
     # Venue(
-    #     "Elverket",
-    #     "Linnégatan 69",
-    #     "ticketmaster",
-    #     "https://www.ticketmaster.se/venue/elverket-linnegatan-69-stockholm-biljetter/elv1/450"
-    # ),
-    # Venue(
     #     "Taverna Brillo",
     #     "Olika platser",
     #     "tavernabrillo",
     #     "https://tavernabrillo.se/kalendarium/"
-    # ),
-    # TODO
-    # Venue(
-    #     "Engelen",
-    #     "Gamla Stan",
-    #     "engelen",
-    #     "https://www.engelen.se/#spelningar"
-    # ),
-    # OUTDATED STUFF - how to handle?
-    # Venue(
-    #     "Folkparken",
-    #     "Sveavägen 53",
-    #     "folkparken",
-    #     "https://restaurangfolkparken.se/pa-scen/"
     # ),
     # Inget intressant här
     # Venue(
@@ -321,6 +319,8 @@ def main():
                 concerts += lykkelive.get_concerts(venue=venue, browser=browser)
             elif venue.type == "riche":
                 concerts += riche.get_concerts(venue=venue, browser=browser)
+            elif venue.type == "facebook_events":
+                concerts += facebook_events.get_concerts(venue=venue, browser=browser)
         except Exception as e:
             logger.error(f"Failed to scrape {venue.name} - {e}")
 
