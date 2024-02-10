@@ -273,7 +273,8 @@ venues = [
     #     "Broder Tuck",
     #     "Götgatan",
     #     "zippertic",
-    #     "https://api.zippertic.se/api/events?promoter=3133&passed=0"
+    #     "https://api.zippertic.se/api/events?promoter=3133&passed=0" # Fel
+    #     "https://www.facebook.com/pages/Broder-Tuck/168010629909374"
     # ),
 ]
 
