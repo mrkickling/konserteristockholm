@@ -1,6 +1,7 @@
 """Fetch data from scalateatern.se"""
 
 from selenium.webdriver.common.by import By
+from selenium.common.exceptions import NoSuchElementException
 from datetime import datetime
 from bs4 import BeautifulSoup
 import time
@@ -39,12 +40,15 @@ def get_concerts(venue, browser):
     button.click()
 
     # 'Load more' as many times as possible
-    time.sleep(1)
-    button = browser.find_element(By.CLASS_NAME, "load-more-events")
-    while button.is_displayed():
-        logger.info("Loading more...")
-        button.click()
+    try:
         time.sleep(1)
+        button = browser.find_element(By.CLASS_NAME, "load-more-events")
+        while button.is_displayed():
+            logger.info("Loading more...")
+            button.click()
+            time.sleep(1)
+    except NoSuchElementException:
+        logger.info("No more events to load")
 
     html = browser.page_source
     soup = BeautifulSoup(html, features="html.parser")

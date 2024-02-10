@@ -12,8 +12,10 @@ def parse_date(date_string):
     date_info = date_string.split('-')
     month = date_info[-1].split().pop(-1)
     raw_dates = "".join(date_info).split()[:-1]
+    months_se = ["jan", "feb", "mar", "apr", "maj", "jun", "jul", "aug", "sep", "okt", "nov", "dec"]
+
     dates = []
-    month_int = datetime.strptime(month, '%b').month
+    month_int = months_se.index(month) + 1
     for date in raw_dates:
         day_int = int(date)
         date = datetime(1904, month_int, day_int)
