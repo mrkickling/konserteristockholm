@@ -14,7 +14,7 @@
 <body>
     <header>
         <a href="index.php">
-            <h3>♬ Konserter i Stockholm ♬</h3>
+            <h3>♬ Konserter i Stockholm</h3>
         </a>
         <a href="info.php" class="info-link">?</a>
     </header>
@@ -22,9 +22,12 @@
         <ul class='concert-list'>
             <?php
                 $prev_date = 0;
+                $prev_venue = "";
+
                 while ($concert = $concerts->fetch_assoc()):
                     $sql_date = $concert['date'];
-                    $date = date('d M Y', strtotime($sql_date));
+                    $date = date('D d M Y', strtotime($sql_date));
+                    $venue = $concert['venue'];
 
                     if ($date != $prev_date): ?>
                         <h4 class='concert-date'>
@@ -33,11 +36,28 @@
                             ?>
                         </h4>
                     <?php $prev_date = $date; endif; ?>
-                <li class='concert'>
-                    <a href="<?php secure_echo($concert['url']); ?>">
-                        <?php secure_echo($concert['venue']); ?> - <?php secure_echo($concert['title']); ?>
-                    </a>
-                </li>
+                    
+                    <?php
+                        if ($venue != $prev_venue): 
+                    ?>
+                        <span class='event-venue'>
+                            <?php 
+                                secure_echo($venue); 
+                            ?>
+                        </span>
+                    <?php $prev_venue = $venue; endif; ?>
+
+                    <div class='concert'>
+                        <a href="<?php secure_echo($concert['url']); ?>">
+                            <span class="event-title">
+                            ♬ <?php secure_echo($concert['title']); ?>
+                            </span>
+                            - 
+                            <span class='event-link'>
+                                Läs mer
+                            </span>
+                        </a>
+                    </div>
             <?php
                 endwhile;
             ?>

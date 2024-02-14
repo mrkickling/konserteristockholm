@@ -1,5 +1,11 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&display=swap');
+
 * {
     box-sizing: border-box;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
 }
 
 .container, header {
@@ -45,6 +51,11 @@ header .info-link {
     margin-bottom: 10px;
 }
 
+.event-venue {
+    text-decoration: none;
+    font-weight: bold;
+}
+
 .concert {
     list-style:disc;
     margin-left: 20px;
@@ -53,4 +64,10 @@ header .info-link {
 
 .concert a {
     color: black;
+    text-decoration: none;
 }
+
+.event-link {
+    text-decoration: underline;
+}
+

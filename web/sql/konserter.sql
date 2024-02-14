@@ -5,5 +5,6 @@ CREATE TABLE `konserter` (
 	`date` DATETIME,
 	`url` TEXT,
 	`description` TEXT,
+	`added` DATETIME DEFAULT CURRENT_TIMESTAMP,
 	PRIMARY KEY (`id`)
 );
