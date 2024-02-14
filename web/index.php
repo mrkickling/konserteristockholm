@@ -47,7 +47,9 @@
                                     </a>
                                 </span>
                             </summary>
-                            <p><?php secure_echo($concert['description']); ?></p>
+                            <span class='event-description'>
+                                <?php secure_echo($concert['description']); ?>
+                            </span>
                         </details>
                     </div>
 

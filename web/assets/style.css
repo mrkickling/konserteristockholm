@@ -55,6 +55,10 @@ header .info-link {
     font-weight: 600;
 }
 
+.event-description {
+    font-size: 0.9em;
+}
+
 .concert {
     list-style:disc;
     margin-left: 20px;

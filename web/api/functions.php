@@ -1,7 +1,9 @@
 <?php
 
 function secure_echo($string) {
-    echo htmlspecialchars($string, ENT_QUOTES, 'UTF-8');
+    if (isset($string)) {
+        echo htmlspecialchars($string, ENT_QUOTES, 'UTF-8');
+    }
 }
 
 function get_all_concerts($conn) {
