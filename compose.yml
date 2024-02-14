@@ -2,6 +2,14 @@ version: '3'
 
 services:
 
+  phpmyadmin:
+    image: phpmyadmin
+    restart: always
+    ports:
+      - 8080:80
+    environment:
+      - PMA_ARBITRARY=1
+
   mariadb:
     image: mariadb
     environment:
@@ -27,5 +35,5 @@ services:
       context: .
       dockerfile: scraper.Dockerfile
     environment:
-      api_url: ${api_url}
-      api_key: ${api_key}
+      api_url: http://web/api/upload.php
+      api_key: lejon
