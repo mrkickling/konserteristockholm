@@ -1,6 +1,6 @@
-<?php 
-    require 'api/db.php'; 
-    require 'api/functions.php'; 
+<?php
+    require 'api/db.php';
+    require 'api/functions.php';
     $concerts = get_all_concerts($conn);
 ?>
 <!DOCTYPE html>
@@ -12,12 +12,7 @@
     <title>Konserter i Stockholm</title>
 </head>
 <body>
-    <header>
-        <a href="index.php">
-            <h3>♬ Konserter i Stockholm</h3>
-        </a>
-        <a href="info.php" class="info-link">?</a>
-    </header>
+   <?php require 'header.php'; ?>
     <div class="container">
         <ul class='concert-list'>
             <?php
@@ -31,36 +26,27 @@
 
                     if ($date != $prev_date): ?>
                         <h4 class='concert-date'>
-                            <?php 
-                                secure_echo($date); 
+                            <?php
+                                secure_echo($date);
                             ?>
                         </h4>
                     <?php $prev_date = $date; endif; ?>
-                    
-                    <?php
-                        if ($venue != $prev_venue): 
-                    ?>
-                        <span class='event-venue'>
-                            <?php 
-                                secure_echo($venue); 
-                            ?>
-                        </span>
-                    <?php $prev_venue = $venue; endif; ?>
 
-                    <div class='concert'>
-                        <a href="<?php secure_echo($concert['url']); ?>">
-                            <span class="event-title">
-                            ♬ <?php secure_echo($concert['title']); ?>
-                            </span>
-                            - 
-                            <span class='event-link'>
-                                Läs mer
-                            </span>
-                        </a>
+                    <div class="concert">
+                        <span class='event-venue'>
+                            <?php secure_echo($venue); ?>
+                        </span>
+                        -
+                        <span class='event-title'>
+                            <a href="<?php secure_echo($concert['url']); ?>">
+                                <span class="event-title">
+                                <?php secure_echo($concert['title']); ?>
+                                </span>
+                            </a>
+                        </span>
                     </div>
-            <?php
-                endwhile;
-            ?>
+
+                <?php endwhile; ?>
         </ul>
     </div>
 </body>
