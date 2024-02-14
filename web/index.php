@@ -33,17 +33,22 @@
                     <?php $prev_date = $date; endif; ?>
 
                     <div class="concert">
-                        <span class='event-venue'>
-                            <?php secure_echo($venue); ?>
-                        </span>
-                        -
-                        <span class='event-title'>
-                            <a href="<?php secure_echo($concert['url']); ?>">
-                                <span class="event-title">
-                                <?php secure_echo($concert['title']); ?>
+                        <details>
+                            <summary>
+                                <span class='event-venue'>
+                                    <?php secure_echo($venue); ?>
                                 </span>
-                            </a>
-                        </span>
+                                -
+                                <span class='event-title'>
+                                    <a href="<?php secure_echo($concert['url']); ?>">
+                                        <span class="event-title">
+                                        <?php secure_echo($concert['title']); ?>
+                                        </span>
+                                    </a>
+                                </span>
+                            </summary>
+                            <p><?php secure_echo($concert['description']); ?></p>
+                        </details>
                     </div>
 
                 <?php endwhile; ?>

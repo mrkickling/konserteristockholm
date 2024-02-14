@@ -20,6 +20,9 @@
             Informationen hämtas automatiskt på olika sätt (vissa mer stabila än andra) och det finns risk för att det blir fel.
             Om du ser att en konsert har fel datum inlagt på sidan så säg gärna till, också via mail.
         </p>
+        <p>
+            <a href="index.php">Konserter i Stockholm</a>
+        </p>
     </div>
 </body>
 </html>
