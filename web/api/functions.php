@@ -6,8 +6,17 @@ function secure_echo($string) {
     }
 }
 
+function hide_concert($conn, $id) {
+    $stmt = $conn->prepare("UPDATE konserter SET `show`=0 WHERE id=?");
+    $stmt->bind_param("s", $id);
+    $status = $stmt->execute();
+    if (!$status) {
+        trigger_error($stmt->error, E_USER_ERROR);
+    }
+}
+
 function get_all_concerts($conn) {
-    $sql = "SELECT DISTINCT title, date, venue, url, description FROM konserter WHERE date > DATE_SUB(NOW(), INTERVAL 1 DAY) ORDER BY date ASC, venue";
+    $sql = "SELECT id, title, date, venue, url, description FROM konserter WHERE date > DATE_SUB(NOW(), INTERVAL 1 DAY) AND `show`=1 ORDER BY date ASC, venue";
     $result = $conn->query($sql);
     return $result;
 }

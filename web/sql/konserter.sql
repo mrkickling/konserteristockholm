@@ -6,5 +6,6 @@ CREATE TABLE `konserter` (
 	`url` TEXT,
 	`description` TEXT,
 	`added` DATETIME DEFAULT CURRENT_TIMESTAMP,
+	`show` BOOLEAN DEFAULT 1,
 	PRIMARY KEY (`id`)
 );
