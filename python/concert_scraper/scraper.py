@@ -1,5 +1,6 @@
 import os
 from selenium import webdriver
+from datetime import datetime, timedelta
 
 from concert_scraper.modules import (
     nortic,
@@ -189,9 +190,15 @@ venues = [
         "facebook_events",
         "https://www.facebook.com/EngelenKolingen/events" # "https://www.engelen.se/#spelningar"
     ),
+    Venue(
+        "Melodybox",
+        "Hägersten",
+        "facebook_events",
+        "https://www.facebook.com/profile.php?id=100063670567136&sk=upcoming_hosted_events"
+    )
 
     # TODO: https://www.ticketmaster.se/venue/cirkus-stockholm-biljetter/cir/580
-    #https://www.clubcover.se/tid-plats
+    # https://www.clubcover.se/tid-plats
     # TBA
     # Venue(
     #     "Snövit",
@@ -228,8 +235,8 @@ venues = [
     #     "thenode",
     #     "https://thenode.se/kalendarium"
     # ),
-    #
-    #
+    
+    
     # Venue(
     #     "St:a Clara",
     #     "Gamla Stan",
@@ -277,6 +284,12 @@ venues = [
     #     "https://www.facebook.com/pages/Broder-Tuck/168010629909374"
     # ),
 ]
+
+def filter_concerts_by_date(concerts, max_date):
+    return [
+        concert for concert in concerts
+        if datetime.strptime(concert.date, '%Y-%m-%d') <= max_date
+    ]
 
 def main():
     if not os.getenv('api_url') or not os.getenv('api_key'):
@@ -327,4 +340,9 @@ def main():
 
     logger.info(f"Found {len(concerts)} concerts in total")
     browser.quit()
+    # Only care about concerts within 8 months in the future
+    # This avoids bug where we add concerts 1 year into the future that
+    # already took place
+    date_in_half_year = datetime.now() + timedelta(8 * 30)
+    concerts = filter_concerts_by_date(concerts, date_in_half_year)
     export_concerts(concerts)
