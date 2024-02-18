@@ -35,6 +35,7 @@ header .info-link {
     text-align: right;
     float: right;
     display: block;
+    margin-top:8px;
 }
 
 .concert-list {
@@ -69,3 +70,31 @@ header .info-link {
     color: black;
 }
 
+.hide-form {
+    display: inline;
+}
+
+.search-form {
+    text-align:center;
+}
+
+.search-form input[type="submit"] {
+    background:none; 
+    box-shadow:0;
+    border:1px solid #C00;
+    color: #C00;
+    padding: 5px;
+    width: 50px;
+}
+.search-form input[type="text"] {
+    background:none; 
+    box-shadow:0;
+    border:1px solid #C00;
+    padding:5px;
+}
+
+@media only screen and (min-width: 600px) {
+    .search-form {
+        float:right;
+    }
+  }

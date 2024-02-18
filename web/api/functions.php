@@ -15,9 +15,18 @@ function hide_concert($conn, $id) {
     }
 }
 
-function get_all_concerts($conn) {
-    $sql = "SELECT id, title, date, venue, url, description FROM konserter WHERE date > DATE_SUB(NOW(), INTERVAL 1 DAY) AND `show`=1 ORDER BY date ASC, venue";
-    $result = $conn->query($sql);
+function get_concerts($conn, $q) {
+    $q = "%" . $q . "%";
+    $sql = "SELECT id, title, date, venue, url, description
+            FROM konserter
+            WHERE date > DATE_SUB(NOW(), INTERVAL 1 DAY)
+            AND `show` = 1
+            AND (title LIKE ? OR venue LIKE ?)
+            ORDER BY date ASC, venue";
+    $stmt = $conn->prepare($sql);
+    $stmt->bind_param("ss", $q, $q);
+    $stmt->execute();
+    $result = $stmt->get_result();
     return $result;
 }
 
