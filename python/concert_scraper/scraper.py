@@ -195,6 +195,12 @@ venues = [
         "Hägersten",
         "facebook_events",
         "https://www.facebook.com/profile.php?id=100063670567136&sk=upcoming_hosted_events"
+    ),
+    Venue(
+        "Hökarängens Antikvariat & Skivbörs",
+        "Hökarängen",
+        "facebook_events",
+        "https://www.facebook.com/hokarangensantikvariat/upcoming_hosted_events"
     )
 
     # TODO: https://www.ticketmaster.se/venue/cirkus-stockholm-biljetter/cir/580
