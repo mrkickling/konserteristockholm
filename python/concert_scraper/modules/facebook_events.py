@@ -1,10 +1,8 @@
-# https://www.facebook.com/restauranglandet/upcoming_hosted_events
-
-"""Fetch data from scalateatern.se"""
+"""Fetch data from facebook.com"""
 
 from selenium.webdriver.common.by import By
 from selenium.common.exceptions import NoSuchElementException
-from datetime import datetime
+from datetime import datetime, timedelta
 from bs4 import BeautifulSoup
 import time
 
@@ -35,7 +33,7 @@ def parse_date(date_string):
         print("Failed to parse date - trying with next year instead")
 
     # Use next year if previous tested year was before now
-    if date < now:
+    if date < now - timedelta(1):
         date = date.replace(year=now.year+1)
 
     return date.strftime("%Y-%m-%d")

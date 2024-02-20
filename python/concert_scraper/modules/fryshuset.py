@@ -10,7 +10,7 @@ from concert_scraper.logger import get_logger
 
 logger = get_logger(__name__)
 
-BASE_URL = "https://fryshuset.se/konserter/"
+BASE_URL = "https://fryshuset.se"
 
 def parse_date(date_string):
     # '28 feb 2024'
@@ -45,13 +45,14 @@ def get_concerts(venue, browser):
     html = browser.page_source
 
     soup = BeautifulSoup(html, features="html.parser")
-    events = soup.find_all("div", attrs={'class': 'event-description'})
+    events = soup.find_all("div", attrs={'class': 'concert'})
 
     concerts = []
     for concert in events:
+        concert = concert.parent # To get the anchor tag as well
         concert_title = concert.find('span', attrs={'class': 'event-title'}).getText().strip()
         concert_date = parse_date(concert.find('span', attrs={'class': 'event-date'}).getText().strip())
-        concert_url = BASE_URL
+        concert_url = BASE_URL + concert.get('href')
         concerts.append(
             Concert(concert_title, concert_date, venue.name, concert_url)
         )

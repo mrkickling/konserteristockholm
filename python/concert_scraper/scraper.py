@@ -11,7 +11,6 @@ from concert_scraper.modules import (
     scala,
     konserthuset,
     folkparken,
-    zippertic,
     fryshuset,
     geronimosfgt,
     norrport,
@@ -19,7 +18,8 @@ from concert_scraper.modules import (
     gamlaenskedebryggeri,
     lykkelive,
     riche,
-    facebook_events
+    facebook_events,
+    livenation
 )
 from concert_scraper.common import Venue
 from concert_scraper.logger import get_logger

@@ -1,4 +1,4 @@
-"""Fetch data from https://www.glennmillercafe.se"""
+"""Fetch data from https://www.lykkelive.com"""
 
 from bs4 import BeautifulSoup
 from concert_scraper.common import Concert
