@@ -16,10 +16,6 @@ body {
     overflow: auto;
 }
 
-header {
-    margin-top: 20px;
-}
-
 header a {
     text-decoration: none;
 }
@@ -49,6 +45,7 @@ header .info-link {
 .concert-date {
     border-bottom: 1px solid black;
     margin-bottom: 10px;
+    text-transform: uppercase;
 }
 
 .event-venue {
@@ -56,19 +53,45 @@ header .info-link {
     font-weight: 600;
 }
 
+/* .event-title {
+    display: block;
+} */
+
 .event-description {
     font-size: 0.9em;
 }
 
 .concert {
     list-style:disc;
-    margin-left: 20px;
+    margin-left: 10px;
     margin-bottom: 10px;
 }
 
 .concert a {
     color: black;
 }
+
+.nice-button {
+    width: 20%;
+    text-align: center;
+    font-size: 12px;
+    font-family: sans-serif;
+    font-weight:bold;
+    text-transform: uppercase;
+    border: 1px solid black;
+    padding: 5px 10px;
+    margin-top: 5px;
+}
+
+.concert-extras {
+    list-style: none;
+}
+
+.concert-extras li:before {
+    content: '★';
+    color: #C00;
+}
+
 
 .hide-form {
     display: inline;
@@ -94,7 +117,15 @@ header .info-link {
 }
 
 @media only screen and (min-width: 600px) {
+    header {
+        margin-top: 20px;
+    }
+
     .search-form {
         float:right;
     }
+
+    .event-title {
+        display: inline;
+    }    
   }
