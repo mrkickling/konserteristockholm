@@ -89,6 +89,12 @@ venues = [
         "https://www.tickster.com/sv/events/at/w99v7b6udfhj2gw/sodra-teaterns-stora-scen?take=100"
     ),
     Venue(
+        "Mosebacke Etablissement",
+        "Mosebacke Torg 1",
+        "tickster",
+        "https://www.tickster.com/sv/events/at/eajugecwwvbzhv6/mosebacke-etablissement?take=100"
+    ),
+    Venue(
         "Konstakademien",
         "Fredsgatan 12",
         "tickster",
@@ -201,8 +207,51 @@ venues = [
         "Hökarängen",
         "facebook_events",
         "https://www.facebook.com/hokarangensantikvariat/upcoming_hosted_events"
-    )
+    ),
+    Venue(
+        "Debaser Strand",
+        "Hornstulls Strand",
+        "livenation",
+        "https://www.livenation.se/venue/48442/debaser-strand-tickets"
+    ),
+    Venue(
+        "Musikvalvet Baggen",
+        "Gamla stan",
+        "facebook_events",
+        "https://www.facebook.com/musikvalvetbaggen/upcoming_hosted_events"
+    ),
+    Venue(
+        "Banankompaniet (b-k)",
+        "Frihamnen",
+        "tickster",
+        "https://www.tickster.com/sv/events/at/wpnt5y7dpjdedfp/b-k?take=100"
+    ),
+    Venue(
+        "Scen 44",
+        "Medborgarplatsen / Tjärhovsgatan",
+        "facebook_events",
+        "https://www.facebook.com/profile.php?id=100057341804866&sk=upcoming_hosted_events"
+    ),
+    Venue(
+        "Nalen Stora Salen",
+        "Regeringsgatan 74",
+        "tickster",
+        "https://www.tickster.com/sv/events/at/xc21hy3ymcmbak1/nalen-stora-salen-stockholm?take=100"
+    ),
+    Venue(
+        "Musikaliska / Stora Scen",
+        "Nybrokajen 11",
+        "tickster",
+        "https://www.tickster.com/sv/events/at/py0d2dwj0yhv0j7/musikaliska-kvarteret-stora-scen"
+    ),
 
+    #TODO
+    # Venue(
+    #     "Fållan",
+    #     "Slakthusområdet",
+    #     "ticketmaster",
+    #     "https://www.ticketmaster.se/venue/fallan-johanneshov-biljetter/fal3/583"
+    # ),
     # TODO: https://www.ticketmaster.se/venue/cirkus-stockholm-biljetter/cir/580
     # https://www.clubcover.se/tid-plats
     # TBA
@@ -222,13 +271,6 @@ venues = [
     # ),
     # TBA
     # Venue(
-    #     "Scen 44",
-    #     "Tjärhovsgatan",
-    #     "facebook",
-    #     "https://www.facebook.com/profile.php?id=100057341804866&sk=events"
-    # ),
-    # TBA
-    # Venue(
     #     "Folkparken",
     #     "Sveavägen 53",
     #     "folkparken",
@@ -241,8 +283,6 @@ venues = [
     #     "thenode",
     #     "https://thenode.se/kalendarium"
     # ),
-    
-    
     # Venue(
     #     "St:a Clara",
     #     "Gamla Stan",
@@ -286,7 +326,6 @@ venues = [
     #     "Broder Tuck",
     #     "Götgatan",
     #     "zippertic",
-    #     "https://api.zippertic.se/api/events?promoter=3133&passed=0" # Fel
     #     "https://www.facebook.com/pages/Broder-Tuck/168010629909374"
     # ),
 ]
@@ -341,6 +380,8 @@ def main():
                 concerts += riche.get_concerts(venue=venue, browser=browser)
             elif venue.type == "facebook_events":
                 concerts += facebook_events.get_concerts(venue=venue, browser=browser)
+            elif venue.type == "livenation":
+                concerts += livenation.get_concerts(venue=venue, browser=browser)
         except Exception as e:
             logger.error(f"Failed to scrape {venue.name} - {e}")
 
