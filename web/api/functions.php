@@ -30,6 +30,17 @@ function get_concerts($conn, $q) {
     return $result;
 }
 
+function get_venues($conn) {
+    $sql = "SELECT name, up, latest_sync
+            FROM venues
+            ORDER BY name";
+    $stmt = $conn->prepare($sql);
+    $stmt->execute();
+    $result = $stmt->get_result();
+    return $result;
+}
+
+
 function concert_exists($conn, $title, $date, $venue, $url) {
     $stmt = $conn->prepare("SELECT id FROM konserter WHERE title=? AND date=? and venue=?");
     $stmt->bind_param("sss", $title, $date, $venue);
@@ -59,5 +70,25 @@ function create_concerts($conn, $concerts) {
     }
 }
 
+
+function create_or_update_venues($conn, $successful_venues, $failed_venues) {
+    if ($conn->connect_error) {
+        die("Connection failed: " . $conn->connect_error);
+    }
+
+    $stmt = $conn->prepare("INSERT INTO venues (`name`) VALUES (?) ON DUPLICATE KEY UPDATE `up` = 1, `latest_sync` = CURRENT_TIMESTAMP");
+    $stmt->bind_param("s", $name);
+    foreach ($successful_venues as $name) {
+        $stmt->execute();
+    }    
+
+    $stmt = $conn->prepare("INSERT INTO venues (`name`) VALUES (?) ON DUPLICATE KEY UPDATE `up` = 0");
+    $stmt->bind_param("s", $name);
+    foreach ($failed_venues as $name) {
+        $stmt->execute();
+    }
+
+    echo "Success";
+}
 
 ?>
