@@ -47,7 +47,7 @@ def get_concerts(venue, browser):
         cookie_button = browser.find_element(By.ID, "onetrust-accept-btn-handler")
         cookie_button.click()
     except NoSuchElementException:
-        print("No cookie banner")
+        logger.info("No cookie banner")
 
     time.sleep(1)
 

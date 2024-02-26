@@ -1,8 +1,5 @@
 FROM python:3.11
 
-# Copy files
-COPY python/ /opt/concert_scraper
-
 ENV DEBIAN_FRONTEND noninteractive
 ENV GECKODRIVER_VER v0.34.0
 ENV FIREFOX_VER 122.0
@@ -30,6 +27,9 @@ RUN set -x \
    && tar zxf geckodriver-*.tar.gz \
    && mv geckodriver /usr/bin/
 
+
+# Copy files
+COPY python/ /opt/concert_scraper
 WORKDIR /opt/concert_scraper
 RUN pip install --upgrade pip
 RUN pip install -e .

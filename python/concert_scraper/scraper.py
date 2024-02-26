@@ -244,6 +244,12 @@ venues = [
         "tickster",
         "https://www.tickster.com/sv/events/at/py0d2dwj0yhv0j7/musikaliska-kvarteret-stora-scen"
     ),
+    Venue(
+        "Rönnells Antikvariat",
+        "Birger Jarlsgatan 32",
+        "ronells",
+        "https://ronnells.se/evenemang/"
+    )
 
     #TODO
     # Venue(
@@ -344,8 +350,10 @@ def main():
     options = webdriver.FirefoxOptions()
     options.add_argument("--headless")
     browser = webdriver.Firefox(options=options)
-    concerts = []
 
+    concerts = []
+    successful_venues = []
+    failed_venues = []
     for venue in venues:
         try:
             if venue.type == "nortic":
@@ -382,14 +390,21 @@ def main():
                 concerts += facebook_events.get_concerts(venue=venue, browser=browser)
             elif venue.type == "livenation":
                 concerts += livenation.get_concerts(venue=venue, browser=browser)
+            else:
+                continue
+            successful_venues.append(venue.name)
         except Exception as e:
+            failed_venues.append(venue.name)
             logger.error(f"Failed to scrape {venue.name} - {e}")
 
     logger.info(f"Found {len(concerts)} concerts in total")
     browser.quit()
+
     # Only care about concerts within 8 months in the future
     # This avoids bug where we add concerts 1 year into the future that
     # already took place
     date_in_half_year = datetime.now() + timedelta(8 * 30)
     concerts = filter_concerts_by_date(concerts, date_in_half_year)
-    export_concerts(concerts)
+
+    # Export to api
+    export_concerts(concerts, successful_venues, failed_venues)
