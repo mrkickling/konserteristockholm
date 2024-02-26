@@ -64,32 +64,24 @@
                     <?php $prev_date = $date; endif; ?>
 
                     <div class="concert">
-                        <details>
-                            <summary>
-                                <span class='event-venue'>
-                                    <?php secure_echo($venue); ?>
-                                </span>
-                                
-                                <span class='event-title'>
-                                    -
-                                    <a href="<?php secure_echo($concert['url']); ?>">
-                                            <?php secure_echo($concert['title']); ?>
-                                    </a>
-                                </span>
+                            <span class='event-venue'>
+                                <?php secure_echo($venue); ?>
+                            </span>
+                            
+                            <span class='event-title'>
+                                -
+                                <a href="<?php secure_echo($concert['url']); ?>">
+                                        <?php secure_echo($concert['title']); ?>
+                                </a>
+                            </span>
 
-                                <?php if (isset($_SESSION['isAdmin']) && $_SESSION['isAdmin']): ?>
-                                    <form class="hide-form" method="post" action="api/hide.php">
-                                        <input name="id" type="hidden" value="<?php secure_echo($concert['id']); ?>">
-                                        <button>Hide</button>
-                                    </form>
-                                <?php endif; ?>
-                            </summary>
+                            <?php if (isset($_SESSION['isAdmin']) && $_SESSION['isAdmin']): ?>
+                                <form class="hide-form" method="post" action="api/hide.php">
+                                    <input name="id" type="hidden" value="<?php secure_echo($concert['id']); ?>">
+                                    <button>Hide</button>
+                                </form>
+                            <?php endif; ?>
 
-                            <button class="nice-button" style="margin-left:20px;">
-                                Spara som favorit
-                            </button>
-
-                        </details>
                     </div>
 
                 <?php endwhile; ?>
