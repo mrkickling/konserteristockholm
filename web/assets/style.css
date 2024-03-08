@@ -46,16 +46,15 @@ header .info-link {
     border-bottom: 1px solid black;
     margin-bottom: 10px;
     text-transform: uppercase;
+    color: #c00;
 }
 
 .event-venue {
     text-decoration: none;
-    font-weight: 600;
+    font-size: 0.9em;
+    position: relative;
+    top: -5px;
 }
-
-/* .event-title {
-    display: block;
-} */
 
 .event-description {
     font-size: 0.9em;
@@ -63,12 +62,13 @@ header .info-link {
 
 .concert {
     list-style:disc;
-    margin-left: 10px;
     margin-bottom: 10px;
 }
 
 .concert a {
     color: black;
+    text-decoration: underline solid grey 1px;
+    font-weight: 600;
 }
 
 .nice-button {

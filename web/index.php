@@ -15,6 +15,7 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="assets/style.css">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20,400,0,0" />
         <title>Konserter i Stockholm</title>
     </head>
     <body>
@@ -64,23 +65,27 @@
                     <?php $prev_date = $date; endif; ?>
 
                     <div class="concert">
-                            <span class='event-venue'>
-                                <?php secure_echo($venue); ?>
-                            </span>
                             
-                            <span class='event-title'>
-                                -
-                                <a href="<?php secure_echo($concert['url']); ?>">
-                                        <?php secure_echo($concert['title']); ?>
-                                </a>
-                            </span>
+                        <span class='event-title'>
+                            <a href="<?php secure_echo($concert['url']); ?>">
+                                    <?php secure_echo($concert['title']); ?>
+                            </a>
+                        </span>
 
-                            <?php if (isset($_SESSION['isAdmin']) && $_SESSION['isAdmin']): ?>
-                                <form class="hide-form" method="post" action="api/hide.php">
-                                    <input name="id" type="hidden" value="<?php secure_echo($concert['id']); ?>">
-                                    <button>Hide</button>
-                                </form>
-                            <?php endif; ?>
+                        <br>
+                        <span class="material-symbols-outlined location-icon">
+                            location_on
+                        </span>
+                        <span class='event-venue'>
+                            <?php secure_echo($venue); ?>
+                        </span>
+
+                        <?php if (isset($_SESSION['isAdmin']) && $_SESSION['isAdmin']): ?>
+                            <form class="hide-form" method="post" action="api/hide.php">
+                                <input name="id" type="hidden" value="<?php secure_echo($concert['id']); ?>">
+                                <button>Hide</button>
+                            </form>
+                        <?php endif; ?>
 
                     </div>
 
