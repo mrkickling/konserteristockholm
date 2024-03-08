@@ -11,7 +11,7 @@ BASE_URL = "https://livenation.se"
 
 
 def parse_date(concert_day, concert_month_year):
-    months_se = ["jan", "feb", "mar", "apr", "maj", "jun", "jul", "aug", "sep", "okt", "nov", "dec"]
+    months_se = ["jan", "feb", "mars", "apr", "maj", "juni", "juli", "aug", "sep", "okt", "nov", "dec"]
 
     month, year = concert_month_year.split(" ")
     year_int = int(year)
