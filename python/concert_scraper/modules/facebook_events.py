@@ -2,11 +2,11 @@
 
 from selenium.webdriver.common.by import By
 from selenium.common.exceptions import NoSuchElementException
-from datetime import datetime, timedelta
+from datetime import datetime
 from bs4 import BeautifulSoup
 import time
 
-from concert_scraper.common import Concert
+from concert_scraper.common import Concert, get_future_date
 from concert_scraper.logger import get_logger
 
 logger = get_logger(__name__)
@@ -15,7 +15,7 @@ BASE_URL = "https://www.facebook.com/"
 
 def parse_date(date_string):
     if date_string == "HAPPENING NOW":
-        return datetime.now().strftime("%Y-%m-%d")
+        return None
 
     # Format is FRI, 24 MAY AT 20:00
     weekday, month_str, date_str, *rest = date_string.split()
@@ -24,17 +24,7 @@ def parse_date(date_string):
 
     # Use 1904 first as it is a leap year
     date = datetime.strptime(f"1904 {date_str} {month_str}", '%Y %d %b')
-    now = datetime.now()
-
-    try:
-        # Test previous year (might fail)
-        date = date.replace(year=now.year)
-    except ValueError:
-        print("Failed to parse date - trying with next year instead")
-
-    # Use next year if previous tested year was before now
-    if date < now - timedelta(1):
-        date = date.replace(year=now.year+1)
+    date = get_future_date(date.month, date.day)
 
     return date.strftime("%Y-%m-%d")
     

@@ -1,7 +1,8 @@
 # https://www.geronimosfgt.se/shows-events-live-music/
 from bs4 import BeautifulSoup
-from concert_scraper.common import Concert
-from datetime import datetime, timedelta
+from datetime import datetime
+
+from concert_scraper.common import Concert, get_future_date
 from concert_scraper.logger import get_logger
 
 logger = get_logger(__name__)
@@ -18,15 +19,7 @@ def parse_date(date_string):
     month_int = months_se.index(month) + 1
     for date in raw_dates:
         day_int = int(date)
-        date = datetime(1904, month_int, day_int)
-        now = datetime.now()
-        try:
-            date = date.replace(year=now.year)
-        except ValueError:
-            # Handle feb 29th
-            date = date.replace(year=now.year + 1)
-        if date < now - timedelta(1):
-            date = date.replace(year=now.year + 1)
+        date = get_future_date(month_int, day_int)
         dates.append(date.strftime("%Y-%m-%d"))
     return dates
 

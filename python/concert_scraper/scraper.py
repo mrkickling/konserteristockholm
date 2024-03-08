@@ -65,6 +65,12 @@ venues = [
         "https://www.tickster.com/sv/events/at/c3y3dpad56ncfp4/debaser-strand?take=100"
     ),
     Venue(
+        'Debaser Strand',
+        "Hornstulls Strand 4",
+        "tickster",
+        "https://www.tickster.com/sv/events/at/kykewd9e9u055wm/debaser-strand?take=100"
+    ),
+    Venue(
         "Nalen Klubb",
         "David Bagares Gata 15",
         "tickster",
@@ -245,12 +251,31 @@ venues = [
         "https://www.tickster.com/sv/events/at/py0d2dwj0yhv0j7/musikaliska-kvarteret-stora-scen"
     ),
     Venue(
-        "Rönnells Antikvariat",
-        "Birger Jarlsgatan 32",
-        "ronells",
-        "https://ronnells.se/evenemang/"
-    )
-
+        "Berns salonger",
+        "",
+        "berns",
+        "https://berns.se/sv/kalender/"
+    ),
+    Venue(
+        "Cirkus",
+        "Djurgården",
+        "cirkus",
+        "https://cirkus.se/sv/events/"
+    ),
+    Venue(
+        "Teater Reflex",
+        "Kärrtorp",
+        "facebook_events",
+        "https://www.facebook.com/teaterreflex/upcoming_hosted_events"
+    ),
+    Venue(
+        "Göta Lejon",
+        "Götgatan",
+        "gotalejon",
+        "https://www.gotalejon.se/kalendarium/?view=calendar&month=02-2024"
+    ),
+    # TODO: Use luger!
+    # https://luger.se/konserter/#|template_layout_e6f52bd8da209f6fd274ff0b25c2f8c3=default|m.concert_upcoming_e6f52bd8da209f6fd274ff0b25c2f8c3=1|t.location_tax_e6f52bd8da209f6fd274ff0b25c2f8c3=42
     #TODO
     # Venue(
     #     "Fållan",
@@ -403,8 +428,8 @@ def main():
     # Only care about concerts within 8 months in the future
     # This avoids bug where we add concerts 1 year into the future that
     # already took place
-    date_in_half_year = datetime.now() + timedelta(8 * 30)
-    concerts = filter_concerts_by_date(concerts, date_in_half_year)
+    date_in_future = datetime.now() + timedelta(8 * 30)
+    concerts = filter_concerts_by_date(concerts, date_in_future)
 
     # Export to api
     export_concerts(concerts, successful_venues, failed_venues)

@@ -6,7 +6,7 @@ from datetime import datetime
 from bs4 import BeautifulSoup
 import time
 
-from concert_scraper.common import Concert
+from concert_scraper.common import Concert, get_future_date
 from concert_scraper.logger import get_logger
 
 logger = get_logger(__name__)
@@ -19,15 +19,7 @@ def parse_date(date_string):
     day, month = date_string.split('/')
     month_int = int(month)
     day_int = int(day)
-    date = datetime(1904, month_int, day_int)
-    now = datetime.now()
-    try:
-        date = date.replace(year=now.year)
-    except ValueError:
-        # Handle feb 29th
-        date = date.replace(year=now.year + 1)
-    if date < now:
-        date = date.replace(year=now.year + 1)
+    date = get_future_date(month_int, day_int)
     return date.strftime("%Y-%m-%d")
 
 def get_concerts(venue, browser):
@@ -36,7 +28,7 @@ def get_concerts(venue, browser):
 
     # cookie_action_close_header
     time.sleep(4)
-    button = browser.find_element(By.ID, "cookie_action_close_header")
+    button = browser.find_element(By.CLASS_NAME, "cky-btn-accept")
     button.click()
 
     # 'Load more' as many times as possible

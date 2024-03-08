@@ -5,7 +5,7 @@ from datetime import datetime
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
-from concert_scraper.common import Concert
+from concert_scraper.common import Concert, get_future_date
 from concert_scraper.logger import get_logger
 
 logger = get_logger(__name__)
@@ -15,15 +15,8 @@ BASE_URL = "https://nortic.se"
 
 def parse_date(date_string):
     # 5 January
-    # Need to use a leap year as default otherwise we crash from feb 29th
     date = datetime.strptime(f"1904 {date_string}", '%Y %d %B')
-    now = datetime.now()
-    try:
-        date = date.replace(year=now.year)
-    except ValueError:
-        print("Failed to parse date - trying with next year instead")
-    if date < now:
-        date = date.replace(year=now.year+1)
+    date = get_future_date(date.month, date.day)
     return date.strftime("%Y-%m-%d")
 
 def get_concerts(venue, browser):

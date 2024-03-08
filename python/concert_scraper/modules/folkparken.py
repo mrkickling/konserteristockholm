@@ -1,9 +1,10 @@
 """Fetch data from https://www.restaurangfolkparken.se"""
 
 from bs4 import BeautifulSoup
-from concert_scraper.common import Concert
 from datetime import datetime
 import re
+
+from concert_scraper.common import Concert, get_future_date
 from concert_scraper.logger import get_logger
 
 logger = get_logger(__name__)
@@ -13,17 +14,9 @@ BASE_URL = "https://www.restaurangfolkparken.se"
 def parse_date(date_string):
     # 03/01
     day, month = date_string.split('/')
-    day_int = int(day)
     month_int = int(month)
-    date = datetime(1904, month_int, day_int)
-    now = datetime.now()
-    try:
-        date = date.replace(year=now.year)
-    except ValueError:
-        # Handle feb 29th
-        date = date.replace(year=now.year + 1)
-    if date < now:
-        date = date.replace(year=now.year + 1)
+    day_int = int(day)
+    date = get_future_date(month_int, day_int)
 
     return date.strftime("%Y-%m-%d")
 

@@ -6,7 +6,7 @@ from selenium.common.exceptions import NoSuchElementException
 import time
 from datetime import datetime
 
-from concert_scraper.common import Concert
+from concert_scraper.common import Concert, get_future_date
 from concert_scraper.logger import get_logger
 
 logger = get_logger(__name__)
@@ -19,22 +19,11 @@ def parse_date(date_string):
     months_se = [
         "jan", "feb", "mars", "apr", "maj", "juni", "juli", "aug", "sep", "okt", "nov", "dec"
     ]
-    date, month, time = date_string.split()
-    date = int(date)
-    month = months_se.index(month.rstrip('.')) + 1
+    day, month, time = date_string.split()
+    month_int = months_se.index(month.rstrip('.')) + 1
+    day_int = int(day)
+    date = get_future_date(month_int, day_int)
 
-    # Try with current year, but if date has passed, set it to next year
-    year = datetime.now().year
-
-    try:
-        date = datetime(year, month, date)
-    except ValueError:
-        # This is for handling feb 29th
-        print("Failed to parse date")
-        date = datetime(year + 1, month, date)
-
-    if date < datetime.now():
-        date = date.replace(year=date.year + 1)
     return date.strftime("%Y-%m-%d")
 
 def get_concerts(venue, browser):
