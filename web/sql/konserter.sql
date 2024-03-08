@@ -7,5 +7,6 @@ CREATE TABLE `konserter` (
 	`description` TEXT,
 	`added` DATETIME DEFAULT CURRENT_TIMESTAMP,
 	`show` BOOLEAN DEFAULT 1,
+	`last_seen` DATETIME DEFAULT CURRENT_TIMESTAMP,
 	PRIMARY KEY (`id`)
 );

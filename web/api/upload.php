@@ -35,7 +35,7 @@ if (!$successful_venues) {
     $successful_venues = [];
 }
 
-create_concerts($conn, $concerts);
+create_or_update_concerts($conn, $concerts);
 create_or_update_venues($conn, $successful_venues, $failed_venues);
 
 ?>

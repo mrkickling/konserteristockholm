@@ -16,12 +16,17 @@ function hide_concert($conn, $id) {
 }
 
 function get_concerts($conn, $q) {
+    # Only return concerts that has been seen lately and filter by query if given
     $q = "%" . $q . "%";
     $sql = "SELECT id, title, date, venue, url, description
-            FROM konserter
-            WHERE date > DATE_SUB(NOW(), INTERVAL 1 DAY)
-            AND `show` = 1
-            AND (title LIKE ? OR venue LIKE ?)
+            FROM konserter as k1
+            WHERE k1.date > DATE_SUB(NOW(), INTERVAL 1 DAY)
+            AND k1.show = 1
+            AND (k1.title LIKE ? OR k1.venue LIKE ?)
+            AND last_seen > (
+                    SELECT DATE_SUB(last_seen, INTERVAL 1 DAY) FROM konserter as k2
+                    WHERE k2.venue = k1.venue ORDER BY last_seen DESC LIMIT 1
+                )
             ORDER BY date ASC, venue";
     $stmt = $conn->prepare($sql);
     $stmt->bind_param("ss", $q, $q);
@@ -51,12 +56,12 @@ function concert_exists($conn, $title, $date, $venue, $url) {
     return $stmt->num_rows > 0;
 }
 
-function create_concerts($conn, $concerts) {
+function create_or_update_concerts($conn, $concerts) {
     if ($conn->connect_error) {
         die("Connection failed: " . $conn->connect_error);
     }
 
-    $stmt = $conn->prepare("INSERT INTO konserter (`title`, `date`, `venue`, `url`) VALUES (?, ?, ?, ?)");
+    $stmt = $conn->prepare("INSERT INTO konserter (`title`, `date`, `venue`, `url`) VALUES (?, ?, ?, ?) ON DUPLICATE KEY UPDATE `last_seen` = CURRENT_TIMESTAMP");
     $stmt->bind_param("ssss", $title, $date, $venue, $url);
 
     foreach ($concerts as $key => $value) {
@@ -64,9 +69,7 @@ function create_concerts($conn, $concerts) {
         $date = $value->date;
         $venue = $value->venue;
         $url = $value->url;
-        if (!concert_exists($conn, $title, $date, $venue, $url)) {
-            $stmt->execute();
-        }
+        $stmt->execute();
     }
 }
 
