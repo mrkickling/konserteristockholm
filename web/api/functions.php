@@ -33,10 +33,7 @@ function get_concerts($conn, $q) {
             WHERE k1.date > DATE_SUB(NOW(), INTERVAL 1 DAY)
             AND k1.show = 1
             AND (k1.title LIKE ? OR k1.venue LIKE ?)
-            AND last_seen > (
-                    SELECT DATE_SUB(last_seen, INTERVAL 1 DAY) FROM konserter as k2
-                    WHERE k2.venue = k1.venue ORDER BY last_seen DESC LIMIT 1
-                )
+            AND last_seen > DATE_SUB(NOW(), INTERVAL 2 DAY)
             ORDER BY date ASC, venue";
     $stmt = $conn->prepare($sql);
     $stmt->bind_param("ss", $q, $q);
