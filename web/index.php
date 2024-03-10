@@ -73,13 +73,6 @@
                             <?php secure_echo($venue); ?>
                         </span>
 
-                        <?php if (isset($_SESSION['isAdmin']) && $_SESSION['isAdmin']): ?>
-                            <form class="hide-form" method="post" action="api/hide.php">
-                                <input name="id" type="hidden" value="<?php secure_echo($concert['id']); ?>">
-                                <button>Hide</button>
-                            </form>
-                        <?php endif; ?>
-
                     </div>
 
                 <?php endwhile; ?>

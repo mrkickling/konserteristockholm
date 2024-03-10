@@ -6,9 +6,10 @@ function secure_echo($string) {
     }
 }
 
-function hide_concert($conn, $id) {
-    $stmt = $conn->prepare("UPDATE konserter SET `show`=0 WHERE id=?");
-    $stmt->bind_param("s", $id);
+function hide_concert($conn, $title, $date, $venue, $url) {
+    $stmt = $conn->prepare("UPDATE konserter SET `show`= 0 
+                            WHERE title = ? AND date = ? AND venue = ? AND url = ?");
+    $stmt->bind_param("ssss", $title, $date, $venue, $url);
     $status = $stmt->execute();
     if (!$status) {
         trigger_error($stmt->error, E_USER_ERROR);
@@ -16,7 +17,7 @@ function hide_concert($conn, $id) {
 }
 
 function get_latest_released_concerts($conn) {
-    $sql = "SELECT id, title, date, venue, url, description FROM konserter
+    $sql = "SELECT title, date, venue, url, description FROM konserter
             WHERE date > DATE_SUB(NOW(), INTERVAL 1 DAY)
             ORDER BY first_seen DESC";
     $stmt = $conn->prepare($sql);
@@ -28,7 +29,7 @@ function get_latest_released_concerts($conn) {
 function get_concerts($conn, $q) {
     # Only return concerts that has been seen lately and filter by query if given
     $q = "%" . $q . "%";
-    $sql = "SELECT id, title, date, venue, url, description
+    $sql = "SELECT title, date, venue, url, description
             FROM konserter as k1
             WHERE k1.date > DATE_SUB(NOW(), INTERVAL 1 DAY)
             AND k1.show = 1
@@ -54,7 +55,7 @@ function get_venues($conn) {
 
 
 function concert_exists($conn, $title, $date, $venue, $url) {
-    $stmt = $conn->prepare("SELECT id FROM konserter WHERE title=? AND date=? and venue=?");
+    $stmt = $conn->prepare("SELECT * FROM konserter WHERE title=? AND date=? and venue=?");
     $stmt->bind_param("sss", $title, $date, $venue);
     $stmt->execute();
     $stmt->store_result();

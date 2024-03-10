@@ -1,13 +1,11 @@
 CREATE TABLE `konserter` (
-	`id` INT NOT NULL AUTO_INCREMENT,
-	`title` TEXT,
-	`venue` TEXT,
+	`title` VARCHAR(255),
+	`venue` VARCHAR(255),
 	`date` DATETIME,
-	`url` TEXT,
+	`url` VARCHAR(255),
 	`description` TEXT,
-	`added` DATETIME DEFAULT CURRENT_TIMESTAMP,
 	`show` BOOLEAN DEFAULT 1,
 	`first_seen`DATETIME DEFAULT CURRENT_TIMESTAMP,
 	`last_seen` DATETIME DEFAULT CURRENT_TIMESTAMP,
-	PRIMARY KEY (`id`)
+	PRIMARY KEY (`title`, `venue`, `date`, `url`)
 );
