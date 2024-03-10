@@ -29,13 +29,6 @@
             </form>
         <?php endif; ?>
 
-        <div class="search-form">
-            <form action="">
-                <input type="text" name="q" placeholder="Sök på artist eller lokal">
-                <input type="submit" value="Sök">
-            </form>
-        </div>
-
             <ul class='concert-list'>
             <?php
                 $prev_date = 0;

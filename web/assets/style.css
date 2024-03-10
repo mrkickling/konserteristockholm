@@ -16,6 +16,12 @@ body {
     overflow: auto;
 }
 
+header {
+    overflow: auto;
+    text-align: center;
+    padding-bottom: 0;
+}
+
 header a {
     text-decoration: none;
 }
@@ -27,19 +33,30 @@ header h3 {
     display: inline;
 }
 
-header .info-link {
-    text-align: right;
-    float: right;
-    display: block;
-    margin-top:8px;
+header nav {
+    overflow: auto;
+    width: 100%;
+    text-align: center;
+}
+
+header nav a {
+    padding: 10px;
+}
+
+header nav a:hover {
+    text-decoration: underline;
+}
+
+header nav a:first-of-type {
+    padding-left:0px;
+}
+
+header nav form {
+    margin-top: 5px;
 }
 
 .concert-list {
     padding: 0;
-}
-
-.concert-date:nth-of-type(1) {
-    margin-top: 0px;
 }
 
 .concert-date {
@@ -127,5 +144,20 @@ header .info-link {
 
     .event-title {
         display: inline;
-    }    
+    }
+
+    header {
+        text-align: left;
+    }
+
+    header nav {
+        overflow: auto;
+        width: 100%;
+        text-align: left;
+    }
+
+    header nav a {
+        padding: 10px;
+    }
+
   }

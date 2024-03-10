@@ -15,6 +15,16 @@ function hide_concert($conn, $id) {
     }
 }
 
+function get_latest_released_concerts($conn) {
+    $sql = "SELECT id, title, date, venue, url, description FROM konserter
+            WHERE date > DATE_SUB(NOW(), INTERVAL 1 DAY)
+            ORDER BY first_seen DESC";
+    $stmt = $conn->prepare($sql);
+    $stmt->execute();
+    $result = $stmt->get_result();
+    return $result;
+}
+
 function get_concerts($conn, $q) {
     # Only return concerts that has been seen lately and filter by query if given
     $q = "%" . $q . "%";
