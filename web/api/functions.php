@@ -19,7 +19,7 @@ function hide_concert($conn, $title, $date, $venue, $url) {
 function get_latest_released_concerts($conn) {
     $sql = "SELECT title, date, venue, url, description FROM konserter
             WHERE date > DATE_SUB(NOW(), INTERVAL 1 DAY)
-            ORDER BY first_seen DESC";
+            ORDER BY first_seen DESC, title ASC";
     $stmt = $conn->prepare($sql);
     $stmt->execute();
     $result = $stmt->get_result();
