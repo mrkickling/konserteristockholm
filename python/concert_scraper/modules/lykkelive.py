@@ -9,9 +9,11 @@ logger = get_logger(__name__)
 
 BASE_URL = "https://www.lykkelive.com/concerts/"
 
+
 def parse_date(date_string):
     date_string = date_string[-10:] # Date assumed to be 10 digits
     return datetime.strptime(date_string, '%Y-%m-%d').strftime("%Y-%m-%d")
+
 
 def get_concerts(venue, browser):
     logger.info(f"Getting concerts for venue {venue.name}")

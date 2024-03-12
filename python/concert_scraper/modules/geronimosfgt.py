@@ -1,13 +1,13 @@
 # https://www.geronimosfgt.se/shows-events-live-music/
 from bs4 import BeautifulSoup
-from datetime import datetime
 
 from concert_scraper.common import Concert, get_future_date
 from concert_scraper.logger import get_logger
+from concert_scraper.modules.utils import filter_keywords
 
 logger = get_logger(__name__)
-
 BASE_URL = "https://www.geronimosfgt.se/shows-events-live-music"
+
 
 def parse_date(date_string):
     date_info = date_string.split('-')
@@ -43,4 +43,4 @@ def get_concerts(venue, browser):
             )
 
     logger.info(f"Found {len(concerts)} concerts for venue {venue.name}")
-    return concerts
+    return filter_keywords(venue, concerts)

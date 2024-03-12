@@ -1,5 +1,4 @@
 from dataclasses import dataclass
-import json
 from datetime import datetime, timedelta
 
 @dataclass
@@ -40,7 +39,6 @@ def get_probable_leap_year():
         return now.year - 1
     else:
         return now.year + (4 - leap_year_diff)
-
 
 
 def get_future_date(month_int, day_int):

@@ -3,6 +3,7 @@ from concert_scraper.modules import billetto, glenmiller, konserthuset, nortic, 
 from concert_scraper.common import get_future_date
 from unittest import mock
 
+
 @mock.patch("concert_scraper.common.get_current_date")
 def test_billetto_date(mocked_date):
     mocked_date.return_value = datetime(2024, 1, 1)
@@ -10,10 +11,12 @@ def test_billetto_date(mocked_date):
     result = billetto.parse_date(date_string)
     assert result == "2024-05-10"
 
+
 def test_glenmiller_date():
     date_string = "2023-12-01"
     result = glenmiller.parse_date(date_string)
     assert result == "2023-12-01"
+
 
 @mock.patch("concert_scraper.common.get_current_date")
 def test_konserthuset_date(mocked_date):
@@ -22,12 +25,14 @@ def test_konserthuset_date(mocked_date):
     result = konserthuset.parse_date(date_string)
     assert result == "2024-01-05"
 
+
 @mock.patch("concert_scraper.common.get_current_date")
 def test_nortic_date(mocked_date):
     mocked_date.return_value = datetime(2024, 1, 1)
     date_string = '5 January'
     result = nortic.parse_date(date_string)
     assert result == "2024-01-05"
+
 
 @mock.patch("concert_scraper.common.get_current_date")
 def test_scala_date(mocked_date):
@@ -36,6 +41,7 @@ def test_scala_date(mocked_date):
     result = scala.parse_date(date_string)
     assert result == "2024-01-05"
 
+
 @mock.patch("concert_scraper.common.get_current_date")
 def test_stampen_date(mocked_date):
     mocked_date.return_value = datetime(2024, 12, 1)
@@ -43,10 +49,12 @@ def test_stampen_date(mocked_date):
     result = stampen.parse_date(date_string)
     assert result == "2024-12-31"
 
+
 def test_tickster_date():
     date_string = '29 mar 2024'
     result = tickster.parse_date(date_string)
     assert result == "2024-03-29"
+
 
 @mock.patch("concert_scraper.common.get_current_date")
 def test_get_future_date(mocked_date):
