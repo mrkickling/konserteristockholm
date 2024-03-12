@@ -22,6 +22,7 @@ class Venue:
     location: str
     type: str
     url: str
+    filter_keywords: list
 
 
 def get_current_date():
