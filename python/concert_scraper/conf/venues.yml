@@ -1,339 +1,252 @@
-fasching:
-    title: "Fasching"
-    address: "Norrmalm"
-    type: "nortic"
-    url: "https://www.nortic.se/ticket/organizer/3020"
+# fasching:
+#     title: "Fasching"
+#     address: "Norrmalm"
+#     type: "nortic"
+#     url: "https://www.nortic.se/ticket/organizer/3020"
 
-reimersholme:
-    title: "Reimersholme Hotell"
-    address: "Reimersholme"
-    type: "tickster"
-    url: "https://www.tickster.com/sv/events/at/7hpytvme5t7htay/reimersholme-hotel?take=100?take=100"
+# reimersholme:
+#     title: "Reimersholme Hotell"
+#     address: "Reimersholme"
+#     type: "tickster"
+#     url: "https://www.tickster.com/sv/events/at/7hpytvme5t7htay/reimersholme-hotel?take=100?take=100"
 
-kollektivetlivet:
-    title: "Kollektivet Livet Bar & Scen"
-    address: "Stadsgårdsterminalen"
-    type: "tickster"
-    url: "https://www.tickster.com/sv/events/at/hd7g2z5jf75bvcj/kollektivet-livet-bar-and-scen?take=100"
+# kollektivetlivet:
+#     title: "Kollektivet Livet Bar & Scen"
+#     address: "Stadsgårdsterminalen"
+#     type: "tickster"
+#     url: "https://www.tickster.com/sv/events/at/hd7g2z5jf75bvcj/kollektivet-livet-bar-and-scen?take=100"
 
-townhousenoshandchow:
-    title: "Townhouse Nosh & Chow"
-    address: "Norrlandsgatan 24, Stockholm"
-    type: "tickster"
-    url: "https://www.tickster.com/sv/events/at/h8l6zral0kx2y5b/townhouse-nosh-and-chow?take=100"
+# townhousenoshandchow:
+#     title: "Townhouse Nosh & Chow"
+#     address: "Norrlandsgatan 24, Stockholm"
+#     type: "tickster"
+#     url: "https://www.tickster.com/sv/events/at/h8l6zral0kx2y5b/townhouse-nosh-and-chow?take=100"
 
-biblioteketlive:
-    title: "Biblioteket Live"
-    address: "Medborgarplatsen"
-    type: "tickster"
-    url: "https://www.tickster.com/sv/events/at/2nkerrp3y8re7l0/biblioteket-live?take=100"
+# biblioteketlive:
+#     title: "Biblioteket Live"
+#     address: "Medborgarplatsen"
+#     type: "tickster"
+#     url: "https://www.tickster.com/sv/events/at/2nkerrp3y8re7l0/biblioteket-live?take=100"
 
-debaser_strand_1:
-    title: "Debaser Strand"
-    address: "Honstulls Strand 4"
-    type: "tickster"
-    url: "https://www.tickster.com/sv/events/at/c3y3dpad56ncfp4/debaser-strand?take=100"
+# debaser_strand_1:
+#     title: "Debaser Strand"
+#     address: "Honstulls Strand 4"
+#     type: "tickster"
+#     url: "https://www.tickster.com/sv/events/at/c3y3dpad56ncfp4/debaser-strand?take=100"
 
-debaser_strand_2:
-    title: 'Debaser Strand'
-    address: "Hornstulls Strand 4"
-    type: "tickster"
-    url: "https://www.tickster.com/sv/events/at/kykewd9e9u055wm/debaser-strand?take=100"
+# debaser_strand_2:
+#     title: 'Debaser Strand'
+#     address: "Hornstulls Strand 4"
+#     type: "tickster"
+#     url: "https://www.tickster.com/sv/events/at/kykewd9e9u055wm/debaser-strand?take=100"
 
-debaser_strand_3:
-    title: "Debaser Strand"
-    address: "Hornstulls Strand"
-    type: "livenation"
-    url: "https://www.livenation.se/venue/48442/debaser-strand-tickets"
+# debaser_strand_3:
+#     title: "Debaser Strand"
+#     address: "Hornstulls Strand"
+#     type: "livenation"
+#     url: "https://www.livenation.se/venue/48442/debaser-strand-tickets"
 
-bar_brooklyn:
-    title: "Bar Brooklyn"
-    address: "Hornstulls Strand 4"
-    type: "tickster"
-    url: "https://www.tickster.com/sv/events/at/rmvdctd43351vpf/bar-brooklyn?take=100"
+# bar_brooklyn:
+#     title: "Bar Brooklyn"
+#     address: "Hornstulls Strand 4"
+#     type: "tickster"
+#     url: "https://www.tickster.com/sv/events/at/rmvdctd43351vpf/bar-brooklyn?take=100"
 
-nalen:
-    title: "Nalen Klubb"
-    address: "David Bagares Gata 15"
-    type: "tickster"
-    url: "https://www.tickster.com/sv/events/at/103c9wa31d3j16b/nalen-klubb-stockholm?take=100"
+# nalen:
+#     title: "Nalen Klubb"
+#     address: "David Bagares Gata 15"
+#     type: "tickster"
+#     url: "https://www.tickster.com/sv/events/at/103c9wa31d3j16b/nalen-klubb-stockholm?take=100"
 
-nalen_stora_salen:
-    title: "Nalen Stora Salen"
-    address: "Regeringsgatan 74"
-    type: "tickster"
-    url: "https://www.tickster.com/sv/events/at/xc21hy3ymcmbak1/nalen-stora-salen-stockholm?take=100"
+# nalen_stora_salen:
+#     title: "Nalen Stora Salen"
+#     address: "Regeringsgatan 74"
+#     type: "tickster"
+#     url: "https://www.tickster.com/sv/events/at/xc21hy3ymcmbak1/nalen-stora-salen-stockholm?take=100"
 
-kagelbanan:
-    title: "Kägelbanan Södra Teatern"
-    address: "Mosebacke Torg 1"
-    type: "tickster"
-    url: "https://www.tickster.com/sv/events/at/16akr7hjdhpd4nv/kagelbanan-sodra-teatern?take=100"
+# kagelbanan:
+#     title: "Kägelbanan Södra Teatern"
+#     address: "Mosebacke Torg 1"
+#     type: "tickster"
+#     url: "https://www.tickster.com/sv/events/at/16akr7hjdhpd4nv/kagelbanan-sodra-teatern?take=100"
 
-sodrateatern_storascen:
-    title: "Södra Teaterns Stora Scen"
-    address: "Mosebacke Torg 1"
-    type: "tickster"
-    url: "https://www.tickster.com/sv/events/at/w99v7b6udfhj2gw/sodra-teaterns-stora-scen?take=100"
+# sodrateatern_storascen:
+#     title: "Södra Teaterns Stora Scen"
+#     address: "Mosebacke Torg 1"
+#     type: "tickster"
+#     url: "https://www.tickster.com/sv/events/at/w99v7b6udfhj2gw/sodra-teaterns-stora-scen?take=100"
 
-mosebacke:
-    title: "Mosebacke Etablissement"
-    address: "Mosebacke Torg 1"
-    type: "tickster"
-    url: "https://www.tickster.com/sv/events/at/eajugecwwvbzhv6/mosebacke-etablissement?take=100"
+# mosebacke:
+#     title: "Mosebacke Etablissement"
+#     address: "Mosebacke Torg 1"
+#     type: "tickster"
+#     url: "https://www.tickster.com/sv/events/at/eajugecwwvbzhv6/mosebacke-etablissement?take=100"
 
-konstakademien:
-    title: "Konstakademien"
-    address: "Fredsgatan 12"
-    type: "tickster"
-    url: "https://www.tickster.com/sv/events/at/7lplt0z7ft2b2pj/konstakademien?take=100"
+# konstakademien:
+#     title: "Konstakademien"
+#     address: "Fredsgatan 12"
+#     type: "tickster"
+#     url: "https://www.tickster.com/sv/events/at/7lplt0z7ft2b2pj/konstakademien?take=100"
 
-underbron:
-    title: "Under Bron"
-    address: "Hammarby Slussväg 2"
-    type: "tickster"
-    url: "https://www.tickster.com/sv/events/at/hxhmufbv2c62wa5/under-bron?take=100"
+# underbron:
+#     title: "Under Bron"
+#     address: "Hammarby Slussväg 2"
+#     type: "tickster"
+#     url: "https://www.tickster.com/sv/events/at/hxhmufbv2c62wa5/under-bron?take=100"
 
-tradgarden:
-    title: "Trädgården"
-    address: "Hammarby Slussväg 2"
-    type: "tickster"
-    url: "https://www.tickster.com/sv/events/at/2uzz6tlz8z8x2f4/tradgarden?take=100"
+# tradgarden:
+#     title: "Trädgården"
+#     address: "Hammarby Slussväg 2"
+#     type: "tickster"
+#     url: "https://www.tickster.com/sv/events/at/2uzz6tlz8z8x2f4/tradgarden?take=100"
 
-glennmiller_cafe_konserter:
-    title: "Glenn Miller Café Konserter"
-    address: "Brunnsgatan 21A"
-    type: "glenmiller"
-    url: "https://www.glennmillercafe.se/konserter"
+# glennmiller_cafe_konserter:
+#     title: "Glenn Miller Café Konserter"
+#     address: "Brunnsgatan 21A"
+#     type: "glenmiller"
+#     url: "https://www.glennmillercafe.se/konserter"
 
-glenmiller_cafe_klassiska_konserter:
-    title: "Glenn Miller Café Klassiska Konserter"
-    address: "Brunnsgatan 21A"
-    type: "glenmiller"
-    url: "https://www.glennmillercafe.se/klassiska-konserter"
+# glenmiller_cafe_klassiska_konserter:
+#     title: "Glenn Miller Café Klassiska Konserter"
+#     address: "Brunnsgatan 21A"
+#     type: "glenmiller"
+#     url: "https://www.glennmillercafe.se/klassiska-konserter"
 
-stampen:
-    title: "Stampen"
-    address: "Stora Gråmunkegränd 7"
-    type: "stampen"
-    url: "https://www.stampen.se/program/"
+# stampen:
+#     title: "Stampen"
+#     address: "Stora Gråmunkegränd 7"
+#     type: "stampen"
+#     url: "https://www.stampen.se/program/"
 
-slaktkyrkan:
-    title: "Slaktkyrkan, Johanneshov"
+# slaktkyrkan:
+#     title: "Slaktkyrkan, Johanneshov"
+#     address: "Slakthusområdet"
+#     type: "billetto"
+#     url: "https://billetto.se/users/slaktkyrkan-hus-7"
+
+# scalateatern:
+#     title: "Scalateatern"
+#     address: "Scalateatern"
+#     type: "scala"
+#     url: "https://www.scalateatern.se/forestallningar/"
+
+# norrport:
+#     title: "Norrport"
+#     address: "Roslagsgatan 38"
+#     type: "norrport"
+#     url: "https://norrport.se/evenemang/"
+
+# fryshuset:
+#     title: "Fryshuset"
+#     address: "Hammarby Sjöstad"
+#     type: "fryshuset"
+#     url: "https://fryshuset.se/konserter/"
+
+# geronimos_fgt:
+#     title: "Geronimo's FGT"
+#     address: "Gamla Stan"
+#     type: "geronimosfgt"
+#     url: "https://www.geronimosfgt.se/shows-events-live-music/"
+#     filter_keywords: ['Quiz']
+
+# gamla_enskede_bryggeri:
+#     title: "Gamla Enskede Bryggeri"
+#     address: "Bolidenvägen 8"
+#     type: "gamlaenskedebryggeri"
+#     url: "https://gamlaenskedebryggeri.se/pa-gang/"
+
+# lykkelive:
+#     title: "Lykke Live"
+#     address: "Nytorgsgatan 38"
+#     type: "lykkelive"
+#     url: "https://www.lykkelive.com/concerts/"
+
+# riche_lilla_baren:
+#     title: "Riche / Lilla baren"
+#     address: "Birger Jarlsgatan 4"
+#     type: "riche"
+#     url: "https://riche.se/kalendarium"
+
+# landet:
+#     title: "Landet"
+#     address: "Hägersten"
+#     type: "billetto"
+#     url: "https://billetto.se/users/landet-telefonplan"
+
+# gronalund:
+#     title: "Gröna Lund"
+#     address: "Djurgården"
+#     type: "facebook_events"
+#     url: "https://www.facebook.com/gronalundstivoli/events"
+
+# engelen:
+#     title: "Engelen"
+#     address: "Gamla Stan"
+#     type: "facebook_events"
+#     url: "https://www.facebook.com/EngelenKolingen/events" # "https://www.engelen.se/#spelningar"
+
+# melodybox:
+#     title: "Melodybox"
+#     address: "Hägersten"
+#     type: "tickster"
+#     url: "https://www.tickster.com/sv/events/at/4tyjhml51jellcz/melodybox?take=100"
+
+# hokarangens_antikvariat:
+#     title: "Hökarängens Antikvariat & Skivbörs"
+#     address: "Hökarängen"
+#     type: "facebook_events"
+#     url: "https://www.facebook.com/hokarangensantikvariat/upcoming_hosted_events"
+
+# musikvalvet_baggen:
+#     title: "Musikvalvet Baggen"
+#     address: "Gamla stan"
+#     type: "facebook_events"
+#     url: "https://www.facebook.com/musikvalvetbaggen/upcoming_hosted_events"
+
+# banankompaniet:
+#     title: "Banankompaniet (b-k)"
+#     address: "Frihamnen"
+#     type: "tickster"
+#     url: "https://www.tickster.com/sv/events/at/wpnt5y7dpjdedfp/b-k?take=100"
+
+# scen44:
+#     title: "Scen 44"
+#     address: "Medborgarplatsen / Tjärhovsgatan"
+#     type: "facebook_events"
+#     url: "https://www.facebook.com/profile.php?id=100057341804866&sk=upcoming_hosted_events"
+
+# musikaliska_stora_scen:
+#     title: "Musikaliska / Stora Scen"
+#     address: "Nybrokajen 11"
+#     type: "tickster"
+#     url: "https://www.tickster.com/sv/events/at/py0d2dwj0yhv0j7/musikaliska-kvarteret-stora-scen"
+
+# berns_salonger:
+#     title: "Berns salonger"
+#     address: ""
+#     type: "berns"
+#     url: "https://berns.se/sv/kalender/"
+
+# cirkus:
+#     title: "Cirkus"
+#     address: "Djurgården"
+#     type: "cirkus"
+#     url: "https://cirkus.se/sv/events/"
+
+# teater_reflex:
+#     title: "Teater Reflex"
+#     address: "Kärrtorp"
+#     type: "facebook_events"
+#     url: "https://www.facebook.com/teaterreflex/upcoming_hosted_events"
+
+# twang:
+#     title: "Twang"
+#     address: "Katarina Bangata"
+#     type: "tickster"
+#     url: "https://www.tickster.com/sv/events/at/dcyu3drw3r00ctx/twang?take=100"
+
+fallan:
+    title: "Fållan"
     address: "Slakthusområdet"
-    type: "billetto"
-    url: "https://billetto.se/users/slaktkyrkan-hus-7"
-
-scalateatern:
-    title: "Scalateatern"
-    address: "Scalateatern"
-    type: "scala"
-    url: "https://www.scalateatern.se/forestallningar/"
-
-norrport:
-    title: "Norrport"
-    address: "Roslagsgatan 38"
-    type: "norrport"
-    url: "https://norrport.se/evenemang/"
-
-fryshuset:
-    title: "Fryshuset"
-    address: "Hammarby Sjöstad"
-    type: "fryshuset"
-    url: "https://fryshuset.se/konserter/"
-
-geronimos_fgt:
-    title: "Geronimo's FGT"
-    address: "Gamla Stan"
-    type: "geronimosfgt"
-    url: "https://www.geronimosfgt.se/shows-events-live-music/"
-    filter_keywords: ['Quiz']
-
-gamla_enskede_bryggeri:
-    title: "Gamla Enskede Bryggeri"
-    address: "Bolidenvägen 8"
-    type: "gamlaenskedebryggeri"
-    url: "https://gamlaenskedebryggeri.se/pa-gang/"
-
-lykkelive:
-    title: "Lykke Live"
-    address: "Nytorgsgatan 38"
-    type: "lykkelive"
-    url: "https://www.lykkelive.com/concerts/"
-
-riche_lilla_baren:
-    title: "Riche / Lilla baren"
-    address: "Birger Jarlsgatan 4"
-    type: "riche"
-    url: "https://riche.se/kalendarium"
-
-landet:
-    title: "Landet"
-    address: "Hägersten"
-    type: "billetto"
-    url: "https://billetto.se/users/landet-telefonplan"
-
-gronalund:
-    title: "Gröna Lund"
-    address: "Djurgården"
-    type: "facebook_events"
-    url: "https://www.facebook.com/gronalundstivoli/events"
-
-engelen:
-    title: "Engelen"
-    address: "Gamla Stan"
-    type: "facebook_events"
-    url: "https://www.facebook.com/EngelenKolingen/events" # "https://www.engelen.se/#spelningar"
-
-melodybox:
-    title: "Melodybox"
-    address: "Hägersten"
-    type: "tickster"
-    url: "https://www.tickster.com/sv/events/at/4tyjhml51jellcz/melodybox?take=100"
-
-hokarangens_antikvariat:
-    title: "Hökarängens Antikvariat & Skivbörs"
-    address: "Hökarängen"
-    type: "facebook_events"
-    url: "https://www.facebook.com/hokarangensantikvariat/upcoming_hosted_events"
-
-musikvalvet_baggen:
-    title: "Musikvalvet Baggen"
-    address: "Gamla stan"
-    type: "facebook_events"
-    url: "https://www.facebook.com/musikvalvetbaggen/upcoming_hosted_events"
-
-banankompaniet:
-    title: "Banankompaniet (b-k)"
-    address: "Frihamnen"
-    type: "tickster"
-    url: "https://www.tickster.com/sv/events/at/wpnt5y7dpjdedfp/b-k?take=100"
-
-scen44:
-    title: "Scen 44"
-    address: "Medborgarplatsen / Tjärhovsgatan"
-    type: "facebook_events"
-    url: "https://www.facebook.com/profile.php?id=100057341804866&sk=upcoming_hosted_events"
-
-musikaliska_stora_scen:
-    title: "Musikaliska / Stora Scen"
-    address: "Nybrokajen 11"
-    type: "tickster"
-    url: "https://www.tickster.com/sv/events/at/py0d2dwj0yhv0j7/musikaliska-kvarteret-stora-scen"
-
-berns_salonger:
-    title: "Berns salonger"
-    address: ""
-    type: "berns"
-    url: "https://berns.se/sv/kalender/"
-
-cirkus:
-    title: "Cirkus"
-    address: "Djurgården"
-    type: "cirkus"
-    url: "https://cirkus.se/sv/events/"
-
-teater_reflex:
-    title: "Teater Reflex"
-    address: "Kärrtorp"
-    type: "facebook_events"
-    url: "https://www.facebook.com/teaterreflex/upcoming_hosted_events"
-
-twang:
-    title: "Twang"
-    address: "Katarina Bangata"
-    type: "tickster"
-    url: "https://www.tickster.com/sv/events/at/dcyu3drw3r00ctx/twang?take=100"
-
-# Venue(
-#     "Göta Lejon"
-#     "Götgatan"
-#     "luger"
-#     "https://luger.se/konserter/#|template_layout_e6f52bd8da209f6fd274ff0b25c2f8c3=default|m.concert_upcoming_e6f52bd8da209f6fd274ff0b25c2f8c3=1|t.location_tax_e6f52bd8da209f6fd274ff0b25c2f8c3=42"
-# ),
-# TODO: Use luger!
-# https://luger.se/konserter/#|template_layout_e6f52bd8da209f6fd274ff0b25c2f8c3=default|m.concert_upcoming_e6f52bd8da209f6fd274ff0b25c2f8c3=1|t.location_tax_e6f52bd8da209f6fd274ff0b25c2f8c3=42
-# TODO: https://www.ticketmaster.se/venue/debaser-bar-brooklyn-stockholm-tickets/db1/632?language=en-us
-#TODO
-# Venue(
-#     "Fållan"
-#     "Slakthusområdet"
-#     "ticketmaster"
-#     "https://www.ticketmaster.se/venue/fallan-johanneshov-biljetter/fal3/583"
-# ),
-# TODO: https://www.ticketmaster.se/venue/cirkus-stockholm-biljetter/cir/580
-# https://www.clubcover.se/tid-plats
-# TBA
-# Venue(
-#     "Snövit"
-#     "Ringvägen, Södermalm"
-#     "facebook"
-#     "https://www.facebook.com/profile.php?id=100064027210409&sk=events"
-#      "https://www.facebook.com/groups/120195232723/" - club probation
-# ),
-# TBA
-# Venue(
-#     "Fylkingen"
-#     "Mariatorget"
-#     "fylkingen"
-#     "http://fylkingen.se/program"
-# ),
-# TBA
-# Venue(
-#     "Folkparken"
-#     "Sveavägen 53"
-#     "folkparken"
-#     "https://restaurangfolkparken.se/pa-scen/"
-# ),
-# TBA
-# Venue(
-#     "The Node"
-#     "Sergels Torg"
-#     "thenode"
-#     "https://thenode.se/kalendarium"
-# ),
-# Venue(
-#     "St:a Clara"
-#     "Gamla Stan"
-#     "staclara"
-#     "https://staclara.se/bierhus%201/musik%20schema"
-#     "https://www.facebook.com/pages/StA-Clara-Bierhaus/247605358698574" # finns även på facebook
-# ),
-# Venue(
-#     "Stockholm Under Stjärnorna"
-#     "Brunkebergstorg"
-#     "ticketmaster"
-#     "https://www.ticketmaster.se/venue/stockholm-under-stjarnorna-stockholm-biljetter/t3k/632"
-# ),
-# Venue(
-#     "Taverna Brillo"
-#     "Olika platser"
-#     "tavernabrillo"
-#     "https://tavernabrillo.se/kalendarium/"
-# ),
-# Inget intressant här
-# Venue(
-#     "Cyklopen"
-#     "Högdalen"
-#     "cyklopen"
-#     "https://cyklopen.se/kalender/action~agenda/request_format~json/tag_ids~60/"
-# ),
-# TBA
-# Venue(
-#     "Fållan"
-#     "Slakthusområdet"
-#     "fallan"
-#     "https://www.fallan.nu/"
-# ),
-# Venue(
-#     "Konserthuset"
-#     "Hötorget"
-#     "konserthuset"
-#     "https://www.konserthuset.se/program-och-biljetter/kalender/"
-# )
-# Venue(
-#     "Broder Tuck"
-#     "Götgatan"
-#     "zippertic"
-#     "https://www.facebook.com/pages/Broder-Tuck/168010629909374"
-# ),
+    type: "fallan"
+    url: "https://www.fallan.nu/whats-on"
