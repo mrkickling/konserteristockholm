@@ -48,7 +48,8 @@ def get_concerts(venue, browser):
         try:
             concert_title = concert.find('h4').getText()
             concert_date = parse_date(concert.find('h2').getText())
-            concert_url = concert.find('a').get('href') if concert.find('a') else venue.url
+            concert_url = concert.parent.parent.find('a').get('href')
+            concert_url = concert_url.split("?")[0]  # Remove affiliate tracking
 
             concerts.append(
                 Concert(concert_title, concert_date, venue.name, concert_url)
