@@ -1,5 +1,5 @@
 CREATE TABLE `konserter` (
-	`title` VARCHAR(255),
+	`title` TEXT,
 	`venue` VARCHAR(255),
 	`date` DATETIME,
 	`url` VARCHAR(255),
