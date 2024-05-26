@@ -38,6 +38,11 @@ def filter_concerts_by_date(concerts, max_date):
     ]
 
 
+def shorten_titles(concerts, max_len):
+    for concert in concerts:
+        concert.title = concert.title[:max_len]
+
+
 def scrape_venues(venues):
     """
     Using list of venues, scrape each with respective module
@@ -131,6 +136,7 @@ def main():
     # TODO: Handle bug in a better way so we don't miss actual future concerts.
     date_in_future = datetime.now() + timedelta(10 * 30)
     concerts = filter_concerts_by_date(concerts, date_in_future)
+    shorten_titles(concerts, 254)
 
     # Export to api
     export_concerts(concerts, successful_venues, failed_venues)
