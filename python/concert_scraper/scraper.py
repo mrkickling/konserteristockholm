@@ -23,7 +23,8 @@ from concert_scraper.modules import (
     riche,
     facebook_events,
     livenation,
-    fallan
+    fallan,
+    cirkus
 )
 
 logger = get_logger(__name__)
@@ -87,6 +88,8 @@ def scrape_venues(venues):
                 concerts += livenation.get_concerts(venue=venue, browser=browser)
             elif venue.type == "fallan":
                 concerts += fallan.get_concerts(venue=venue, browser=browser)
+            elif venue.type == "cirkus":
+                concerts += cirkus.get_concerts(venue=venue, browser=browser)
             else:
                 continue
             successful_venues.append(venue.name)

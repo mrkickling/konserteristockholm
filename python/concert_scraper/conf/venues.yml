@@ -159,7 +159,7 @@ lykkelive:
     title: "Lykke Live"
     address: "Nytorgsgatan 38"
     type: "lykkelive"
-    url: "https://www.lykkelive.com/concerts/"
+    url: "https://www.lykkenytorget.se/lykke-live/"
 
 riche_lilla_baren:
     title: "Riche / Lilla baren"
@@ -227,12 +227,6 @@ berns_salonger:
     type: "berns"
     url: "https://berns.se/sv/kalender/"
 
-cirkus:
-    title: "Cirkus"
-    address: "Djurgården"
-    type: "cirkus"
-    url: "https://cirkus.se/sv/events/"
-
 teater_reflex:
     title: "Teater Reflex"
     address: "Kärrtorp"
@@ -250,3 +244,9 @@ fallan:
     address: "Slakthusområdet"
     type: "fallan"
     url: "https://www.fallan.nu/whats-on"
+
+cirkus:
+    title: "Cirkus"
+    address: "Djurgården"
+    type: "cirkus"
+    url: "https://cirkus.se/sv/events/"
