@@ -1,18 +1,14 @@
-"""Fetch data from https://www.lykkelive.com"""
+"""Fetch data from https://www.lykkenytorget.se/lykke-live"""
 
 from bs4 import BeautifulSoup
 from concert_scraper.common import Concert
 from datetime import datetime
 from concert_scraper.logger import get_logger
+from concert_scraper.common import get_future_date
 
 logger = get_logger(__name__)
 
-BASE_URL = "https://www.lykkelive.com/concerts/"
-
-
-def parse_date(date_string):
-    date_string = date_string[-10:] # Date assumed to be 10 digits
-    return datetime.strptime(date_string, '%Y-%m-%d').strftime("%Y-%m-%d")
+BASE_URL = "https://www.lykkenytorget.se/lykke-live/"
 
 
 def get_concerts(venue, browser):
@@ -22,12 +18,17 @@ def get_concerts(venue, browser):
 
     soup = BeautifulSoup(html, features="html.parser")
 
-    cards = soup.find_all("div", attrs={'class': 'concerts__page'})
+    cards = soup.find_all("article", attrs={'class': 'eventlist-event'})
     concerts = []
+
     for card in cards:
-        concert_title = card.find('h2').getText()
-        concert_date = parse_date(card.find('div', attrs={'class': 'concert__dates'}).getText())
-        concert_url = venue.url
+        concert_title = card.find('h1').getText()
+        concert_date = card.find(
+                'time',
+                attrs={'class': 'event-time-localized-start'}
+            ).get('datetime')
+
+        concert_url = card.find('a').get('href')
         concerts.append(
             Concert(concert_title, concert_date, venue.name, concert_url)
         )
