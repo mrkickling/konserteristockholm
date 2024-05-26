@@ -13,18 +13,24 @@ logger = get_logger(__name__)
 
 BASE_URL = "https://billetto.se"
 
+
 def parse_date(date_string):
     """ Convert the format from billetto to a datetime object """
     # date month. hour:minute or date month hour:minute
     months_se = [
         "jan", "feb", "mars", "apr", "maj", "juni", "juli", "aug", "sep", "okt", "nov", "dec"
     ]
+
+    dates = date_string.split("-")
+    date_string = dates[0].strip()
+
     day, month, time = date_string.split()
     month_int = months_se.index(month.rstrip('.')) + 1
     day_int = int(day)
     date = get_future_date(month_int, day_int)
 
     return date.strftime("%Y-%m-%d")
+
 
 def get_concerts(venue, browser):
     logger.info(f"Getting concerts for venue {venue.name}")
@@ -43,12 +49,6 @@ def get_concerts(venue, browser):
     while True:
         # Go through all pages
         html = browser.page_source
-
-        def clean_date(date_str):
-            dates = date_str.split("-")
-            start_date = dates[0].strip()
-            return start_date
-
         soup = BeautifulSoup(html, features="html.parser")
 
         # Sadly the elements can not be identified except for their combination of classes
@@ -61,9 +61,14 @@ def get_concerts(venue, browser):
                 continue
             concert_title = concert_title.getText()
 
-            date_attrs = {'class': 'border border-gray-200 p-1 text-xs text-brand-500 bg-white rounded-md'}
-            concert_date = clean_date(concert.find(attrs=date_attrs).get_text())
-            concert_date = parse_date(concert_date)
+            date_attrs = {'x-text': 'event.date'}
+            concert_date_object = concert.find(attrs=date_attrs)
+            if concert_date_object:
+                concert_date = parse_date(
+                    concert_date_object.next.next.get_text()
+                )
+            else:
+                break
 
             concert_url = concert.find('a').get('href') if concert.find('a') else venue.url
             concerts.append(
