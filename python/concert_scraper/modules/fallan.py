@@ -11,7 +11,7 @@ from concert_scraper.logger import get_logger
 
 
 logger = get_logger(__name__)
-BASE_URL = "https://www.fallan.nu/whats-on"
+BASE_URL = "https://www.fallan.nu"
 
 
 def parse_date(date_string):
@@ -50,6 +50,7 @@ def get_concerts(venue, browser):
             concert_date = parse_date(concert.find('h2').getText())
             concert_url = concert.parent.parent.find('a').get('href')
             concert_url = concert_url.split("?")[0]  # Remove affiliate tracking
+            concert_url = f"{BASE_URL}{concert_url}"
 
             concerts.append(
                 Concert(concert_title, concert_date, venue.name, concert_url)
