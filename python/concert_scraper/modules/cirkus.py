@@ -15,7 +15,7 @@ BASE_URL = "https://cirkus.se"
 
 
 def parse_date(concert_month, concert_day, concert_year):
-    months_se = ["jan", "feb", "mar", "apr", "maj", "jun", "jul", "aug", "sep", "okt", "nov", "dec"]
+    months_se = ["jan", "feb", "mar", "apr", "may", "jun", "jul", "aug", "sep", "oct", "nov", "dec"]
 
     year_int = int(concert_year)
     month_int = months_se.index(concert_month.lower()) + 1
