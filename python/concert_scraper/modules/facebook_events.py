@@ -87,6 +87,7 @@ def get_concerts(venue, browser):
             title = title_element.text
             date = parse_date(date_element.text)
             url = link_element.get_attribute('href')
+            url = url.split("?")[0]  # Remove params
             
             # Make sure date was correctly parsed
             if date:

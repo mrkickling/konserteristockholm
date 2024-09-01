@@ -177,7 +177,8 @@ gronalund:
     title: "Gröna Lund"
     address: "Djurgården"
     type: "facebook_events"
-    url: "https://www.facebook.com/gronalundstivoli/events"
+    url: "https://www.facebook.com/gronalundstivoli/upcoming_hosted_events"
+    filter_keywords: ['Danskvällar', 'Dansbandskvällar', 'Halloween på Gröna Lund', Julbord]
 
 engelen:
     title: "Engelen"
