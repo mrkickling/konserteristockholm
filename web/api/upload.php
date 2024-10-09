@@ -21,7 +21,7 @@ if (!isset($api_key)) {
 }
 
 if ($api_key != $env["API_KEY"]) {
-    die("Wrong api key\n". "Should have been" . $env['API_KEY']);
+    die("Wrong api key");
 }
 
 $concerts = json_decode($concerts_json);
