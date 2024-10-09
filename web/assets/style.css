@@ -1,14 +1,25 @@
-@import url('https://fonts.googleapis.com/css2?family=Taviraj:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+@font-face {
+    font-family: Playfair;
+    src: url(PlayfairDisplay-VariableFont_wght.ttf);
+}
+
+@font-face {
+    font-family: AfacadFlux;
+    src: url(AfacadFlux-VariableFont_slnt,wght.ttf);
+}
+
 
 * {
     box-sizing: border-box;
 }
 
-body {
-    font-family: 'Taviraj', serif;
+body, html {
+    margin: 0;
+    background: #8c1414;
+    color: #ffc9d1;
 }
 
-.container, header {
+header {
     width:100%;
     max-width: 900px;
     margin: auto;
@@ -16,10 +27,20 @@ body {
     overflow: auto;
 }
 
+.container {
+    padding: 0;
+    margin: 0;
+    max-width: 900px;
+    margin: auto;
+}
+
 header {
     overflow: auto;
     text-align: center;
     padding-bottom: 0;
+    margin-top: 30px;
+    margin-bottom: 40px;
+    overflow: auto;
 }
 
 header a {
@@ -28,19 +49,23 @@ header a {
 
 header h3 {
     margin: 0;
-    font-size: 150%;
-    color: #C00;
+    font-size: 200%;
     display: inline;
+    font-weight: bold;
+    color: #ffc9d1;
+    font-family: Arial, Helvetica, sans-serif;
 }
 
 header nav {
     overflow: auto;
     width: 100%;
     text-align: center;
+    margin-top: 15px;
 }
 
 header nav a {
     padding: 10px;
+    color: #ffc9d1;
 }
 
 header nav a:hover {
@@ -59,33 +84,69 @@ header nav form {
     padding: 0;
 }
 
+.concert-header-container {
+    display: block;
+    height: 60px;
+}
+
+.concert-date-header {
+    width: 100%;
+    border-bottom: 1px solid white;
+    border-top: 1px solid white;
+    margin: 0;
+    padding: 15px;
+    display: block;
+    background: #8c1414;
+    z-index: 10;
+}
+
+.concert-date-header.active {
+    position: fixed;
+    max-width: 900px;
+    top: 0;
+}
+
 .concert-date {
-    border-bottom: 1px solid black;
-    margin-bottom: 10px;
-    text-transform: uppercase;
-    color: #c00;
+    position: relative;
+    top: -4px;
+}
+
+.event-venue-container {
+    margin-top: 5px;
 }
 
 .event-venue {
     text-decoration: none;
     font-size: 0.9em;
     position: relative;
-    top: -5px;
+    top: -7px;
 }
 
 .event-description {
     font-size: 0.9em;
 }
 
+.concert:nth-of-type(2n) {
+    background: #8c1414;
+    color: #ffc9d1;
+}
+
+.concert:nth-of-type(2n + 1) {
+    color: #ffc9d1;
+    background: #5C0011;
+}
+
 .concert {
-    list-style:disc;
-    margin-bottom: 10px;
+    padding: 15px;
+    color: white;
 }
 
 .concert a {
-    color: black;
-    text-decoration: underline solid grey 1px;
+    text-decoration: none;
+    color: inherit;
     font-weight: 600;
+    font-family: AfacadFlux;
+    font-size: 1.2em;
 }
 
 .nice-button {
@@ -110,36 +171,44 @@ header nav form {
 }
 
 
-.hide-form {
-    display: inline;
+.info {
+    padding: 0 40px;
 }
 
+.info a {
+    color: white;
+}
+
+
 .search-form {
+    margin-top: 20px;
     text-align:center;
 }
 
 .search-form input[type="submit"] {
-    background:none; 
+    background: #ffc9d1; 
+    border: 0;
     box-shadow:0;
-    border:1px solid #C00;
-    color: #C00;
-    padding: 5px;
+    padding: 10px;
     width: 50px;
 }
 .search-form input[type="text"] {
-    background:none; 
+    background: #ffc9d1; 
+    border: 0;
     box-shadow:0;
-    border:1px solid #C00;
-    padding:5px;
+    padding: 10px;
 }
 
-@media only screen and (min-width: 600px) {
+@media only screen and (min-width: 900px) {
     header {
         margin-top: 20px;
     }
 
     .search-form {
-        float:right;
+        position: relative;
+        top: -40px;
+        float: right;
+        z-index: 20;
     }
 
     .event-title {
@@ -148,11 +217,13 @@ header nav form {
 
     header {
         text-align: left;
+        overflow: show;
+        margin-bottom: 0px;
     }
 
     header nav {
-        height: 50px;
         text-align: left;
+        overflow: hidden;
     }
 
     header nav a {

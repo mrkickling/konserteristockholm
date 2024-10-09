@@ -18,8 +18,7 @@
     <?php require 'header.php'; ?>
 
         <div class="container">
-
-            <h4 class='concert-date'>
+            <h4 class='concert-date-header'>
                 Latest releases
             </h4>
 

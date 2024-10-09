@@ -21,14 +21,6 @@
     <body>
     <?php require 'header.php'; ?>
         <div class="container">
-
-        <?php if (isset($_SESSION['isAdmin']) && $_SESSION['isAdmin']): ?>
-            <form action="api/auth.php" method="post">
-                <input type="hidden" name="logout">
-                <input type="submit" value="Log out">
-            </form>
-        <?php endif; ?>
-
             <ul class='concert-list'>
             <?php
                 $prev_date = 0;
@@ -50,11 +42,18 @@
                     $venue = $concert['venue'];
 
                     if ($date != $prev_date): ?>
-                        <h4 class='concert-date'>
-                            <?php
-                                secure_echo($date);
-                            ?>
-                        </h4>
+                        <div class="concert-header-container">
+                            <h4 class='concert-date-header'>
+                                <span class="date-icon material-symbols-outlined">
+                                    calendar_today
+                                </span>
+                                <span class="concert-date">
+                                    <?php
+                                        secure_echo($date);
+                                    ?>
+                                </span>
+                            </h4>
+                        </div>
                     <?php $prev_date = $date; endif; ?>
 
                     <div class="concert">
@@ -66,13 +65,15 @@
                         </span>
 
                         <br>
-                        <span class="material-symbols-outlined location-icon">
-                            location_on
-                        </span>
-                        <span class='event-venue'>
-                            <?php secure_echo($venue); ?>
-                        </span>
 
+                        <div class="event-venue-container">
+                            <span class="material-symbols-outlined location-icon">
+                                location_on
+                            </span>
+                            <span class='event-venue'>
+                                <?php secure_echo($venue); ?>
+                            </span>
+                        </div>
                     </div>
 
                 <?php endwhile; ?>
