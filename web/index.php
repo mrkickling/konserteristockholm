@@ -79,5 +79,6 @@
                 <?php endwhile; ?>
             </ul>
         </div>
+        <script src="assets/scrolling.js"></script>
     </body>
 </html>
