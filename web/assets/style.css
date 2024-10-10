@@ -52,7 +52,7 @@ header h3 {
     font-size: 200%;
     display: inline;
     font-weight: bold;
-    color: #ffc9d1;
+    color: white;
     font-family: Arial, Helvetica, sans-serif;
 }
 
@@ -97,6 +97,7 @@ header nav form {
     padding: 15px;
     display: block;
     background: #8c1414;
+    color: white;
     z-index: 10;
 }
 
@@ -143,7 +144,7 @@ header nav form {
 
 .concert a {
     text-decoration: none;
-    color: inherit;
+    color: white;
     font-weight: 600;
     font-family: AfacadFlux;
     font-size: 1.2em;
