@@ -28,7 +28,7 @@
 
                 if ($concerts->num_rows == 0):
                     echo "
-                        <p>
+                        <p class='not-found-message'>
                             Hittade inga konserter för din sökning.
                             <br>
                             Sök på nåt annat eller se <a href='/'>alla konserter</a>.

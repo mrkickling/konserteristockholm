@@ -34,6 +34,14 @@ header {
     margin: auto;
 }
 
+.not-found-message {
+    text-align: center;
+}
+
+.not-found-message a {
+    color: white;
+}
+
 header {
     overflow: auto;
     text-align: center;
@@ -204,7 +212,10 @@ header nav form {
     header {
         margin-top: 20px;
     }
-
+    .not-found-message {
+        text-align: left;
+    }
+    
     .search-form {
         position: relative;
         top: -40px;
