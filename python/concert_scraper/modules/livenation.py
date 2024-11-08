@@ -32,13 +32,16 @@ def get_concerts(venue, browser):
     for concert_element in concert_elements:
         concert_title = concert_element.find('span', attrs={'class': 'artistticket__name'}).getText()
 
-        concert_day = concert_element.find('span', attrs={'class': 'date__day'}).getText()
-        concert_month_year = concert_element.find('span', attrs={'class': 'date__month'}).getText()
+        concert_day_elem = concert_element.find('span', attrs={'class': 'date__day'})
+        concert_day = concert_day_elem.getText() if concert_day_elem else None
+        concert_month_year_elem = concert_element.find('span', attrs={'class': 'date__month'})
+        concert_month_year = concert_month_year_elem.getText() if concert_month_year_elem else None
         concert_url = concert_element.find('a').get('href')
 
-        concert_date = parse_date(concert_day, concert_month_year)
-        concerts.append(
-            Concert(concert_title, concert_date, venue.name, concert_url)
-        )
+        if concert_day and concert_month_year:
+            concert_date = parse_date(concert_day, concert_month_year)
+            concerts.append(
+                Concert(concert_title, concert_date, venue.name, concert_url)
+            )
     logger.info(f"Found {len(concerts)} concerts for venue {venue.name}")
     return concerts
