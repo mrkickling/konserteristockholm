@@ -11,16 +11,18 @@ BASE_URL = "https://www.geronimosfgt.se/shows-events-live-music"
 
 def parse_date(date_string):
     date_info = date_string.split('-')
-    month = date_info[-1].split().pop(-1)
+    # Get month from first date or second depending on where it is written
+    month = (date_info[-1].split().pop(-1)
+             if date_info[0].strip().isnumeric()
+             else date_info[0].split().pop(-1))
     raw_dates = "".join(date_info).split()[:-1]
     months_se = ["jan", "feb", "mar", "apr", "maj", "jun", "jul", "aug", "sep", "okt", "nov", "dec"]
 
     dates = []
     month_int = months_se.index(month) + 1
-    for date in raw_dates:
-        day_int = int(date)
-        date = get_future_date(month_int, day_int)
-        dates.append(date.strftime("%Y-%m-%d"))
+    day_int = int(raw_dates[0])
+    date = get_future_date(month_int, day_int)
+    dates.append(date.strftime("%Y-%m-%d"))
     return dates
 
 
