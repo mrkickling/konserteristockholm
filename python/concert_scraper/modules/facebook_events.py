@@ -18,7 +18,18 @@ def parse_date(date_string):
         return None
 
     # Format is FRI, 24 MAY AT 20:00
-    weekday, month_str, date_str, *rest = date_string.split()
+    try:
+        weekday, month_str, date_str, *rest = date_string.split()
+    except ValueError:
+        logger.warning("Could not parse date %s", date_string)
+        return None
+
+    if month_str.isnumeric() and date_str.isnumeric():
+        # Sometimes these are flipped :s
+        old_month_str = month_str
+        month_str = date_str
+        date_str = old_month_str
+
     date_str = date_str if len(date_str) == 2 else "0" + date_str
     month_str = month_str.capitalize()
 
@@ -95,6 +106,6 @@ def get_concerts(venue, browser):
                     Concert(title, date, venue.name, url)
                 )
             i += 1
-    
+
     logger.info(f"Found {len(concerts)} concerts for venue {venue.name}")
     return concerts
