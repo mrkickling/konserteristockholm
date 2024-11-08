@@ -6,6 +6,7 @@ from datetime import datetime, timedelta
 from concert_scraper.common import Venue
 from concert_scraper.exporter import export_concerts
 from concert_scraper.logger import get_logger
+from concert_scraper.modules.utils import filter_keywords
 from concert_scraper.modules import (
     nortic,
     tickster,
@@ -53,11 +54,12 @@ def scrape_venues(venues):
     options.add_argument("--headless")
     browser = webdriver.Firefox(options=options)
 
-    concerts = []
+    all_concerts = []
     successful_venues = []
     failed_venues = []
 
     for venue in venues:
+        concerts = []
         try:
             if venue.type == "nortic":
                 concerts += nortic.get_concerts(venue=venue, browser=browser)
@@ -97,13 +99,16 @@ def scrape_venues(venues):
                 concerts += cirkus.get_concerts(venue=venue, browser=browser)
             else:
                 continue
+
+            all_concerts += filter_keywords(venue, concerts)
             successful_venues.append(venue.name)
+
         except Exception as e:
             failed_venues.append(venue.name)
             logger.error(f"Failed to scrape {venue.name} - {e}")
 
     browser.quit()
-    return concerts, successful_venues, failed_venues
+    return all_concerts, successful_venues, failed_venues
 
 
 def get_all_venues():
