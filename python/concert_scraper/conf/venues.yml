@@ -184,7 +184,7 @@ engelen:
     title: "Engelen"
     address: "Gamla Stan"
     type: "facebook_events"
-    url: "https://www.facebook.com/EngelenKolingen/events" # "https://www.engelen.se/#spelningar"
+    url: "https://www.facebook.com/EngelenKolingen/upcoming_hosted_events" # "https://www.engelen.se/#spelningar"
 
 melodybox:
     title: "Melodybox"
@@ -251,3 +251,15 @@ cirkus:
     address: "Djurgården"
     type: "cirkus"
     url: "https://cirkus.se/sv/events/"
+
+krematoriet:
+    title: "Krematoriet"
+    address: "Svedmyra"
+    type: "facebook_events"
+    url: https://www.facebook.com/profile.php?id=100086575842534&sk=upcoming_hosted_events
+
+kungcarlsjazzklubb:
+    title: "Kung Carls Jazzklubb"
+    address: "Norrlandsgatan 28"
+    type: "facebook_events"
+    url: https://www.facebook.com/kungcarlsjazzklubb/upcoming_hosted_events
