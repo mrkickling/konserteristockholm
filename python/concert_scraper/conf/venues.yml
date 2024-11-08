@@ -263,3 +263,9 @@ kungcarlsjazzklubb:
     address: "Norrlandsgatan 28"
     type: "facebook_events"
     url: https://www.facebook.com/kungcarlsjazzklubb/upcoming_hosted_events
+
+sodershjarta:
+    title: "Söders Hjärta"
+    address: "Södermalm"
+    type: "facebook_events"
+    url: https://www.facebook.com/SodersHjarta/upcoming_hosted_events
