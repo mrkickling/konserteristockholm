@@ -17,6 +17,7 @@
         <link rel="stylesheet" href="assets/style.css">
         <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20,400,0,0" />
         <title>Konserter i Stockholm</title>
+        <meta name="description" content="Här samlas framtida konserter i Stockholm. Se varje dags utbud eller sök på artist och konsertlokal.">
     </head>
     <body>
     <?php require 'header.php'; ?>
