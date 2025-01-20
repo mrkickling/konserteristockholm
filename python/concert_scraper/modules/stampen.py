@@ -12,8 +12,14 @@ BASE_URL = "https://www.stampen.se/program/"
 
 def parse_date(date_string):
     # 31 Dec, 17:00 - 01:00
-    date, month, start_time, _, end_time = date_string.split()
-    date = datetime.strptime(f"{date} {month}", '%d %b,')
+    date, month, *rest = date_string.split()
+
+    try:
+        date = datetime.strptime(f"{date} {month}", '%d %b,')
+    except Exception:
+        logger.info("No matching date string %s %s - trying without comma", date, month)
+        date = datetime.strptime(f"{date} {month}", '%d %b')
+
     date = get_future_date(date.month, date.day)
     return date.strftime("%Y-%m-%d")
 

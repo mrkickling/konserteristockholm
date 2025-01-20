@@ -23,8 +23,14 @@ def parse_date(date_string):
 
     dates = date_string.split("-")
     date_string = dates[0].strip()
+    logger.info(date_string)
 
-    day, month, time = date_string.split()
+    try:
+        day, month, time = date_string.split()
+    except Exception:
+        logger.error("could not parse date %s", date_string)
+        return None
+
     month_int = months_se.index(month.rstrip('.')) + 1
     day_int = int(day)
     date = get_future_date(month_int, day_int)
@@ -71,9 +77,11 @@ def get_concerts(venue, browser):
                 break
 
             concert_url = concert.find('a').get('href') if concert.find('a') else venue.url
-            concerts.append(
-                Concert(concert_title, concert_date, venue.name, concert_url)
-            )
+
+            if concert_date:
+                concerts.append(
+                    Concert(concert_title, concert_date, venue.name, concert_url)
+                )
 
         # Next page
         try:

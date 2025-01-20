@@ -39,7 +39,12 @@ def get_concerts(venue, browser):
 
     browser.get(venue.url)
     time.sleep(1) # Wait for cookie dialog
-    browser.find_element(By.ID, 'CybotCookiebotDialogBodyLevelButtonLevelOptinAllowAll').click()
+
+    try:
+        browser.find_element(By.ID, 'CybotCookiebotDialogBodyLevelButtonLevelOptinAllowAll').click()
+    except Exception:
+        logger.info("Could not find cookie window - might be fine")
+
     browser.execute_script("window.scrollTo(0, document.body.scrollHeight);")
     time.sleep(1) # Wait for more to load
     html = browser.page_source
