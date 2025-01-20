@@ -4,6 +4,12 @@ fasching:
     type: "nortic"
     url: "https://www.nortic.se/ticket/organizer/3020"
 
+winterviken:
+    title: "Winterviken"
+    address: "Winterviken"
+    type: "tickster"
+    url: "https://www.tickster.com/se/sv/events/at/plpawduhkg9crw2/winterviken-scen?take=100"
+
 reimersholme:
     title: "Reimersholme Hotell"
     address: "Reimersholme"
