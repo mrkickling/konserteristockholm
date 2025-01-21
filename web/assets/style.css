@@ -15,8 +15,11 @@
 
 body, html {
     margin: 0;
-    background: #8c1414;
-    color: #ffc9d1;
+}
+
+body {
+    background-color: #955454;
+    color: white;
 }
 
 header {
@@ -59,9 +62,10 @@ header h3 {
     margin: 0;
     font-size: 200%;
     display: inline;
-    font-weight: bold;
-    color: white;
-    font-family: Arial, Helvetica, sans-serif;
+    font-weight: bolder;
+    color: black;
+    font-size: 40px;
+    font-family: Playfair;
 }
 
 header nav {
@@ -72,8 +76,10 @@ header nav {
 }
 
 header nav a {
+    font-family: Playfair;
+    font-size: 20px;
     padding: 10px;
-    color: #ffc9d1;
+    color: white;
 }
 
 header nav a:hover {
@@ -90,12 +96,12 @@ header nav form {
 
 .concert-list {
     padding: 0;
+    margin: 0;
 }
 
 .concert-header-container {
     display: block;
-    margin: 10px 0px;
-    height: 60px;
+    margin-top: 20px;
 }
 
 .concert-date-header {
@@ -103,8 +109,8 @@ header nav form {
     margin: 0;
     padding: 15px;
     display: block;
-    background: #ffc9d1;
-    color: rgb(100, 20, 20);
+    background: #020202;
+    color: white;
     z-index: 10;
 }
 
@@ -135,13 +141,13 @@ header nav form {
 }
 
 .concert:nth-of-type(2n) {
-    background: #8c1414;
+    background: #772424;
     color: #ffc9d1;
 }
 
 .concert:nth-of-type(2n + 1) {
     color: #ffc9d1;
-    background: #5C0011;
+    background: #530C19;
 }
 
 .concert {
@@ -179,10 +185,6 @@ header nav form {
 }
 
 
-.info {
-    padding: 0 40px;
-}
-
 .info a {
     color: white;
 }
@@ -194,14 +196,12 @@ header nav form {
 }
 
 .search-form input[type="submit"] {
-    background: #ffc9d1; 
     border: 0;
     box-shadow:0;
     padding: 10px;
     width: 50px;
 }
 .search-form input[type="text"] {
-    background: #ffc9d1; 
     border: 0;
     box-shadow:0;
     padding: 10px;
