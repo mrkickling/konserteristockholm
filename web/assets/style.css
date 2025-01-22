@@ -78,6 +78,7 @@ header nav {
 header nav a {
     font-family: Playfair;
     font-size: 20px;
+    display: block;
     padding: 10px;
     color: white;
 }
@@ -185,6 +186,9 @@ header nav form {
 }
 
 
+.info {
+    padding: 20px;
+}
 .info a {
     color: white;
 }
@@ -239,6 +243,11 @@ header nav form {
 
     header nav a {
         padding: 10px;
+        display: inline;
+    }
+
+    .info {
+        padding: 0px;
     }
 
   }
