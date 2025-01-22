@@ -18,7 +18,7 @@ body, html {
 }
 
 body {
-    background-color: #955454;
+    background-color: #e3d6d6;
     color: white;
 }
 
@@ -80,7 +80,7 @@ header nav a {
     font-size: 20px;
     display: block;
     padding: 10px;
-    color: white;
+    color: black;
 }
 
 header nav a:hover {
@@ -142,13 +142,13 @@ header nav form {
 }
 
 .concert:nth-of-type(2n) {
-    background: #772424;
+    background: #822929;
     color: #ffc9d1;
 }
 
 .concert:nth-of-type(2n + 1) {
     color: #ffc9d1;
-    background: #530C19;
+    background: #a23232;
 }
 
 .concert {
