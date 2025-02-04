@@ -15,7 +15,6 @@ from concert_scraper.modules import (
     billetto,
     scala,
     konserthuset,
-    folkparken,
     fryshuset,
     geronimosfgt,
     norrport,
@@ -75,8 +74,6 @@ def scrape_venues(venues):
                 concerts += scala.get_concerts(venue=venue, browser=browser)
             elif venue.type == "konserthuset":
                 concerts += konserthuset.get_concerts(venue=venue, browser=browser)
-            elif venue.type == "folkparken":
-                concerts += folkparken.get_concerts(venue=venue, browser=browser)
             elif venue.type == "fryshuset":
                 concerts += fryshuset.get_concerts(venue=venue, browser=browser)
             elif venue.type == "geronimosfgt":
