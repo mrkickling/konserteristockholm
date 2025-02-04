@@ -281,3 +281,9 @@ sodershjarta:
     address: "Södermalm"
     type: "facebook_events"
     url: https://www.facebook.com/SodersHjarta/upcoming_hosted_events
+
+thenode:
+    title: "The Node"
+    address: "?"
+    type: "thenode"
+    url: https://thenode.se/kalendarium

@@ -25,7 +25,8 @@ from concert_scraper.modules import (
     facebook_events,
     livenation,
     fallan,
-    cirkus
+    cirkus,
+    thenode
 )
 
 logger = get_logger(__name__)
@@ -97,6 +98,8 @@ def scrape_venues(venues):
                 concerts += cirkus.get_concerts(venue=venue, browser=browser)
             elif venue.type == "berns":
                 concerts += berns.get_concerts(venue=venue, browser=browser)
+            elif venue.type == "thenode":
+                concerts += thenode.get_concerts(venue=venue, browser=browser)
             else:
                 continue
 
