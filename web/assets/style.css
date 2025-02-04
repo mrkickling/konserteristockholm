@@ -19,7 +19,7 @@ body, html {
 
 body {
     background-color: #e3d6d6;
-    color: white;
+    color: black;
 }
 
 header {
@@ -190,7 +190,7 @@ header nav form {
     padding: 20px;
 }
 .info a {
-    color: white;
+    color: black;
 }
 
 
