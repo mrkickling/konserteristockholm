@@ -1,12 +1,13 @@
 """Fetch data from stampen.se"""
 
-from bs4 import BeautifulSoup
 from datetime import datetime
-from concert_scraper.common import Concert, get_future_date
-from concert_scraper.logger import get_logger
+
+from bs4 import BeautifulSoup
+
+from ..common import Concert, get_future_date
+from ..logger import get_logger
 
 logger = get_logger(__name__)
-
 BASE_URL = "https://www.stampen.se/program/"
 
 

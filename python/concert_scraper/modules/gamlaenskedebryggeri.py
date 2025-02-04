@@ -1,14 +1,13 @@
 # https://gamlaenskedebryggeri.se/pa-gang/
 
-from bs4 import BeautifulSoup
-from concert_scraper.common import Concert
-from datetime import datetime
 import re
-from concert_scraper.logger import get_logger
-from concert_scraper.common import get_future_date
+
+from bs4 import BeautifulSoup
+from ..common import Concert
+from ..logger import get_logger
+from ..common import get_future_date
 
 logger = get_logger(__name__)
-
 BASE_URL = "https://www.gamlaenskedebryggeri.se"
 
 def parse_date(date_string):

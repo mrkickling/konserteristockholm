@@ -1,22 +1,21 @@
 """Fetch data from scalateatern.se"""
 
-from selenium.webdriver.common.by import By
-from datetime import datetime
-from bs4 import BeautifulSoup
 import time
 
-from concert_scraper.common import Concert, get_future_date
-from concert_scraper.logger import get_logger
+from selenium.webdriver.common.by import By
+from bs4 import BeautifulSoup
+
+from ..common import Concert, get_future_date
+from .utils import short_months_se
+from ..logger import get_logger
 
 logger = get_logger(__name__)
-
 BASE_URL = "https://www.scalateatern.se/forestallningar/"
 
 def parse_date(date_string):
     # 5 jan
-    months_se = ["jan", "feb", "mar", "apr", "maj", "jun", "jul", "aug", "sep", "okt", "nov", "dec"]
     day, month = date_string.split()
-    month_int = months_se.index(month) + 1
+    month_int = short_months_se.index(month) + 1
     day_int = int(day)
     date = get_future_date(month_int, day_int)
     return date.strftime("%Y-%m-%d")

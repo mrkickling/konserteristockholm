@@ -1,15 +1,16 @@
 """Fetch data from nortic.se"""
 
-from bs4 import BeautifulSoup
 from datetime import datetime
+
+from bs4 import BeautifulSoup
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
-from concert_scraper.common import Concert, get_future_date
-from concert_scraper.logger import get_logger
+
+from ..common import Concert, get_future_date
+from ..logger import get_logger
 
 logger = get_logger(__name__)
-
 BASE_URL = "https://nortic.se"
 
 

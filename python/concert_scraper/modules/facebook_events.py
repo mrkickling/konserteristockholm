@@ -3,14 +3,12 @@
 from selenium.webdriver.common.by import By
 from selenium.common.exceptions import NoSuchElementException
 from datetime import datetime
-from bs4 import BeautifulSoup
 import time
 
-from concert_scraper.common import Concert, get_future_date
-from concert_scraper.logger import get_logger
+from ..common import Concert, get_future_date
+from ..logger import get_logger
 
 logger = get_logger(__name__)
-
 BASE_URL = "https://www.facebook.com/"
 
 def parse_date(date_string):
@@ -20,9 +18,8 @@ def parse_date(date_string):
     # Format is FRI, 24 MAY AT 20:00
     try:
         weekday, month_str, date_str, *rest = date_string.split()
-    except ValueError:
+    except ValueError as e:
         logger.warning("Could not parse date %s", date_string)
-        return None
 
     if month_str.isnumeric() and date_str.isnumeric():
         # Sometimes these are flipped :s

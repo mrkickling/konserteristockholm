@@ -1,24 +1,23 @@
-"""Fetch data from livenation.se"""
+"""Fetch data from cirkus"""
+
+import time
+from datetime import datetime
 
 from bs4 import BeautifulSoup
 from selenium.webdriver.common.by import By
 from selenium.common.exceptions import NoSuchElementException
 
-import time
-from datetime import datetime
-from concert_scraper.common import Concert
-from concert_scraper.logger import get_logger
+from ..common import Concert
+from ..logger import get_logger
+from .utils import short_months_en
 
 logger = get_logger(__name__)
-
 BASE_URL = "https://cirkus.se"
 
 
 def parse_date(concert_month, concert_day, concert_year):
-    months_se = ["jan", "feb", "mar", "apr", "may", "jun", "jul", "aug", "sep", "oct", "nov", "dec"]
-
     year_int = int(concert_year)
-    month_int = months_se.index(concert_month.lower()) + 1
+    month_int = short_months_en.index(concert_month.lower()) + 1
     day_int = int(concert_day)
     return datetime(year_int, month_int, day_int).strftime("%Y-%m-%d")
 

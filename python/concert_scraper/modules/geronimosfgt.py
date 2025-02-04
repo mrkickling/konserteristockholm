@@ -1,9 +1,9 @@
 # https://www.geronimosfgt.se/shows-events-live-music/
 from bs4 import BeautifulSoup
 
-from concert_scraper.common import Concert, get_future_date
-from concert_scraper.logger import get_logger
-from concert_scraper.modules.utils import filter_keywords
+from ..common import Concert, get_future_date
+from ..logger import get_logger
+from .utils import filter_keywords, short_months_se
 
 logger = get_logger(__name__)
 BASE_URL = "https://www.geronimosfgt.se/shows-events-live-music"

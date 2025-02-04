@@ -1,13 +1,11 @@
 """Fetch data from https://www.lykkenytorget.se/lykke-live"""
 
 from bs4 import BeautifulSoup
-from concert_scraper.common import Concert
-from datetime import datetime
-from concert_scraper.logger import get_logger
-from concert_scraper.common import get_future_date
+
+from ..common import Concert
+from ..logger import get_logger
 
 logger = get_logger(__name__)
-
 BASE_URL = "https://www.lykkenytorget.se/lykke-live/"
 
 

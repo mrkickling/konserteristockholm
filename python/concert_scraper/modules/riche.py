@@ -1,16 +1,15 @@
 """Fetch data from riche.se"""
 
-from selenium.webdriver.common.by import By
-from selenium.common.exceptions import NoSuchElementException
-from datetime import datetime
-from bs4 import BeautifulSoup
 import time
 
-from concert_scraper.common import Concert, get_future_date
-from concert_scraper.logger import get_logger
+from selenium.webdriver.common.by import By
+from selenium.common.exceptions import NoSuchElementException
+from bs4 import BeautifulSoup
+
+from ..common import Concert, get_future_date
+from ..logger import get_logger
 
 logger = get_logger(__name__)
-
 BASE_URL = "https://riche.se/kalendarium"
 
 def parse_date(date_string):

@@ -1,33 +1,20 @@
 """Fetch data from konserthuset.se"""
 
-from bs4 import BeautifulSoup
-from selenium.webdriver.common.by import By
 import time
 from datetime import datetime
 
-from concert_scraper.common import Concert
-from concert_scraper.logger import get_logger
+from bs4 import BeautifulSoup
+from selenium.webdriver.common.by import By
+
+from ..common import Concert
+from ..logger import get_logger
+from .utils import months_se
 
 logger = get_logger(__name__)
-
 BASE_URL = "https://konserthuset.se"
 
 def parse_date(date_string):
     # 'Fredag 5 januari 2024 kl 17.00'
-    months_se = [
-        "januari",
-        "februari",
-        "mars",
-        "april",
-        "maj",
-        "juni",
-        "juli",
-        "augusti",
-        "september",
-        "oktober",
-        "november",
-        "december"
-    ]
     weekday, date, month, year, _, time = date_string.split()
     date_int = int(date)
     month_int = months_se.index(month.lower()) + 1

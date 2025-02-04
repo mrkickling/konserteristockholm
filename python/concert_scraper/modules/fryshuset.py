@@ -1,36 +1,22 @@
 # For https://fryshuset.se/konserter
-
-from bs4 import BeautifulSoup
-from selenium.webdriver.common.by import By
 import time
 from datetime import datetime
 
-from concert_scraper.common import Concert
-from concert_scraper.logger import get_logger
+from bs4 import BeautifulSoup
+from selenium.webdriver.common.by import By
+
+from ..common import Concert
+from ..logger import get_logger
+from .utils import short_months_se
 
 logger = get_logger(__name__)
-
 BASE_URL = "https://fryshuset.se"
 
 def parse_date(date_string):
     # '28 feb 2024'
-    months_se = [
-        "jan",
-        "feb",
-        "mar",
-        "apr",
-        "maj",
-        "jun",
-        "jul",
-        "aug",
-        "sep",
-        "okt",
-        "nov",
-        "dec"
-    ]
     date, month, year = date_string.split()
     date_int = int(date)
-    month_int = months_se.index(month.lower()) + 1
+    month_int = short_months_se.index(month.lower()) + 1
     year_int = int(year)
     return datetime(year_int, month_int, date_int).strftime("%Y-%m-%d")
 

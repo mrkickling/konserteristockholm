@@ -1,13 +1,13 @@
 """Fetch data from billetto.se"""
 
+import time
+
 from bs4 import BeautifulSoup
 from selenium.webdriver.common.by import By
 from selenium.common.exceptions import NoSuchElementException
-import time
-from datetime import datetime
 
-from concert_scraper.common import Concert, get_future_date
-from concert_scraper.logger import get_logger
+from ..common import Concert, get_future_date
+from ..logger import get_logger
 
 logger = get_logger(__name__)
 
@@ -17,6 +17,8 @@ BASE_URL = "https://billetto.se"
 def parse_date(date_string):
     """ Convert the format from billetto to a datetime object """
     # date month. hour:minute or date month hour:minute
+
+    # unique month format
     months_se = [
         "jan", "feb", "mars", "apr", "maj", "juni", "juli", "aug", "sep", "okt", "nov", "dec"
     ]

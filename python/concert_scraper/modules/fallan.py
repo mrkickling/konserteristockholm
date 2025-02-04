@@ -1,13 +1,13 @@
 """Module for venue Fållan"""
+import time
+from datetime import datetime
+
 from bs4 import BeautifulSoup
 from selenium.webdriver.common.by import By
 from selenium.common.exceptions import NoSuchElementException
-import time
-import re
-from datetime import datetime
 
-from concert_scraper.common import Concert, get_future_date
-from concert_scraper.logger import get_logger
+from ..common import Concert
+from ..logger import get_logger
 
 
 logger = get_logger(__name__)

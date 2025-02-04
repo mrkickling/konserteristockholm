@@ -1,20 +1,21 @@
 """Fetch data from tickster.com"""
 
-from bs4 import BeautifulSoup
 from datetime import datetime
-from concert_scraper.common import Concert
-from concert_scraper.logger import get_logger
+
+from bs4 import BeautifulSoup
+
+from ..common import Concert
+from ..logger import get_logger
+from .utils import short_months_se
 
 logger = get_logger(__name__)
-
 BASE_URL = "https://tickster.com"
 
 
 def parse_date(date_string):
     # 29 mar 2024
-    months_se = ["jan", "feb", "mar", "apr", "maj", "jun", "jul", "aug", "sep", "okt", "nov", "dec"]
     day, month, year = date_string.split()
-    month_int = months_se.index(month) + 1
+    month_int = short_months_se.index(month) + 1
     day_int = int(day)
     year_int = int(year)
 

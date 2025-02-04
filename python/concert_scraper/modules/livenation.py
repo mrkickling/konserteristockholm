@@ -1,18 +1,20 @@
 """Fetch data from livenation.se"""
+from datetime import datetime
 
 from bs4 import BeautifulSoup
-from datetime import datetime
-from concert_scraper.common import Concert
-from concert_scraper.logger import get_logger
+
+from ..common import Concert
+from ..logger import get_logger
 
 logger = get_logger(__name__)
-
 BASE_URL = "https://livenation.se"
 
 
 def parse_date(concert_day, concert_month_year):
-    months_se = ["jan", "feb", "mars", "apr", "maj", "juni", "juli", "aug", "sep", "okt", "nov", "dec"]
-
+    # custom short month format for livenation
+    months_se = [
+        "jan", "feb", "mars", "apr", "maj", "juni", "juli", "aug", "sep", "okt", "nov", "dec"
+    ]
     month, year = concert_month_year.split(" ")
     year_int = int(year)
     month_int = months_se.index(month.rstrip(".")) + 1

@@ -1,12 +1,13 @@
 """Fetch data from https://www.glennmillercafe.se"""
 
-from bs4 import BeautifulSoup
-from concert_scraper.common import Concert
 from datetime import datetime
-from concert_scraper.logger import get_logger
+
+from bs4 import BeautifulSoup
+
+from ..common import Concert
+from ..logger import get_logger
 
 logger = get_logger(__name__)
-
 BASE_URL = "https://www.glennmillercafe.se"
 
 def parse_date(date_string):
