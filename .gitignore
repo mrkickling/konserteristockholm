@@ -1,5 +1,6 @@
 *.egg-info
 .env
+.envs
 envs
 venv
 __pycache__
