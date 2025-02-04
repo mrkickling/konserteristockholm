@@ -9,6 +9,7 @@ from concert_scraper.logger import get_logger
 from concert_scraper.modules.utils import filter_keywords
 from concert_scraper.modules import (
     nortic,
+    berns,
     tickster,
     glenmiller,
     stampen,
@@ -94,6 +95,8 @@ def scrape_venues(venues):
                 concerts += fallan.get_concerts(venue=venue, browser=browser)
             elif venue.type == "cirkus":
                 concerts += cirkus.get_concerts(venue=venue, browser=browser)
+            elif venue.type == "berns":
+                concerts += berns.get_concerts(venue=venue, browser=browser)
             else:
                 continue
 
