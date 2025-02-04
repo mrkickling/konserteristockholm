@@ -73,19 +73,29 @@ def get_concerts(venue, browser):
             /div/div/div/div/div/div/div/div/div[3]
             /div[{i}]/div[2]/div[1]/div
         """
- 
+
         xpath_suffix_link = "/div[2]/span/span/div/a"
-        xpath_suffix_title = "/div[2]/span/span/div/a/span"
+        xpath_suffix_title = f"{xpath_suffix_link}/span"
         xpath_suffix_date = "/div[1]/span/span"
+
 
         # Try to find the elements using selenium
         try:
             title_element = browser.find_element(By.XPATH, xpath + xpath_suffix_title)
-            date_element = browser.find_element(By.XPATH, xpath + xpath_suffix_date)
             link_element = browser.find_element(By.XPATH, xpath + xpath_suffix_link)
+            date_element = browser.find_element(By.XPATH, xpath + xpath_suffix_date)
         except NoSuchElementException:
-            # If we can not find by xpath we have to give up.
-            break
+
+            try:
+                # If we can not find by xpath we try with alt.
+                alt_xpath_suffix_link = "/div[2]/span/span/div/span/a"
+                alt_xpath_suffix_title = f"{alt_xpath_suffix_link}/span"
+                title_element = browser.find_element(By.XPATH, xpath + alt_xpath_suffix_title)
+                link_element = browser.find_element(By.XPATH, xpath + alt_xpath_suffix_link)
+                date_element = browser.find_element(By.XPATH, xpath + xpath_suffix_date)
+            except NoSuchElementException:
+                logger.info("Could not find any more concerts with either xpath method")
+                break
 
         if not title_element or not date_element or not link_element:
             # If element is not found we should just give up
