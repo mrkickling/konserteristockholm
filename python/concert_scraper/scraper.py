@@ -50,16 +50,17 @@ def scrape_venues(venues):
     Using list of venues, scrape each with respective module
     @return list[Concert]
     """
-    # Create the selenium browser
-    options = webdriver.FirefoxOptions()
-    options.add_argument("--headless")
-    browser = webdriver.Firefox(options=options)
 
     all_concerts = []
     successful_venues = []
     failed_venues = []
 
     for venue in venues:
+        # Create the selenium browser
+        options = webdriver.FirefoxOptions()
+        options.add_argument("--headless")
+        browser = webdriver.Firefox(options=options)
+
         concerts = []
         try:
             if venue.type == "nortic":
@@ -110,7 +111,7 @@ def scrape_venues(venues):
             failed_venues.append(venue.name)
             logger.error(f"Failed to scrape {venue.name} - {e}")
 
-    browser.quit()
+        browser.quit()
     return all_concerts, successful_venues, failed_venues
 
 
