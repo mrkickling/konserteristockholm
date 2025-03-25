@@ -108,8 +108,12 @@ def scrape_venues(venues):
                 continue
 
             # Use filters if they exist
-            filtered_concerts = concerts_without_exclude_keywords(venue, concerts)
-            filtered_concerts = concerts_with_include_keywords(venue, concerts)
+            filtered_concerts = concerts_without_exclude_keywords(
+                venue, concerts
+            )
+            filtered_concerts = concerts_with_include_keywords(
+                venue, filtered_concerts
+            )
 
             all_concerts += filtered_concerts
             successful_venues.append(venue.name)
