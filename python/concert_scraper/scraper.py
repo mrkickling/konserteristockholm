@@ -6,7 +6,10 @@ from datetime import datetime, timedelta
 from concert_scraper.common import Venue
 from concert_scraper.exporter import export_concerts
 from concert_scraper.logger import get_logger
-from concert_scraper.modules.utils import filter_keywords
+from concert_scraper.modules.utils import (
+    concerts_with_include_keywords,
+    concerts_without_exclude_keywords
+)
 from concert_scraper.modules import (
     nortic,
     berns,
@@ -104,7 +107,11 @@ def scrape_venues(venues):
             else:
                 continue
 
-            all_concerts += filter_keywords(venue, concerts)
+            # Use filters if they exist
+            filtered_concerts = concerts_without_exclude_keywords(venue, concerts)
+            filtered_concerts = concerts_with_include_keywords(venue, concerts)
+
+            all_concerts += filtered_concerts
             successful_venues.append(venue.name)
 
         except Exception as e:
@@ -125,7 +132,8 @@ def get_all_venues():
             venue['address'],
             venue['type'],
             venue['url'],
-            venue.get('filter_keywords', [])
+            venue.get('exclude_keywords', []),
+            venue.get('include_keywords', [])
         ) for venue in venues_yml.values()]
 
 

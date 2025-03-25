@@ -1,3 +1,9 @@
+from __future__ import annotations
+from typing import TYPE_CHECKING
+
+if TYPE_CHECKING:
+    from ..common import Venue, Concert
+
 months_se = [
     "januari",
     "februari",
@@ -43,18 +49,40 @@ short_months_en = [
     "dec"
 ]
 
-def filter_keywords(venue, concerts):
+def _has_one_of_keywords_in_string(string: str, keywords: list[str]):
+    return any(
+        keyword for keyword in keywords if keyword.lower() in string.lower()
+    )
+
+def concerts_without_exclude_keywords(
+        venue: Venue, concerts: list[Concert]
+    ):
     """
-    Remove the concerts which contain any of the venues filtered keywords
+    Return the concerts which do not contain any of the venues
+    exclude keywords.
     """
 
-    def any_keyword_in_string(string, keywords):
-        for keyword in keywords:
-            if keyword in string:
-                return True
-        return False
+    if not venue.exclude_keywords:
+        return concerts
 
     return [
         concert for concert in concerts
-        if not any_keyword_in_string(concert.title, venue.filter_keywords)
+        if not _has_one_of_keywords_in_string(
+            concert.title, venue.exclude_keywords
+        )
+    ]
+
+def concerts_with_include_keywords(venue: Venue, concerts: list[Concert]):
+    """
+    Return the concerts which contain any of the venues include keywords.
+    """
+
+    if not venue.include_keywords:
+        return concerts
+
+    return [
+        concert for concert in concerts
+        if _has_one_of_keywords_in_string(
+            concert.title, venue.include_keywords
+        )
     ]

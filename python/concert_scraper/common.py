@@ -1,4 +1,4 @@
-from dataclasses import dataclass
+from dataclasses import dataclass, field
 from datetime import datetime, timedelta
 
 @dataclass
@@ -21,7 +21,8 @@ class Venue:
     location: str
     type: str
     url: str
-    filter_keywords: list
+    exclude_keywords: list = field(default_factory=list)
+    include_keywords: list = field(default_factory=list)
 
 
 def get_current_date():

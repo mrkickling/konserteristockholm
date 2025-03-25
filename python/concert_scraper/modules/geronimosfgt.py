@@ -3,7 +3,6 @@ from bs4 import BeautifulSoup
 
 from ..common import Concert, get_future_date
 from ..logger import get_logger
-from .utils import filter_keywords, short_months_se
 
 logger = get_logger(__name__)
 BASE_URL = "https://www.geronimosfgt.se/shows-events-live-music"
@@ -45,4 +44,4 @@ def get_concerts(venue, browser):
             )
 
     logger.info(f"Found {len(concerts)} concerts for venue {venue.name}")
-    return filter_keywords(venue, concerts)
+    return concerts
