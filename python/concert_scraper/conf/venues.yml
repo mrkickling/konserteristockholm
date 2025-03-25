@@ -15,6 +15,7 @@ reimersholme:
     address: "Reimersholme"
     type: "tickster"
     url: "https://www.tickster.com/sv/events/at/7hpytvme5t7htay/reimersholme-hotel?take=100?take=100"
+    exclude_keywords: ['standup', 'stand-up', 'stand up']
 
 kollektivetlivet:
     title: "Kollektivet Livet Bar & Scen"
@@ -81,6 +82,7 @@ sodrateatern_storascen:
     address: "Mosebacke Torg 1"
     type: "tickster"
     url: "https://www.tickster.com/sv/events/at/w99v7b6udfhj2gw/sodra-teaterns-stora-scen?take=100"
+    exclude_keywords: ['standup', 'stand-up', 'stand up']
 
 mosebacke:
     title: "Mosebacke Etablissement"
@@ -153,7 +155,7 @@ geronimos_fgt:
     address: "Gamla Stan"
     type: "geronimosfgt"
     url: "https://www.geronimosfgt.se/shows-events-live-music/"
-    filter_keywords: ['Quiz']
+    exclude_keywords: ['Quiz']
 
 gamla_enskede_bryggeri:
     title: "Gamla Enskede Bryggeri"
@@ -184,7 +186,7 @@ gronalund:
     address: "Djurgården"
     type: "facebook_events"
     url: "https://www.facebook.com/gronalundstivoli/upcoming_hosted_events"
-    filter_keywords: ['Danskvällar', 'Dansbandskvällar', 'Halloween', 'Julbord']
+    exclude_keywords: ['Danskvällar', 'Dansbandskvällar', 'Halloween', 'Julbord']
 
 engelen:
     title: "Engelen"
