@@ -289,3 +289,10 @@ thenode:
     address: "?"
     type: "thenode"
     url: https://thenode.se/kalendarium
+
+biocafe_tellus:
+    title: "Biocafé Tellus"
+    address: "Hägersten"
+    type: "facebook_events"
+    url: https://www.facebook.com/BiocafeTellus/upcoming_hosted_events
+    include_keywords: ['jazzsalong', 'jazz']
