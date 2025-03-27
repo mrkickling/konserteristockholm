@@ -296,3 +296,9 @@ biocafe_tellus:
     type: "facebook_events"
     url: https://www.facebook.com/BiocafeTellus/upcoming_hosted_events
     include_keywords: ['jazzsalong', 'jazz']
+
+kulturhuset:
+    title: "Kulturhuset"
+    address: "Sergels torg"
+    type: "kulturhusetstadsteatern"
+    url: "https://kulturhusetstadsteatern.se/kalender?category=3"
