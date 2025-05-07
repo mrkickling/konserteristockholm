@@ -302,3 +302,9 @@ kulturhuset:
     address: "Sergels torg"
     type: "kulturhusetstadsteatern"
     url: "https://kulturhusetstadsteatern.se/kalender?category=3"
+
+hellsten:
+    title: "Jazz på Hellsten"
+    address: "Luntmakargatan 68"
+    type: "kulturhusetstadsteatern"
+    url: "https://www.facebook.com/jazzpahellsten/upcoming_hosted_events"
