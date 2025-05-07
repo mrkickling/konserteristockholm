@@ -306,5 +306,11 @@ kulturhuset:
 hellsten:
     title: "Jazz på Hellsten"
     address: "Luntmakargatan 68"
-    type: "kulturhusetstadsteatern"
+    type: "facebook_events"
     url: "https://www.facebook.com/jazzpahellsten/upcoming_hosted_events"
+
+bentsjazz:
+    title: "Bent's Jazz Cocktail"
+    address: "?"
+    type: "facebook_events"
+    url: "https://www.facebook.com/bentsjazz/upcoming_hosted_events"
