@@ -25,7 +25,6 @@ def parse_date(date_string):
 
     dates = date_string.split("-")
     date_string = dates[0].strip()
-    logger.info(date_string)
 
     try:
         day, month, time = date_string.split()
@@ -62,6 +61,7 @@ def get_concerts(venue, browser):
         # Sadly the elements can not be identified except for their combination of classes
         classes = "bg-white dark:bg-gray-800 flex flex-col justify-between relative border-gray-200 dark:border-gray-700 sm:rounded-lg w-full divide-y divide-gray-200 dark:divide-gray-700 border shadow overflow-hidden"
         concert_elements = soup.find_all(name="div", attrs={'class': classes})
+
         for concert in concert_elements:
             title_attrs = {'class': 'block text-white hover:text-brand-500 font-medium text-base truncate'}
             concert_title = concert.find('a', attrs=title_attrs)
@@ -88,7 +88,12 @@ def get_concerts(venue, browser):
         # Next page
         try:
             button = browser.find_element(By.CSS_SELECTOR, "[aria-label=Nästa]")
-            if button.is_enabled():
+            if button.is_enabled() and button.is_displayed():
+                browser.execute_script(
+                    "arguments[0].scrollIntoView({block: 'center'});",
+                    button
+                )
+                time.sleep(0.3)  # Optional: wait for scroll to complete
                 button.click()
             else:
                 break
