@@ -60,7 +60,7 @@ def get_concerts(venue, browser):
         soup = BeautifulSoup(html, features="html.parser")
 
         # Sadly the elements can not be identified except for their combination of classes
-        classes = "bg-white dark:bg-gray-800 flex flex-col justify-between relative border-gray-200 dark:border-gray-700 sm:rounded-lg divide-y divide-gray-200 dark:divide-gray-700 border shadow overflow-hidden"
+        classes = "bg-white dark:bg-gray-800 flex flex-col justify-between relative border-gray-200 dark:border-gray-700 sm:rounded-lg w-full divide-y divide-gray-200 dark:divide-gray-700 border shadow overflow-hidden"
         concert_elements = soup.find_all(name="div", attrs={'class': classes})
         for concert in concert_elements:
             title_attrs = {'class': 'block text-white hover:text-brand-500 font-medium text-base truncate'}
