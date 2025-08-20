@@ -320,3 +320,9 @@ nomad:
     address: "Upplandsgatan 2a"
     type: "billetto"
     url: "https://billetto.se/users/nomad-swedish-food-bar"
+
+timebar:
+    title: "Timebar"
+    address: "Hornsgatan 174"
+    type: "faceboook_events"
+    url: "https://www.facebook.com/timebarstockholm/upcoming_hosted_events"
