@@ -4,7 +4,7 @@
     $env = parse_ini_file('.env');
     session_start();
 
-    if (isset($_POST{'logout'})) {
+    if (isset($_POST['logout'])) {
         unset($_SESSION['isAdmin']);
         header('Location: ../index.php');
     }

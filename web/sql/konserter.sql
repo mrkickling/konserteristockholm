@@ -7,5 +7,6 @@ CREATE TABLE `konserter` (
 	`show` BOOLEAN DEFAULT 1,
 	`first_seen`DATETIME DEFAULT CURRENT_TIMESTAMP,
 	`last_seen` DATETIME DEFAULT CURRENT_TIMESTAMP,
+	`static` BOOLEAN DEFAULT 0,
 	PRIMARY KEY (`title`, `venue`, `date`, `url`)
 );

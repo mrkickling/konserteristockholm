@@ -76,6 +76,18 @@ function concert_exists($conn, $title, $date, $venue, $url) {
     return $stmt->num_rows > 0;
 }
 
+function create_static_concert($conn, $concert) {
+    if ($conn->connect_error) {
+        die("Connection failed: " . $conn->connect_error);
+    }
+
+    $stmt = $conn->prepare(
+        "INSERT INTO konserter (`title`, `date`, `venue`, `url`, `static`) VALUES (?, ?, ?, ?, 1) ON DUPLICATE KEY UPDATE `last_seen` = CURRENT_TIMESTAMP"
+    );
+    $stmt->bind_param("ssss", $concert['title'], $concert['date'], $concert['venue'], $concert['url']);
+    $stmt->execute();
+}
+
 function create_or_update_concerts($conn, $concerts) {
     if ($conn->connect_error) {
         die("Connection failed: " . $conn->connect_error);
