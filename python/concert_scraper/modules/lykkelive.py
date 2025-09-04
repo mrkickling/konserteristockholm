@@ -6,7 +6,7 @@ from ..common import Concert
 from ..logger import get_logger
 
 logger = get_logger(__name__)
-BASE_URL = "https://www.lykkenytorget.se/lykke-live/"
+BASE_URL = "https://www.lykkenytorget.se"
 
 
 def get_concerts(venue, browser):
@@ -26,7 +26,7 @@ def get_concerts(venue, browser):
                 attrs={'class': 'event-time-localized-start'}
             ).get('datetime')
 
-        concert_url = card.find('a').get('href')
+        concert_url = BASE_URL + card.find('a').get('href')
         concerts.append(
             Concert(concert_title, concert_date, venue.name, concert_url)
         )
