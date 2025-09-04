@@ -35,7 +35,7 @@ function get_concerts($conn, $q) {
             WHERE k1.date > DATE_SUB(NOW(), INTERVAL 1 DAY)
             AND k1.show = 1
             AND (k1.title LIKE ? OR k1.venue LIKE ?)
-            AND k1.last_seen > DATE_SUB(NOW(), INTERVAL 2 DAY)
+            AND k1.last_seen > DATE_SUB(NOW(), INTERVAL 2 DAY) OR k1.static = 1
             AND k1.url = (
                 SELECT k2.url
                 FROM konserter AS k2
