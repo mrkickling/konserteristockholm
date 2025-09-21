@@ -4,6 +4,9 @@ import time
 from datetime import datetime
 
 from bs4 import BeautifulSoup
+
+from selenium.webdriver.support import expected_conditions as EC
+from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.common.by import By
 from selenium.common.exceptions import NoSuchElementException
 
@@ -26,13 +29,13 @@ def get_concerts(venue, browser):
     logger.info(f"Getting concerts for venue {venue.name}")
     browser.get(venue.url)
 
-    time.sleep(2)
-    try:
-        cookie_button = browser.find_element(
-            By.ID, "CybotCookiebotDialogBodyLevelButtonLevelOptinAllowAll")
-        cookie_button.click()
-    except NoSuchElementException:
-        logger.info("No cookie banner")
+    WebDriverWait(browser, 20).until(
+        EC.presence_of_element_located(
+            (By.ID, "CybotCookiebotDialogBodyLevelButtonLevelOptinAllowAll")
+        )
+    ).click()
+
+    time.sleep(1)
 
     # Only show 'konserter'
     genre_button = browser.find_element(
