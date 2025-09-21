@@ -175,13 +175,13 @@ header nav a:hover {
 }
 
 .concert-container:nth-of-type(2n) {
-    background: #bf5959;
+    background: #974646;
     color: white;
 }
 
 .concert-container:nth-of-type(2n + 1) {
     color: white;
-    background: #cc6969;
+    background: #ad5959;
 }
 
 .concert-container {
