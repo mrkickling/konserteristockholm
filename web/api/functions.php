@@ -18,7 +18,7 @@ function hide_concert($conn, $title, $date, $venue, $url) {
 
 function get_latest_released_concerts($conn) {
     $sql = "SELECT title, date, venue, url, description FROM konserter
-            WHERE date > DATE_SUB(NOW(), INTERVAL 1 DAY)
+            WHERE `show` = 1 AND date > DATE_SUB(NOW(), INTERVAL 1 DAY)
             ORDER BY first_seen DESC, title ASC";
     $stmt = $conn->prepare($sql);
     $stmt->execute();
@@ -41,6 +41,7 @@ function get_concerts($conn, $q) {
                 FROM konserter AS k2
                 WHERE k2.title = k1.title
                 AND k2.date = k1.date
+                AND k1.show = 1
                 AND k2.venue = k1.venue
                 ORDER BY k2.first_seen DESC, k2.last_seen DESC, k2.url DESC
                 LIMIT 1
@@ -76,15 +77,20 @@ function concert_exists($conn, $title, $date, $venue, $url) {
     return $stmt->num_rows > 0;
 }
 
-function create_static_concert($conn, $concert) {
+function create_static_concert($conn, $concert, $is_admin) {
     if ($conn->connect_error) {
         die("Connection failed: " . $conn->connect_error);
     }
 
+    $show = 0;
+    if ($is_admin) {
+        $show = 1;
+    }
     $stmt = $conn->prepare(
-        "INSERT INTO konserter (`title`, `date`, `venue`, `url`, `static`) VALUES (?, ?, ?, ?, 1) ON DUPLICATE KEY UPDATE `last_seen` = CURRENT_TIMESTAMP"
+        "INSERT INTO konserter (`title`, `date`, `venue`, `url`, `show`, `static`) " .
+        "VALUES (?, ?, ?, ?, ?, 1) ON DUPLICATE KEY UPDATE `last_seen` = CURRENT_TIMESTAMP"
     );
-    $stmt->bind_param("ssss", $concert['title'], $concert['date'], $concert['venue'], $concert['url']);
+    $stmt->bind_param("sssss", $concert['title'], $concert['date'], $concert['venue'], $concert['url'], $show);
     $stmt->execute();
 }
 

@@ -18,9 +18,11 @@
     <?php require 'header.php'; ?>
 
         <div class="container">
-            <h4 class='concert-date-header'>
-                Latest releases
-            </h4>
+            <div class="concert-date-container">
+                <h4 class='concert-date-header'>
+                    Senaste släpp
+                </h4>
+            </div>
 
             <ul class='concert-list'>
 
@@ -31,30 +33,29 @@
                     $venue = $concert['venue'];
             ?>
 
-                <div class="concert">
-                        
-                    <span class='event-title'>
-                        <a href="<?php secure_echo($concert['url']); ?>">
-                                <?php secure_echo($concert['title']); ?>
-                        </a>
-                    </span>
+                <div class="concert-container">
+                        <div class="concert">
+                            <span class='event-title'>
+                                <a href="<?php secure_echo($concert['url']); ?>">
+                                    <?php secure_echo($concert['title']); ?>
+                                </a>
+                            </span>
 
-                    <br>
-                    <span class="material-symbols-outlined location-icon">
-                        location_on
-                    </span>
-                    <span class='event-venue'>
-                        <?php secure_echo($venue); ?> 
-                    </span>
-                    &nbsp
-                    <span class="material-symbols-outlined location-icon">
-                        schedule
-                    </span>
-                    <span class='event-venue'>
-                         <?php secure_echo($date); ?>
-                    </span>
+                            <br>
 
-
+                            <div class="event-venue-container">
+                                <span class="material-symbols-outlined location-icon">
+                                    location_on
+                                </span>
+                                <span class='event-venue'>
+                                    <?php secure_echo($venue); ?>
+                                </span>
+                                <span class='event-venue'>
+                                    | <?php secure_echo($date); ?>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
                 </div>
 
             <?php endwhile; ?>

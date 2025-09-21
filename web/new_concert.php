@@ -3,18 +3,17 @@
     require 'api/functions.php';
     session_start();
 
-    if (!isset($_SESSION['isAdmin'])) {
-        header('Location: index.php');
-    }
-
+    $submitted = False;
     if (isset($_POST['new-concert'])) {
+
         $concert = array(
             'title'=> $_POST['title'],
             'date' => $_POST['date'],
             'venue' => $_POST['venue'],
             'url' => $_POST['url']
         );
-        create_static_concert($conn, $concert);
+        create_static_concert($conn, $concert, isset($_SESSION['isAdmin']));
+        $submitted = True;
     }
 ?>
 <!DOCTYPE html>
@@ -30,16 +29,28 @@
     <body>
     <?php require 'header.php'; ?>
         <div class="container">
-            <h2>Lägg till konsert</h2>
-            <form action="new_concert.php" method="post">
+
+            <?php if (isset($_SESSION['isAdmin'])): ?>
+                Inloggad    
+            <?php endif; ?>
+
+            <?php if ($submitted): ?>
+                <center style="color: green;">
+                    Tack för ditt tips!
+                    Innan det publiceras kommer jag granska det.
+                </center>
+            <?php endif; ?>
+
+            <h2>Tipsa om en konsert</h2>
+            <form action="new_concert.php" method="post" id="add-concert-form">
                 Titel
-                <input type="text" name="title"><br>
+                <input type="text" name="title" required><br>
                 Scen
-                <input type="text" name="venue"><br>
+                <input type="text" name="venue" required><br>
                 URL
-                <input type="text" name="url"><br>
+                <input type="text" name="url" required><br>
                 Datum
-                <input type="date" name="date"><br>
+                <input type="date" name="date" required><br>
                 <input type="submit" name="new-concert" value="Lägg till">
             </form>
         </div>

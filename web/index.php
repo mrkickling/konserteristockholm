@@ -43,7 +43,7 @@
                     $venue = $concert['venue'];
 
                     if ($date != $prev_date): ?>
-                        <div class="concert-header-container">
+                        <div class="concert-date-container">
                             <h4 class='concert-date-header'>
                                 <span class="date-icon material-symbols-outlined">
                                     calendar_today
@@ -57,23 +57,24 @@
                         </div>
                     <?php $prev_date = $date; endif; ?>
 
-                    <div class="concert">
-                            
-                        <span class='event-title'>
-                            <a href="<?php secure_echo($concert['url']); ?>">
+                    <div class="concert-container">
+                        <div class="concert">
+                            <span class='event-title'>
+                                <a href="<?php secure_echo($concert['url']); ?>">
                                     <?php secure_echo($concert['title']); ?>
-                            </a>
-                        </span>
-
-                        <br>
-
-                        <div class="event-venue-container">
-                            <span class="material-symbols-outlined location-icon">
-                                location_on
+                                </a>
                             </span>
-                            <span class='event-venue'>
-                                <?php secure_echo($venue); ?>
-                            </span>
+
+                            <br>
+
+                            <div class="event-venue-container">
+                                <span class="material-symbols-outlined location-icon">
+                                    location_on
+                                </span>
+                                <span class='event-venue'>
+                                    <?php secure_echo($venue); ?>
+                                </span>
+                            </div>
                         </div>
                     </div>
 

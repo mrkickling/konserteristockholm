@@ -16,7 +16,7 @@ window.addEventListener('scroll', () => {
         const headerTop = header.offsetTop;
 
         // If the header has scrolled past the top of the window
-        if (scrollPosition >= headerTop - 20) {
+        if (scrollPosition >= headerTop) {
             // Remove the active class from the current active header
             if (currentActiveHeader) {
                 currentActiveHeader.classList.remove('active');

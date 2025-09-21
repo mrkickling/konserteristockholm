@@ -10,7 +10,7 @@
     <?php require 'header.php'; ?>
     <div class="container">
         <div class="info">
-            <h4>Info</h4>
+            <h2>Info</h2>
             <p>
                 Sidan är skapad av <a href="https://joakimloxdal.se">Joakim Loxdal</a>.
                 Om du saknar någon konsert eller någon konsertlokal så meddela mig gärna på loxdal@proton.me.
