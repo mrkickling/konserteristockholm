@@ -138,7 +138,7 @@ header nav a:hover {
 .concert-date-header {
     z-index: 10;
     width: 100%;
-    max-width: 900px;
+    max-width: 1200px;
     margin: auto;
     padding: 15px;
     display: block;
@@ -192,7 +192,7 @@ header nav a:hover {
     padding: 15px;
     color: white;
     width: 100%;
-    max-width: 900px;
+    max-width: 1200px;
     margin: auto;
 }
 
