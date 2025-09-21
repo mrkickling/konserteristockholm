@@ -22,6 +22,11 @@
     <body>
     <?php require 'header.php'; ?>
         <div class="container">
+            <?php if ($q): ?>
+                <div class="info">
+                    <h2>Resultat för "<?php secure_echo($q); ?>"</h2>
+                </div>
+            <?php endif; ?>
             <ul class='concert-list'>
             <?php
                 $prev_date = 0;
