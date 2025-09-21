@@ -11,15 +11,14 @@ logger = get_logger(__name__)
 BASE_URL = "https://www.stampen.se/program/"
 
 
-def parse_date(date_string):
-    # 31 Dec, 17:00 - 01:00
-    date, month, *rest = date_string.split()
+def parse_date(date_string: str):
+    # 07 - 20 SEP
+    # or 25 SEP
+    if '-' in date_string:
+        return None
 
-    try:
-        date = datetime.strptime(f"{date} {month}", '%d %b,')
-    except Exception:
-        logger.info("No matching date string %s %s - trying without comma", date, month)
-        date = datetime.strptime(f"{date} {month}", '%d %b')
+    day, month, *rest = date_string.split()
+    date = datetime.strptime(f"{day} {month}", '%d %b')
 
     date = get_future_date(date.month, date.day)
     return date.strftime("%Y-%m-%d")
@@ -34,8 +33,12 @@ def get_concerts(venue, browser):
     cards = soup.find_all(name="article", attrs={'class': 'mec-event-article'})
     concerts = []
     for card in cards:
-        concert_title = card.find('h4', attrs={'class': 'mec-event-titlee'}).getText().strip()
+        concert_title = card.find('h3', attrs={'class': 'mec-event-title'}).getText().strip()
         concert_date = parse_date(card.find('span', attrs={'class': 'mec-event-d'}).getText().strip())
+
+        if not concert_date:
+            continue
+
         url_obj = card.find('a')
         concert_url = BASE_URL
         if url_obj:
