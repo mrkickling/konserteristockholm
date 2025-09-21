@@ -1,4 +1,5 @@
 CREATE TABLE `konserter` (
+    `id` BIGINT AUTO_INCREMENT UNIQUE,
 	`title` VARCHAR(255),
 	`venue` VARCHAR(255),
 	`date` DATETIME,

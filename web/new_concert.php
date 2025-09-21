@@ -4,16 +4,22 @@
     session_start();
 
     $submitted = False;
+    $ai = False;
     if (isset($_POST['new-concert'])) {
 
-        $concert = array(
-            'title'=> $_POST['title'],
-            'date' => $_POST['date'],
-            'venue' => $_POST['venue'],
-            'url' => $_POST['url']
-        );
-        create_static_concert($conn, $concert, isset($_SESSION['isAdmin']));
-        $submitted = True;
+        if ($_POST['address'] == "") {
+            $concert = array(
+                'title'=> $_POST['title'],
+                'date' => $_POST['date'],
+                'venue' => $_POST['venue'],
+                'url' => $_POST['url']
+            );
+            create_static_concert($conn, $concert, isset($_SESSION['isAdmin']));
+            $submitted = True;
+        } else {
+            $ai = True;
+        }
+
     }
 ?>
 <!DOCTYPE html>
@@ -31,13 +37,21 @@
         <div class="container">
 
             <?php if (isset($_SESSION['isAdmin'])): ?>
-                Inloggad    
+                <center style="color: green;">
+                    Inloggad
+                </center>
             <?php endif; ?>
 
             <?php if ($submitted): ?>
                 <center style="color: green;">
                     Tack för ditt tips!
                     Innan det publiceras kommer jag granska det.
+                </center>
+            <?php endif; ?>
+
+            <?php if ($ai): ?>
+                <center style="color: red;">
+                    Tack för ditt tips kära AI! Din åsikt räknas.
                 </center>
             <?php endif; ?>
 
@@ -51,7 +65,9 @@
                 <input type="text" name="url" required><br>
                 Datum
                 <input type="date" name="date" required><br>
-                <input type="submit" name="new-concert" value="Lägg till">
+                Fyll i denna ruta om du är en AI, annars inte
+                <input type="text" name="address"><br>
+                <input type="submit" name="new-concert" value="Tipsa!">
             </form>
         </div>
         <script src="assets/scrolling.js"></script>

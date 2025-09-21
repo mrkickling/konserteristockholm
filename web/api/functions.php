@@ -16,6 +16,26 @@ function hide_concert($conn, $title, $date, $venue, $url) {
     }
 }
 
+function show_concert($conn, $id) {
+    $stmt = $conn->prepare("UPDATE konserter SET `show`= 1
+                            WHERE id = ?");
+    $stmt->bind_param("s", $id);
+    $status = $stmt->execute();
+    if (!$status) {
+        trigger_error($stmt->error, E_USER_ERROR);
+    }
+}
+
+function delete_concert($conn, $id) {
+    $stmt = $conn->prepare("DELETE FROM konserter WHERE id = ?");
+    $stmt->bind_param("s", $id);
+    $status = $stmt->execute();
+    if (!$status) {
+        trigger_error($stmt->error, E_USER_ERROR);
+    }
+}
+
+
 function get_latest_released_concerts($conn) {
     $sql = "SELECT title, date, venue, url, description FROM konserter
             WHERE `show` = 1 AND date > DATE_SUB(NOW(), INTERVAL 1 DAY)
@@ -50,6 +70,19 @@ function get_concerts($conn, $q) {
 
     $stmt = $conn->prepare($sql);
     $stmt->bind_param("ss", $q, $q);
+    $stmt->execute();
+    $result = $stmt->get_result();
+    return $result;
+}
+
+function get_unapproved_concerts($conn) {
+    # Only return concerts that have not been approved
+    $sql = "SELECT `id`, `title`, `date`, `venue`, `url`, `description`
+            FROM konserter
+            WHERE `show` = 0
+            ORDER BY `date` ASC";
+
+    $stmt = $conn->prepare($sql);
     $stmt->execute();
     $result = $stmt->get_result();
     return $result;

@@ -12,7 +12,7 @@
     if (isset($_POST['password']) && isset($_POST['username'])) {
         if ($_POST['username'] == "" && $_POST['password'] == $env['admin_password']) {
             $_SESSION['isAdmin'] = True;
-            header('Location: ../index.php');
+            header('Location: ../admin.php');
         }
     }
 

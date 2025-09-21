@@ -204,16 +204,18 @@ header nav a:hover {
     font-size: 1.2em;
 }
 
-.nice-button {
-    width: 20%;
-    text-align: center;
-    font-size: 12px;
-    font-family: sans-serif;
-    font-weight:bold;
-    text-transform: uppercase;
-    border: 1px solid black;
-    padding: 5px 10px;
-    margin-top: 5px;
+.reject-button {
+    background: rgb(161, 155, 155);
+    color: black;
+    padding: 10px 20px;
+    border: 0;
+
+}
+.accept-button {
+    background: rgb(38, 158, 38);
+    color: white;
+    padding: 10px 20px;
+    border: 0;
 }
 
 .concert-extras {
