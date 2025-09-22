@@ -22,11 +22,16 @@
     <body>
     <?php require 'header.php'; ?>
         <div class="container">
-            <?php if ($q): ?>
                 <div class="info">
-                    <h2>Resultat för "<?php secure_echo($q); ?>"</h2>
+                <?php if ($q): ?>
+                        <h2 class="search-query">
+                            Resultat för "<?php secure_echo($q); ?>"
+                        </h2>
+                <?php endif; ?>
+                <span class="coming-concerts-text">
+                    <?php echo $concerts->num_rows; ?> kommande konserter
+                </span>
                 </div>
-            <?php endif; ?>
             <ul class='concert-list'>
             <?php
                 $prev_date = 0;

@@ -110,6 +110,19 @@ header nav a:hover {
     margin: auto;
 }
 
+.search-query {
+    margin: 0;
+    margin-top: -15px;
+}
+
+.coming-concerts-text {
+    margin-top: -5px;
+    margin-bottom: 15px;
+    display: block;
+    font-weight: bolder;
+    color: rgb(61, 44, 44);
+}
+
 .not-found-message {
     text-align: center;
 }
