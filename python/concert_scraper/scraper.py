@@ -116,6 +116,7 @@ def scrape_venues(venues):
                 successful_venues.append(venue.name)
             else:
                 # No concerts = failed
+                logger.warning("No concerts for %s", venue.name)
                 failed_venues.append(venue.name)
 
             # Use filters if they exist
@@ -154,13 +155,13 @@ def get_all_venues():
 
 def main():
     if not os.getenv('api_url') or not os.getenv('api_key'):
-        raise Exception("Remember to set your envs!")
+        raise ValueError("Remember to set your envs!")
 
     # Scrape all venues for concerts
     logger.info("Starting the scraper")
     venues = get_all_venues()
     concerts, successful_venues, failed_venues = scrape_venues(venues)
-    logger.info(f"Found {len(concerts)} concerts in total")
+    logger.info("Found %d concerts in total", len(concerts))
 
     # Only care about concerts within 10 months in the future
     # This avoids bug where we add concerts 1 year into the future that

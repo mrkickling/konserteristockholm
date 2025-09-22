@@ -20,6 +20,7 @@ def parse_date(date_string):
         weekday, month_str, date_str, *rest = date_string.split()
     except ValueError as e:
         logger.warning("Could not parse date %s", date_string)
+        return None
 
     if month_str.isnumeric() and date_str.isnumeric():
         # Sometimes these are flipped :s
@@ -104,6 +105,10 @@ def get_concerts(venue, browser):
             # Otherwise - nice, we fetch the values and create the Concert object
             title = title_element.text
             date = parse_date(date_element.text)
+
+            if not date:
+                continue
+
             url = link_element.get_attribute('href')
             url = url.split("?")[0]  # Remove params
             

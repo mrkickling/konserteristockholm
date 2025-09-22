@@ -23,7 +23,11 @@ def get_concerts(venue, browser):
     for concert in concert_elements:
         meta = concert.text.split("\n")
         artist = "".join(meta[0:-1]) # All before last element is artist
-        date = parse_date(meta[-1]) # Last element is date
+        try:
+            date = parse_date(meta[-1]) # Last element is date
+        except:
+            logger.error("Failed to parse date %s", meta[-1])
+            continue
         concert_url = venue.url
 
         concerts.append(
