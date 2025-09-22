@@ -12,13 +12,13 @@ logger = get_logger(__name__)
 BASE_URL = "https://www.facebook.com/"
 
 def parse_date(date_string):
-    if date_string == "HAPPENING NOW":
+    if date_string in ("HAPPENING NOW", "Happening now"):
         return None
 
     # Format is FRI, 24 MAY AT 20:00
     try:
         weekday, month_str, date_str, *rest = date_string.split()
-    except ValueError as e:
+    except ValueError:
         logger.warning("Could not parse date %s", date_string)
         return None
 
@@ -105,9 +105,6 @@ def get_concerts(venue, browser):
             # Otherwise - nice, we fetch the values and create the Concert object
             title = title_element.text
             date = parse_date(date_element.text)
-
-            if not date:
-                continue
 
             url = link_element.get_attribute('href')
             url = url.split("?")[0]  # Remove params
