@@ -231,12 +231,6 @@ teater_reflex:
     type: "facebook_events"
     url: "https://www.facebook.com/teaterreflex/upcoming_hosted_events"
 
-twang:
-    title: "Twang"
-    address: "Katarina Bangata"
-    type: "tickster"
-    url: "https://www.tickster.com/sv/events/at/dcyu3drw3r00ctx/twang?take=100"
-
 twang-fb:
     title: "Twang"
     address: "Katarina Bangata"
