@@ -29,11 +29,11 @@ townhousenoshandchow:
     type: "tickster"
     url: "https://www.tickster.com/sv/events/at/h8l6zral0kx2y5b/townhouse-nosh-and-chow?take=100"
 
-biblioteketlive:
-    title: "Biblioteket Live"
-    address: "Medborgarplatsen"
-    type: "tickster"
-    url: "https://www.tickster.com/sv/events/at/2nkerrp3y8re7l0/biblioteket-live?take=100"
+# biblioteketlive:
+#     title: "Biblioteket Live"
+#     address: "Medborgarplatsen"
+#     type: "unitedtickets"
+#     url: "https://biljett.unitedtickets.se/venue/biblioteket-live/39327"
 
 debaser_strand_1:
     title: "Debaser Strand"
