@@ -91,12 +91,6 @@ konstakademien:
     type: "tickster"
     url: "https://www.tickster.com/sv/events/at/7lplt0z7ft2b2pj/konstakademien?take=100"
 
-underbron:
-    title: "Under Bron"
-    address: "Hammarby Slussväg 2"
-    type: "tickster"
-    url: "https://www.tickster.com/sv/events/at/hxhmufbv2c62wa5/under-bron?take=100"
-
 tradgarden:
     title: "Trädgården"
     address: "Hammarby Slussväg 2"
