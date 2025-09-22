@@ -309,12 +309,6 @@ hellsten:
     type: "facebook_events"
     url: "https://www.facebook.com/jazzpahellsten/upcoming_hosted_events"
 
-bentsjazz:
-    title: "Bent's Jazz Cocktail"
-    address: "?"
-    type: "facebook_events"
-    url: "https://www.facebook.com/bentsjazz/upcoming_hosted_events"
-
 nomad:
     title: "Nomad"
     address: "Upplandsgatan 2a"
