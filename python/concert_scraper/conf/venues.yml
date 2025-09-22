@@ -215,8 +215,8 @@ musikvalvet_baggen:
 banankompaniet:
     title: "Banankompaniet (b-k)"
     address: "Frihamnen"
-    type: "tickster"
-    url: "https://www.tickster.com/sv/events/at/wpnt5y7dpjdedfp/b-k?take=100"
+    type: "livenation"
+    url: "https://www.livenation.se/b-k-tickets-vdp1417635"
 
 scen44:
     title: "Scen 44"
