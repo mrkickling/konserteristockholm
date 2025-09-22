@@ -112,6 +112,12 @@ def scrape_venues(venues):
             else:
                 continue
 
+            if concerts:
+                successful_venues.append(venue.name)
+            else:
+                # No concerts = failed
+                failed_venues.append(venue.name)
+
             # Use filters if they exist
             filtered_concerts = concerts_without_exclude_keywords(
                 venue, concerts
@@ -121,9 +127,9 @@ def scrape_venues(venues):
             )
 
             all_concerts += filtered_concerts
-            successful_venues.append(venue.name)
 
         except Exception as e:
+            # Exception = failed
             failed_venues.append(venue.name)
             logger.error(f"Failed to scrape {venue.name} - {e}")
 
