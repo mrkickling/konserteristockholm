@@ -15,7 +15,7 @@ BASE_URL = "https://kulturhusetstadsteatern.se/konserter/"
 
 
 def parse_date(date_string):
-    """ONSDAG 2 APRIL"""
+    """23 september, kl 12:00"""
 
     if date_string == "IDAG":
         return datetime.datetime.today().strftime("%Y-%m-%d")
@@ -24,8 +24,8 @@ def parse_date(date_string):
             datetime.datetime.today() + datetime.timedelta(1)
         ).strftime("%Y-%m-%d")
 
-    _, day, month = date_string.split()
-
+    day, month, *_ = date_string.split()
+    month = month.removesuffix(',')
     month_int = months_se.index(month.lower()) + 1
     day_int = int(day)
     date = get_future_date(month_int, day_int)
@@ -46,7 +46,7 @@ def get_concerts(venue, browser):
     while True:
         try:
             load_all = browser.find_element(
-                By.CLASS_NAME, "CalendarBlock__load-more"
+                By.CSS_SELECTOR, ".calendar-filter__load-more"
             )
             load_all.click()
             time.sleep(0.5)
@@ -55,21 +55,20 @@ def get_concerts(venue, browser):
 
     html = browser.page_source
     soup = BeautifulSoup(html, features="html.parser")
-    cards = soup.find_all(name="div", attrs={'class': 'CalendarOccasion'})
+    cards = soup.find_all(name="li", attrs={'class': 'single-result'})
     concerts = []
 
-    last_seen_date = None
     for card in cards:
         concert_title = card.find('h3').getText().strip()
         concert_date_obj = card.find(
-            name='span', attrs={'class': 'CalendarDateGroup__heading'}
+            name='p', attrs={'class': 'single-result__dates'}
         )
         if concert_date_obj:
             last_seen_date = parse_date(concert_date_obj.getText().strip())
-        concert_url = card.find('a').get('href')
-        concerts.append(
-            Concert(concert_title, last_seen_date, venue.name, concert_url)
-        )
+            concert_url = card.find('a').get('href')
+            concerts.append(
+                Concert(concert_title, last_seen_date, venue.name, concert_url)
+            )
 
     logger.info(f"Found {len(concerts)} concerts for venue {venue.name}")
     return concerts
