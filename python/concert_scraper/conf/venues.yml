@@ -23,12 +23,6 @@ kollektivetlivet:
     type: "tickster"
     url: "https://www.tickster.com/sv/events/at/hd7g2z5jf75bvcj/kollektivet-livet-bar-and-scen?take=100"
 
-townhousenoshandchow:
-    title: "Townhouse Nosh & Chow"
-    address: "Norrlandsgatan 24, Stockholm"
-    type: "tickster"
-    url: "https://www.tickster.com/sv/events/at/h8l6zral0kx2y5b/townhouse-nosh-and-chow?take=100"
-
 # On hold
 # biblioteketlive:
 #     title: "Biblioteket Live"
