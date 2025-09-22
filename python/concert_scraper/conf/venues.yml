@@ -142,8 +142,8 @@ scalateatern:
 norrport:
     title: "Norrport"
     address: "Roslagsgatan 38"
-    type: "norrport"
-    url: "https://norrport.se/evenemang/"
+    type: "facebook_events"
+    url: "https://www.facebook.com/norrport/upcoming_hosted_events"
 
 fryshuset:
     title: "Fryshuset"
@@ -313,5 +313,5 @@ nomad:
 timebar:
     title: "Timebar"
     address: "Hornsgatan 174"
-    type: "faceboook_events"
+    type: "facebook_events"
     url: "https://www.facebook.com/timebarstockholm/upcoming_hosted_events"
