@@ -29,6 +29,7 @@ townhousenoshandchow:
     type: "tickster"
     url: "https://www.tickster.com/sv/events/at/h8l6zral0kx2y5b/townhouse-nosh-and-chow?take=100"
 
+# On hold
 # biblioteketlive:
 #     title: "Biblioteket Live"
 #     address: "Medborgarplatsen"
@@ -194,12 +195,6 @@ engelen:
     type: "facebook_events"
     url: "https://www.facebook.com/EngelenKolingen/upcoming_hosted_events" # "https://www.engelen.se/#spelningar"
 
-melodybox:
-    title: "Melodybox"
-    address: "Hägersten"
-    type: "tickster"
-    url: "https://www.tickster.com/sv/events/at/4tyjhml51jellcz/melodybox?take=100"
-
 hokarangens_antikvariat:
     title: "Hökarängens Antikvariat & Skivbörs"
     address: "Hökarängen"
@@ -301,7 +296,7 @@ kulturhuset:
     title: "Kulturhuset"
     address: "Sergels torg"
     type: "kulturhusetstadsteatern"
-    url: "https://kulturhusetstadsteatern.se/kalender?category=3"
+    url: "https://kulturhusetstadsteatern.se/kalender?drupalCategory=3"
 
 hellsten:
     title: "Jazz på Hellsten"
