@@ -16,39 +16,38 @@
     <body>
     <?php require 'header.php'; ?>
         <div class="container">
+            <div class="info">
+                <?php if (isset($_SESSION['isAdmin']) && $_SESSION['isAdmin']): ?>
+                    <form action="api/auth.php" method="post">
+                        <input type="hidden" name="logout">
+                        <input type="submit" value="Log out">
+                    </form>
+                <?php endif; ?>
 
-        <?php if (isset($_SESSION['isAdmin']) && $_SESSION['isAdmin']): ?>
-            <form action="api/auth.php" method="post">
-                <input type="hidden" name="logout">
-                <input type="submit" value="Log out">
-            </form>
-        <?php endif; ?>
+                <ul class='concert-list'>
+                <?php
 
-            <ul class='concert-list'>
-            <?php
+                    while ($venue = $venues->fetch_assoc()):
+                        $color = 'green';
+                        if ($venue['up'] == 0) $color = 'red';
+                    ?>
 
-                while ($venue = $venues->fetch_assoc()): 
-                    $color = 'green';
-                    if ($venue['up'] == 0) $color = 'red';
-                ?>
+                        <div class="concert" style="color: black;">
+                                <span style="color:<?php echo $color ?>">
+                                    <?php secure_echo($venue['name']); ?>
+                                </span>
 
-                    <div class="concert">
-                            <span class='event-venue' style="color:<?php echo $color ?>">
-                                <?php secure_echo($venue['name']); ?>
-                            </span>
-                            
-                            <span class='event-title'>
                                 -
                                 <?php if ($venue['up'] == 1): echo "UP"; endif; ?>
                                 <?php if ($venue['up'] == 0): echo "DOWN since"; endif; ?>
                                                                         
                                 <?php secure_echo($venue['latest_sync']); ?>
 
-                            </span>
-                    </div>
+                        </div>
 
-                <?php endwhile; ?>
-            </ul>
+                    <?php endwhile; ?>
+                </ul>
+            </div>
         </div>
     </body>
 </html>
