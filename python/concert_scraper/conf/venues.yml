@@ -297,3 +297,9 @@ timebar:
     address: "Hornsgatan 174"
     type: "facebook_events"
     url: "https://www.facebook.com/timebarstockholm/upcoming_hosted_events"
+
+bioaspen:
+    title: "Bio Aspen"
+    address: "Hägerstensvägen 100A"
+    type: "facebook_events"
+    url: "https://www.facebook.com/bioaspen/upcoming_hosted_events"
